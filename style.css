@@ -550,7 +550,7 @@ section { padding: 110px 0; }
 
 .why-compare {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 32px;
     margin-top: 64px;
     margin-bottom: 64px;
@@ -584,6 +584,7 @@ section { padding: 110px 0; }
     border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 4px 16px rgba(0,0,0,.08);
+    flex: 1;
 }
 
 .naver-card-header {
@@ -639,6 +640,7 @@ section { padding: 110px 0; }
     border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 4px 16px rgba(74,144,226,.12);
+    flex: 1;
 }
 
 .mockup-header-bar {
@@ -739,7 +741,10 @@ section { padding: 110px 0; }
 .why-stat-num { font-size: 52px; font-weight: 900; color: var(--primary); line-height: 1; }
 .why-stat-num span { font-size: 28px; font-weight: 700; }
 .why-stat-label { font-size: 14px; color: var(--gray); line-height: 1.6; margin-top: 8px; }
-.why-stat-divider { width: 1px; height: 60px; background: #e5e7eb; flex-shrink: 0; margin: 0 20px; }
+.why-stat-divider { width: 1px; background: #e5e7eb; flex-shrink: 0; margin: 0 20px; align-self: stretch; }
+
+.why-stat-2x .why-stat-num { font-size: 104px; }
+.why-stat-2x .why-stat-num span { font-size: 56px; }
 
 
 /* ── TEMPLATES ── */
@@ -942,6 +947,29 @@ section { padding: 110px 0; }
 
 /* ── PRICING ── */
 .pricing { background: var(--primary-light); }
+
+.plan-discount-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.plan-discount-badge {
+    background: #fff1f2;
+    color: #e11d48;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 100px;
+}
+
+.plan-original-price {
+    font-size: 16px;
+    color: #aaa;
+    text-decoration: line-through;
+    font-weight: 500;
+}
 
 .pricing-header { text-align: center; margin-bottom: 64px; }
 

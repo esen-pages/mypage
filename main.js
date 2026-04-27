@@ -161,8 +161,8 @@ if (serviceVisual) {
     new IntersectionObserver((entries, obs) => {
         if (!entries[0].isIntersecting) return;
         obs.unobserve(compare);
-        animateIn(left,  0,   'translateX(-48px)', 'translateX(0)', 900);
-        animateIn(right, 0,   'translateX(48px)',  'translateX(0)', 900);
+        animateIn(left,  0,   'translateX(-48px)', 'translateX(0)', 1800);
+        animateIn(right, 0,   'translateX(48px)',  'translateX(0)', 1800);
     }, { threshold: 0.2 }).observe(compare);
 })();
 
@@ -175,7 +175,7 @@ if (serviceVisual) {
         if (!entries[0].isIntersecting) return;
         obs.unobserve(stats);
 
-        const durations = [1400, 700, 500];
+        const durations = [1400, 3000, 500];
         stats.querySelectorAll('.why-stat').forEach((stat, i) => {
             const target = parseInt(stat.dataset.count, 10);
             const numEl  = stat.querySelector('.count-num');
