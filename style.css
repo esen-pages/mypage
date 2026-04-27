@@ -1352,7 +1352,7 @@ footer {
     .auto-arrow { display: none; }
     .pricing-grid { grid-template-columns: 1fr; }
 
-    .service-info-head .section-title { font-size: 22px; }
+    .service-info-head .section-title { font-size: 26px; }
     .section-title { font-size: 28px; }
     .final-cta h2 { font-size: 28px; }
     .footer-inner { flex-direction: column; text-align: center; }
@@ -1375,7 +1375,7 @@ footer {
     .title-bottom em { font-size: 1.1em; }
     .hero-subtitle { font-size: 14px; }
 
-    .service-info-head .section-title { font-size: 19px; }
+    .service-info-head .section-title { font-size: 23px; }
     .section-title { font-size: 22px; }
     .final-cta h2 { font-size: 22px; }
 }
