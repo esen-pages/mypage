@@ -449,7 +449,24 @@ section { padding: 110px 0; }
 
 /* ── SERVICE INFO ── */
 .service-info {
-    background: linear-gradient(140deg, #052e16 0%, #0f2a20 50%, #0d1f1a 100%);
+    background: linear-gradient(140deg, #0d3d24 0%, #1a3d2d 50%, #142e22 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-info::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(74,222,128,.12) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.service-info .container {
+    position: relative;
+    z-index: 1;
 }
 
 .service-info-head {
@@ -501,7 +518,18 @@ section { padding: 110px 0; }
 
 .auto-step-text span { font-size: 10px; color: rgba(255,255,255,.45); }
 
-.auto-arrow { color: #4ade80; font-size: 16px; font-weight: 900; flex-shrink: 0; }
+.auto-arrow {
+    color: #4ade80;
+    font-size: 16px;
+    font-weight: 900;
+    flex-shrink: 0;
+    animation: si-arrow 1.4s ease-in-out infinite;
+}
+
+@keyframes si-arrow {
+    0%, 100% { transform: translateX(0); opacity: .8; }
+    50%       { transform: translateX(5px); opacity: 1; }
+}
 
 .auto-features {
     display: grid;
@@ -543,6 +571,12 @@ section { padding: 110px 0; }
     box-shadow: 0 0 60px rgba(34,197,94,.1);
     max-width: 860px;
     margin: 0 auto 32px;
+    animation: si-glow 3s ease-in-out infinite;
+}
+
+@keyframes si-glow {
+    0%, 100% { box-shadow: 0 0 60px rgba(34,197,94,.1); border-color: rgba(255,255,255,.1); }
+    50%       { box-shadow: 0 0 90px rgba(34,197,94,.28); border-color: rgba(74,222,128,.3); }
 }
 
 .sheet-mockup {
@@ -550,6 +584,26 @@ section { padding: 110px 0; }
     border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(0,0,0,.4);
+    position: relative;
+}
+
+@keyframes si-scan {
+    0%   { top: -2px; opacity: 0; }
+    5%   { opacity: 1; }
+    95%  { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+.sheet-mockup::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    top: -2px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(34,197,94,.8) 30%, #4ade80 50%, rgba(34,197,94,.8) 70%, transparent);
+    animation: si-scan 3.5s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 2;
 }
 
 .sheet-header {
@@ -601,6 +655,12 @@ section { padding: 110px 0; }
     font-size: 13px;
     color: #4ade80;
     font-weight: 600;
+    animation: si-notify 2.4s ease-in-out infinite;
+}
+
+@keyframes si-notify {
+    0%, 100% { box-shadow: none; border-color: rgba(34,197,94,.25); }
+    50%       { box-shadow: 0 0 18px rgba(74,222,128,.2); border-color: rgba(74,222,128,.55); }
 }
 
 /* ── WHY HOMEPAGE ── */
