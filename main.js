@@ -149,3 +149,31 @@ if (serviceVisual) {
         }, 400);
     }, { threshold: 0.5 }).observe(serviceVisual);
 }
+
+/* ── Template Slider ── */
+let currentSlide = 0;
+const TOTAL_SLIDES = 3;
+
+function updateSlider() {
+    const track = document.getElementById('templateTrack');
+    if (!track) return;
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    document.querySelectorAll('.dot-btn').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+    });
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % TOTAL_SLIDES;
+    updateSlider();
+}
+
+function prevSlide() {
+    currentSlide = (currentSlide - 1 + TOTAL_SLIDES) % TOTAL_SLIDES;
+    updateSlider();
+}
+
+function goToSlide(n) {
+    currentSlide = n;
+    updateSlider();
+}
