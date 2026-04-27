@@ -818,6 +818,7 @@ footer {
     .pain-cards { grid-template-columns: 1fr; }
     .solution-grid { grid-template-columns: 1fr; }
     .service-info-grid { grid-template-columns: 1fr; gap: 40px; }
+    .service-info-text .section-title { font-size: 26px; }
     .pricing-grid { grid-template-columns: 1fr; }
 
     .section-title { font-size: 28px; }
@@ -833,6 +834,7 @@ footer {
     .title-bottom em { font-size: 1.1em; }
     .hero-subtitle { font-size: 14px; }
 
+    .service-info-text .section-title { font-size: 22px; }
     .section-title { font-size: 22px; }
     .final-cta h2 { font-size: 22px; }
 }
