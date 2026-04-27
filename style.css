@@ -733,7 +733,7 @@ section { padding: 110px 0; }
     justify-content: center;
     background: var(--light-gray);
     border-radius: 20px;
-    padding: 40px;
+    padding: 24px 40px;
 }
 
 .why-stat { flex: 1; text-align: center; }
