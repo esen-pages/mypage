@@ -150,30 +150,66 @@ if (serviceVisual) {
     }, { threshold: 0.5 }).observe(serviceVisual);
 }
 
-/* ── Template Slider ── */
-let currentSlide = 0;
-const TOTAL_SLIDES = 3;
+/* ── Why Compare: Entrance Animation ── */
+(function initWhyCompare() {
+    const compare = document.querySelector('.why-compare');
+    if (!compare) return;
 
-function updateSlider() {
-    const track = document.getElementById('templateTrack');
-    if (!track) return;
-    track.style.transform = `translateX(-${currentSlide * 100}%)`;
-    document.querySelectorAll('.dot-btn').forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentSlide);
-    });
-}
+    const left = compare.querySelector('.why-col-left');
+    const right = compare.querySelector('.why-col-right');
 
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % TOTAL_SLIDES;
-    updateSlider();
-}
+    new IntersectionObserver((entries, obs) => {
+        if (!entries[0].isIntersecting) return;
+        obs.unobserve(compare);
+        animateIn(left,  0,   'translateX(-48px)', 'translateX(0)', 900);
+        animateIn(right, 0,   'translateX(48px)',  'translateX(0)', 900);
+    }, { threshold: 0.2 }).observe(compare);
+})();
 
-function prevSlide() {
-    currentSlide = (currentSlide - 1 + TOTAL_SLIDES) % TOTAL_SLIDES;
-    updateSlider();
-}
+/* ── Why Stats: Count-Up ── */
+(function initCountUp() {
+    const stats = document.querySelector('.why-stats');
+    if (!stats) return;
 
-function goToSlide(n) {
-    currentSlide = n;
-    updateSlider();
-}
+    new IntersectionObserver((entries, obs) => {
+        if (!entries[0].isIntersecting) return;
+        obs.unobserve(stats);
+
+        const durations = [1400, 700, 500];
+        stats.querySelectorAll('.why-stat').forEach((stat, i) => {
+            const target = parseInt(stat.dataset.count, 10);
+            const numEl  = stat.querySelector('.count-num');
+            if (!numEl) return;
+            const dur = durations[i];
+            const t0  = performance.now();
+            const tick = (now) => {
+                const p = Math.min((now - t0) / dur, 1);
+                numEl.textContent = Math.round((1 - Math.pow(1 - p, 3)) * target);
+                if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+        });
+    }, { threshold: 0.5 }).observe(stats);
+})();
+
+/* ── Template Cards: Independent Auto-Cycle ── */
+document.querySelectorAll('.tpl-card').forEach(card => {
+    const interval = parseInt(card.dataset.interval, 10) || 3000;
+    const slides = card.querySelectorAll('.tpl-slide');
+    const dots   = card.querySelectorAll('.tpl-cdot');
+    let cur = 0;
+
+    setInterval(() => {
+        slides[cur].classList.remove('tpl-slide-active');
+        dots[cur].classList.remove('tpl-cdot-active');
+        dots[cur].style.width = '';
+        dots[cur].style.borderRadius = '';
+
+        cur = (cur + 1) % slides.length;
+
+        slides[cur].classList.add('tpl-slide-active');
+        dots[cur].classList.add('tpl-cdot-active');
+        dots[cur].style.width = '16px';
+        dots[cur].style.borderRadius = '3px';
+    }, interval);
+});

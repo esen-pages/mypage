@@ -129,7 +129,7 @@
         </p>
 
         <div class="why-compare">
-            <div class="why-col">
+            <div class="why-col why-col-left">
                 <div class="why-col-label why-label-bad">😟 네이버 플레이스 검색 결과</div>
                 <div class="naver-mockup">
                     <div class="naver-card-header">
@@ -143,9 +143,7 @@
                         <div class="naver-info-row"><span class="row-icon">📍</span><span class="row-text">서울시 강남구 ○○로 123</span></div>
                         <div class="naver-info-row"><span class="row-icon">📞</span><span class="row-text">02-XXXX-XXXX</span></div>
                         <div class="naver-info-row blurred-row"><span class="row-icon">📚</span><span class="row-text blurred-text">커리큘럼 정보 없음</span></div>
-                        <div class="naver-info-row blurred-row"><span class="row-icon">👨‍🏫</span><span class="row-text blurred-text">강사 정보 없음</span></div>
                         <div class="naver-info-row blurred-row"><span class="row-icon">🏆</span><span class="row-text blurred-text">합격 실적 확인 불가</span></div>
-                        <div class="naver-info-row blurred-row"><span class="row-icon">💬</span><span class="row-text blurred-text">상담 신청 방법 불명확</span></div>
                     </div>
                     <div class="naver-escape-badge">정보 부족 → 타 학원으로 이탈</div>
                 </div>
@@ -159,7 +157,7 @@
 
             <div class="why-vs">VS</div>
 
-            <div class="why-col">
+            <div class="why-col why-col-right">
                 <div class="why-col-label why-label-good">✅ 전문 홈페이지 보유 시</div>
                 <div class="website-mockup">
                     <div class="mockup-header-bar">
@@ -177,6 +175,11 @@
                         <div class="mockup-info-chip">🏆 합격 실적</div>
                         <div class="mockup-info-chip">💬 상담 신청</div>
                     </div>
+                    <div class="mockup-features">
+                        <div class="mockup-feat"><span class="mockup-feat-check">✓</span>24시간 상담 신청 자동 접수</div>
+                        <div class="mockup-feat"><span class="mockup-feat-check">✓</span>강사 이력 & 합격 실적 공개</div>
+                        <div class="mockup-feat"><span class="mockup-feat-check">✓</span>커리큘럼 & 수업 방식 상세 안내</div>
+                    </div>
                 </div>
                 <ul class="why-list why-list-good">
                     <li>학원 브랜드와 강점을 한눈에 전달</li>
@@ -188,18 +191,18 @@
         </div>
 
         <div class="why-stats">
-            <div class="why-stat">
-                <div class="why-stat-num">73<span>%</span></div>
+            <div class="why-stat" data-count="73">
+                <div class="why-stat-num"><span class="count-num">0</span><span>%</span></div>
                 <div class="why-stat-label">학부모가 학원 선택 시<br>온라인 정보 먼저 검색</div>
             </div>
             <div class="why-stat-divider"></div>
-            <div class="why-stat">
-                <div class="why-stat-num">3<span>초</span></div>
+            <div class="why-stat" data-count="3">
+                <div class="why-stat-num"><span class="count-num">0</span><span>초</span></div>
                 <div class="why-stat-label">홈페이지 첫인상이<br>결정되는 평균 시간</div>
             </div>
             <div class="why-stat-divider"></div>
-            <div class="why-stat">
-                <div class="why-stat-num">2<span>배</span></div>
+            <div class="why-stat" data-count="2">
+                <div class="why-stat-num"><span class="count-num">0</span><span>배</span></div>
                 <div class="why-stat-label">홈페이지 보유 학원의<br>상담 전환율 차이</div>
             </div>
         </div>
@@ -376,130 +379,172 @@
             아래 예시를 참고해 원하는 방향을 알려주세요.
         </p>
 
-        <div class="template-slider-wrap">
-            <button class="slider-btn slider-prev" onclick="prevSlide()">&#8249;</button>
-            <div class="template-slider-viewport">
-                <div class="template-track" id="templateTrack">
+        <div class="tpl-grid">
 
-                    <!-- Slide 1: Modern Minimal -->
-                    <div class="template-slide">
-                        <div class="tpl-mockup">
-                            <div class="tpl-bar">
-                                <div class="tpl-dots"><span></span><span></span><span></span></div>
-                                <div class="tpl-url-bar">www.academy.com</div>
-                            </div>
-                            <div class="tpl-hero tpl-hero-modern">
-                                <div class="tpl-nav-line">
-                                    <span class="tpl-logo-pill">LOGO</span>
-                                    <span class="tpl-nav-pills"><span></span><span></span><span></span></span>
-                                </div>
-                                <div class="tpl-hero-text-block">
-                                    <div class="tpl-h1">최고의 입시 결과</div>
-                                    <div class="tpl-h2">○○학원과 함께하세요</div>
-                                    <div class="tpl-cta-pill tpl-blue">무료 상담 신청</div>
-                                </div>
-                            </div>
-                            <div class="tpl-body-blocks tpl-body-modern">
-                                <div class="tpl-block tpl-block-sm"></div>
-                                <div class="tpl-block tpl-block-sm"></div>
-                                <div class="tpl-block tpl-block-sm"></div>
-                            </div>
-                        </div>
-                        <div class="tpl-info">
-                            <div class="tpl-name">모던 미니멀</div>
-                            <div class="tpl-target">중·고등 입시학원 추천</div>
-                            <p class="tpl-desc">깔끔한 화이트 기반 디자인으로 학원의 신뢰감과 전문성을 강조합니다. 텍스트 중심의 레이아웃으로 정보 전달력이 뛰어납니다.</p>
-                            <div class="tpl-tags">
-                                <span class="tpl-tag">고급스러운</span>
-                                <span class="tpl-tag">신뢰감</span>
-                                <span class="tpl-tag">정보 중심</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 2: Warm Family -->
-                    <div class="template-slide">
-                        <div class="tpl-mockup">
-                            <div class="tpl-bar">
-                                <div class="tpl-dots"><span></span><span></span><span></span></div>
-                                <div class="tpl-url-bar">www.academy.com</div>
-                            </div>
-                            <div class="tpl-hero tpl-hero-warm">
-                                <div class="tpl-nav-line">
-                                    <span class="tpl-logo-pill tpl-logo-warm">LOGO</span>
-                                    <span class="tpl-nav-pills"><span></span><span></span><span></span></span>
-                                </div>
-                                <div class="tpl-hero-text-block">
-                                    <div class="tpl-h1">즐거운 배움의 시작</div>
-                                    <div class="tpl-h2">○○어린이 영어학원</div>
-                                    <div class="tpl-cta-pill tpl-orange">체험 수업 신청</div>
-                                </div>
-                            </div>
-                            <div class="tpl-body-blocks tpl-body-warm">
-                                <div class="tpl-block tpl-block-lg tpl-block-warm"></div>
-                                <div class="tpl-block-col">
-                                    <div class="tpl-block tpl-block-half tpl-block-warm"></div>
-                                    <div class="tpl-block tpl-block-half tpl-block-warm"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tpl-info">
-                            <div class="tpl-name">따뜻한 패밀리</div>
-                            <div class="tpl-target tpl-target-warm">초등 · 어린이 대상 학원 추천</div>
-                            <p class="tpl-desc">따뜻한 오렌지·노란 컬러와 둥근 모서리로 친근하고 안전한 이미지를 전달합니다. 학부모와 아이 모두에게 호감을 주는 스타일입니다.</p>
-                            <div class="tpl-tags">
-                                <span class="tpl-tag tpl-tag-warm">친근한</span>
-                                <span class="tpl-tag tpl-tag-warm">밝은</span>
-                                <span class="tpl-tag tpl-tag-warm">가족 친화적</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 3: Premium Dark -->
-                    <div class="template-slide">
-                        <div class="tpl-mockup tpl-mockup-dark">
-                            <div class="tpl-bar tpl-bar-dark">
-                                <div class="tpl-dots"><span></span><span></span><span></span></div>
-                                <div class="tpl-url-bar tpl-url-dark">www.academy.com</div>
-                            </div>
-                            <div class="tpl-hero tpl-hero-dark">
-                                <div class="tpl-nav-line">
-                                    <span class="tpl-logo-pill tpl-logo-dark">LOGO</span>
-                                    <span class="tpl-nav-pills tpl-pills-dark"><span></span><span></span><span></span></span>
-                                </div>
-                                <div class="tpl-hero-text-block">
-                                    <div class="tpl-h1 tpl-h1-dark">명문대를 향한</div>
-                                    <div class="tpl-h2 tpl-h2-dark">전략적 입시 설계</div>
-                                    <div class="tpl-cta-pill tpl-gold">프리미엄 상담</div>
-                                </div>
-                            </div>
-                            <div class="tpl-body-blocks tpl-body-dark">
-                                <div class="tpl-block tpl-block-sm tpl-block-dark"></div>
-                                <div class="tpl-block tpl-block-sm tpl-block-dark"></div>
-                                <div class="tpl-block tpl-block-sm tpl-block-dark"></div>
-                            </div>
-                        </div>
-                        <div class="tpl-info">
-                            <div class="tpl-name">프리미엄 다크</div>
-                            <div class="tpl-target tpl-target-dark">고등 · 수능 입시학원 추천</div>
-                            <p class="tpl-desc">어두운 배경에 골드 포인트 컬러로 고급스럽고 전문적인 느낌을 줍니다. 심리적으로 집중과 진지함을 유도하는 디자인 스타일입니다.</p>
-                            <div class="tpl-tags">
-                                <span class="tpl-tag tpl-tag-dark">프리미엄</span>
-                                <span class="tpl-tag tpl-tag-dark">전문적</span>
-                                <span class="tpl-tag tpl-tag-dark">고급스러운</span>
-                            </div>
-                        </div>
-                    </div>
-
+            <!-- Card 1: 입시·수능 -->
+            <div class="tpl-card" data-interval="2800">
+                <div class="tpl-card-header">
+                    <span class="tpl-card-badge tpl-badge-navy">🎯 입시·수능 전문</span>
                 </div>
+                <div class="tpl-card-window">
+                    <div class="tpl-win-bar">
+                        <div class="tpl-win-dots"><span></span><span></span><span></span></div>
+                        <div class="tpl-win-url">www.입시학원.com</div>
+                    </div>
+                    <div class="tpl-slides-wrap">
+                        <div class="tpl-slide tpl-slide-active">
+                            <div style="background:linear-gradient(160deg,#0d1b2a,#1b3358);padding:14px;height:100%;">
+                                <div class="tpl-mini-nav">
+                                    <span class="tpl-mini-logo" style="color:#7dd3fc;">LOGO</span>
+                                    <div class="tpl-mini-links"><span>커리큘럼</span><span>합격실적</span><span>상담</span></div>
+                                </div>
+                                <div class="tpl-mini-hero">
+                                    <div style="color:#38bdf8;font-size:10px;font-weight:700;margin-bottom:4px;">⏱ 수능 D-87</div>
+                                    <div style="color:#fff;font-size:14px;font-weight:900;line-height:1.3;">지금이 바로<br>시작할 때입니다</div>
+                                    <div class="tpl-mini-btn" style="background:#3b82f6;color:#fff;margin-top:10px;">전략 상담 신청하기</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tpl-slide">
+                            <div style="background:#0d1b2a;padding:14px;height:100%;">
+                                <div style="color:#7dd3fc;font-size:10px;font-weight:700;margin-bottom:10px;">📋 수업 커리큘럼</div>
+                                <div class="tpl-step-list">
+                                    <div class="tpl-step-item"><span class="tpl-step-circle" style="background:#3b82f6;">①</span><div><div style="color:#e2e8f0;font-size:10px;font-weight:700;">기초 개념 완성</div><div style="color:#64748b;font-size:9px;">유형별 핵심 개념 정리</div></div></div>
+                                    <div class="tpl-step-item"><span class="tpl-step-circle" style="background:#3b82f6;">②</span><div><div style="color:#e2e8f0;font-size:10px;font-weight:700;">집중 문제 훈련</div><div style="color:#64748b;font-size:9px;">오답 분석 & 반복 학습</div></div></div>
+                                    <div class="tpl-step-item"><span class="tpl-step-circle" style="background:#3b82f6;">③</span><div><div style="color:#e2e8f0;font-size:10px;font-weight:700;">실전 모의고사</div><div style="color:#64748b;font-size:9px;">시간 관리 전략 확립</div></div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tpl-slide">
+                            <div style="background:#0d1b2a;padding:14px;height:100%;">
+                                <div style="color:#fbbf24;font-size:10px;font-weight:700;margin-bottom:10px;">🏆 2024 합격 실적</div>
+                                <div class="tpl-bar-list">
+                                    <div class="tpl-bar-row"><span style="color:#94a3b8;font-size:9px;width:64px;flex-shrink:0;">SKY 합격</span><div class="tpl-prog-track"><div style="width:85%;background:#3b82f6;" class="tpl-prog-fill"></div></div><span style="color:#7dd3fc;font-size:9px;font-weight:700;">86명</span></div>
+                                    <div class="tpl-bar-row"><span style="color:#94a3b8;font-size:9px;width:64px;flex-shrink:0;">의·치대</span><div class="tpl-prog-track"><div style="width:40%;background:#3b82f6;" class="tpl-prog-fill"></div></div><span style="color:#7dd3fc;font-size:9px;font-weight:700;">24명</span></div>
+                                    <div class="tpl-bar-row"><span style="color:#94a3b8;font-size:9px;width:64px;flex-shrink:0;">등급 향상</span><div class="tpl-prog-track"><div style="width:65%;background:#fbbf24;" class="tpl-prog-fill"></div></div><span style="color:#fbbf24;font-size:9px;font-weight:700;">2.4등급</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tpl-card-dots">
+                        <span class="tpl-cdot tpl-cdot-active" style="background:#3b82f6;"></span>
+                        <span class="tpl-cdot"></span>
+                        <span class="tpl-cdot"></span>
+                    </div>
+                </div>
+                <div class="tpl-card-desc">다크 네이비 + 카운트다운 · 합격 실적 구성. 긴박감과 신뢰감을 동시에 전달합니다.</div>
             </div>
-            <button class="slider-btn slider-next" onclick="nextSlide()">&#8250;</button>
-        </div>
 
-        <div class="slider-dots-row">
-            <span class="dot-btn active" onclick="goToSlide(0)"></span>
-            <span class="dot-btn" onclick="goToSlide(1)"></span>
-            <span class="dot-btn" onclick="goToSlide(2)"></span>
+            <!-- Card 2: 어린이 -->
+            <div class="tpl-card" data-interval="3500">
+                <div class="tpl-card-header">
+                    <span class="tpl-card-badge tpl-badge-orange">🌈 어린이·초등 친화</span>
+                </div>
+                <div class="tpl-card-window">
+                    <div class="tpl-win-bar tpl-win-warm">
+                        <div class="tpl-win-dots"><span></span><span></span><span></span></div>
+                        <div class="tpl-win-url">www.어린이학원.com</div>
+                    </div>
+                    <div class="tpl-slides-wrap">
+                        <div class="tpl-slide tpl-slide-active">
+                            <div style="background:linear-gradient(160deg,#ff8c42,#ffd166);padding:14px;height:100%;">
+                                <div class="tpl-mini-nav">
+                                    <span class="tpl-mini-logo" style="color:#fff;">🌟 LOGO</span>
+                                    <div class="tpl-mini-links" style="color:rgba(255,255,255,.9);"><span>프로그램</span><span>시간표</span><span>상담</span></div>
+                                </div>
+                                <div class="tpl-mini-hero">
+                                    <div style="color:#fff;font-size:14px;font-weight:900;line-height:1.3;">영어가<br>재미있어지는 곳! 🎉</div>
+                                    <div style="color:rgba(255,255,255,.85);font-size:9px;margin:4px 0 8px;">7세~초등 전학년 맞춤 수업</div>
+                                    <div class="tpl-mini-btn" style="background:#fff;color:#c05621;border-radius:100px;">무료 체험 신청하기</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tpl-slide">
+                            <div style="background:#fff8f0;padding:14px;height:100%;">
+                                <div style="color:#c05621;font-size:10px;font-weight:700;margin-bottom:10px;">✏️ 수업 프로그램</div>
+                                <div class="tpl-prog-grid">
+                                    <div class="tpl-prog-item" style="background:#ffe8d6;"><span>🔤</span><span>파닉스반</span></div>
+                                    <div class="tpl-prog-item" style="background:#ffe8d6;"><span>📚</span><span>리딩반</span></div>
+                                    <div class="tpl-prog-item" style="background:#ffe8d6;"><span>✍️</span><span>라이팅반</span></div>
+                                    <div class="tpl-prog-item" style="background:#ffe8d6;"><span>🎙</span><span>스피킹반</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tpl-slide">
+                            <div style="background:#fff8f0;padding:14px;height:100%;text-align:center;">
+                                <div style="color:#c05621;font-size:10px;font-weight:700;margin-bottom:8px;">💬 학부모 후기</div>
+                                <div style="font-size:14px;margin-bottom:6px;">⭐⭐⭐⭐⭐</div>
+                                <div style="font-size:10px;color:#374151;line-height:1.5;margin-bottom:8px;">"아이가 영어를 좋아하게 됐어요!<br>선생님이 너무 친절해요."</div>
+                                <div style="font-size:9px;color:#9ca3af;">— 박○○ 학부모님</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tpl-card-dots">
+                        <span class="tpl-cdot tpl-cdot-active" style="background:#f97316;"></span>
+                        <span class="tpl-cdot"></span>
+                        <span class="tpl-cdot"></span>
+                    </div>
+                </div>
+                <div class="tpl-card-desc">따뜻한 오렌지 계열 + 프로그램·후기 구성. 학부모와 아이 모두에게 호감을 줍니다.</div>
+            </div>
+
+            <!-- Card 3: 어학원·종합 -->
+            <div class="tpl-card" data-interval="4200">
+                <div class="tpl-card-header">
+                    <span class="tpl-card-badge tpl-badge-blue">🌐 어학원·종합학원</span>
+                </div>
+                <div class="tpl-card-window">
+                    <div class="tpl-win-bar">
+                        <div class="tpl-win-dots"><span></span><span></span><span></span></div>
+                        <div class="tpl-win-url">www.어학원.com</div>
+                    </div>
+                    <div class="tpl-slides-wrap">
+                        <div class="tpl-slide tpl-slide-active">
+                            <div style="background:#f0f9ff;padding:14px;height:100%;">
+                                <div class="tpl-mini-nav" style="background:#fff;margin:-14px -14px 10px;padding:8px 14px;border-bottom:1px solid #e5e7eb;">
+                                    <span class="tpl-mini-logo" style="color:#1d4ed8;font-weight:900;">LOGO</span>
+                                    <div class="tpl-mini-links" style="color:#374151;"><span>과정안내</span><span>수강신청</span></div>
+                                </div>
+                                <div style="background:linear-gradient(135deg,#1d4ed8,#06b6d4);border-radius:8px;padding:14px;text-align:center;">
+                                    <div style="color:rgba(255,255,255,.7);font-size:9px;">○○ 어학원</div>
+                                    <div style="color:#fff;font-size:13px;font-weight:900;margin:3px 0;">영어·일본어·중국어</div>
+                                    <div style="color:rgba(255,255,255,.75);font-size:9px;margin-bottom:8px;">수준별 맞춤 강의</div>
+                                    <div style="display:inline-block;background:#fff;color:#1d4ed8;font-size:9px;font-weight:700;padding:4px 10px;border-radius:4px;">수강 신청하기</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tpl-slide">
+                            <div style="background:#f9fafb;padding:14px;height:100%;">
+                                <div style="color:#1d4ed8;font-size:10px;font-weight:700;margin-bottom:10px;">📖 개설 과정</div>
+                                <div class="tpl-course-grid">
+                                    <div class="tpl-course-item"><span>🇺🇸</span><div><strong>영어 회화</strong><small>42명</small></div></div>
+                                    <div class="tpl-course-item"><span>🇯🇵</span><div><strong>일본어</strong><small>28명</small></div></div>
+                                    <div class="tpl-course-item"><span>📝</span><div><strong>TOEIC</strong><small>35명</small></div></div>
+                                    <div class="tpl-course-item"><span>🇨🇳</span><div><strong>중국어</strong><small>19명</small></div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tpl-slide">
+                            <div style="background:#f0f9ff;padding:14px;height:100%;">
+                                <div style="color:#1d4ed8;font-size:10px;font-weight:700;margin-bottom:8px;">📅 수강 신청 일정</div>
+                                <div class="tpl-sch-list">
+                                    <div class="tpl-sch-row"><span class="tpl-sch-tag" style="background:#dbeafe;color:#1d4ed8;">정규반</span><span>월·수·금 19:00~21:00</span></div>
+                                    <div class="tpl-sch-row"><span class="tpl-sch-tag" style="background:#dbeafe;color:#1d4ed8;">집중반</span><span>매일 09:00~11:00</span></div>
+                                    <div class="tpl-sch-row"><span class="tpl-sch-tag" style="background:#dbeafe;color:#1d4ed8;">주말반</span><span>토·일 10:00~13:00</span></div>
+                                </div>
+                                <div class="tpl-mini-btn" style="background:#1d4ed8;color:#fff;margin-top:10px;font-size:9px;padding:5px 10px;">지금 수강 신청하기</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tpl-card-dots">
+                        <span class="tpl-cdot tpl-cdot-active" style="background:#1d4ed8;"></span>
+                        <span class="tpl-cdot"></span>
+                        <span class="tpl-cdot"></span>
+                    </div>
+                </div>
+                <div class="tpl-card-desc">클린 화이트 블루 + 과정·일정 구성. 정보 전달이 명확하고 수강 전환율이 높은 레이아웃입니다.</div>
+            </div>
+
         </div>
 
         <div class="templates-cta">
