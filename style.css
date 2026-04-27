@@ -817,9 +817,8 @@ section { padding: 110px 0; }
 
 .tpl-slides-wrap {
     position: relative;
-    height: 220px;
+    height: 280px;
     overflow: hidden;
-    flex: 1;
 }
 
 .tpl-slide {
@@ -948,27 +947,15 @@ section { padding: 110px 0; }
 /* ── PRICING ── */
 .pricing { background: var(--primary-light); }
 
-.plan-discount-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 6px;
-}
-
 .plan-discount-badge {
     background: #fff1f2;
     color: #e11d48;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
-    padding: 3px 10px;
+    padding: 3px 9px;
     border-radius: 100px;
-}
-
-.plan-original-price {
-    font-size: 16px;
-    color: #aaa;
-    text-decoration: line-through;
-    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
 }
 
 .pricing-header { text-align: center; margin-bottom: 64px; }
@@ -1017,6 +1004,10 @@ section { padding: 110px 0; }
     text-transform: uppercase;
     color: var(--primary);
     margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 .pricing-card.featured .plan-type { color: rgba(255,255,255,.7); }
