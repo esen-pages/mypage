@@ -1201,9 +1201,14 @@ section { padding: 110px 0; }
 
 .pricing-note {
     text-align: center;
-    margin-top: 36px;
+    margin-bottom: 36px;
     font-size: 14px;
     color: #888;
+}
+
+.pricing-cta {
+    margin-top: 48px;
+    text-align: center;
 }
 
 /* ── FINAL CTA ── */
@@ -1281,6 +1286,13 @@ section { padding: 110px 0; }
     font-size: 14px; color: #aaa;
     flex-wrap: wrap;
 }
+
+.contact-insta-link {
+    color: #aaa;
+    text-decoration: underline;
+    transition: color .2s;
+}
+.contact-insta-link:hover { color: #e1306c; }
 
 /* ── FOOTER ── */
 footer {
