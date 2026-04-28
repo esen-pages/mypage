@@ -1073,7 +1073,7 @@ section { padding: 110px 0; }
     margin-bottom: 4px;
 }
 
-.pricing-header { text-align: center; margin-bottom: 64px; }
+.pricing-header { text-align: center; margin-bottom: 20px; }
 
 .pricing-header .section-title { margin-bottom: 10px; }
 
@@ -1212,87 +1212,126 @@ section { padding: 110px 0; }
 }
 
 /* ── FINAL CTA ── */
-.final-cta { background: #fff; text-align: center; }
+.final-cta {
+    background: linear-gradient(155deg, #0f172a 0%, #1a2f5a 55%, #0f2744 100%);
+    text-align: center;
+    padding: 120px 0;
+    position: relative;
+    overflow: hidden;
+}
 
-.final-cta h2 {
+.final-cta-burst {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px; height: 900px;
+    background: radial-gradient(ellipse at center, rgba(74,144,226,.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.contact-badge {
+    background: rgba(255,255,255,.1);
+    color: rgba(255,255,255,.8);
+    border: 1px solid rgba(255,255,255,.18);
+}
+
+.contact-title {
     font-size: 44px;
     font-weight: 900;
     line-height: 1.3;
     letter-spacing: -1px;
+    color: #fff;
     margin-bottom: 16px;
 }
 
-.final-cta h2 .highlight { color: var(--primary); }
+.contact-highlight { color: #FEE500; }
 
-.final-cta > .container > p {
-    font-size: 18px;
-    color: var(--gray);
-    margin-bottom: 52px;
+.contact-desc {
+    font-size: 17px;
+    color: rgba(255,255,255,.6);
     line-height: 1.7;
+    margin-bottom: 48px;
 }
 
-.cta-buttons {
-    display: flex; gap: 16px;
+.contact-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 44px 48px 36px;
+    max-width: 500px;
+    margin: 0 auto 28px;
+    box-shadow: 0 24px 64px rgba(0,0,0,.4);
+}
+
+.contact-response-tag {
+    display: inline-block;
+    background: #fffbeb;
+    color: #92400e;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 100px;
+    border: 1px solid #fde68a;
+    margin-bottom: 24px;
+}
+
+.btn-kakao-hero {
+    display: flex;
+    align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 52px;
-}
-
-.btn-kakao {
+    gap: 12px;
+    width: 100%;
     background: #FEE500;
     color: #3A1D1D;
-    padding: 16px 32px;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 700;
+    padding: 20px 32px;
+    border-radius: 14px;
+    font-size: 18px;
+    font-weight: 800;
     text-decoration: none;
-    display: flex; align-items: center; gap: 10px;
     transition: all .2s;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 20px rgba(254,229,0,.35);
 }
 
-.btn-kakao:hover { background: #f5d600; transform: translateY(-2px); }
-
-.btn-insta {
-    background: linear-gradient(135deg, #f09433, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888);
-    color: #fff;
-    padding: 16px 32px;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 700;
-    text-decoration: none;
-    display: flex; align-items: center; gap: 10px;
-    transition: all .2s;
+.btn-kakao-hero:hover {
+    background: #f5d600;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(254,229,0,.5);
 }
 
-.btn-insta:hover { opacity: .9; transform: translateY(-2px); }
-
-.btn-mail {
-    background: var(--primary);
-    color: #fff;
-    padding: 16px 32px;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 700;
-    text-decoration: none;
-    display: flex; align-items: center; gap: 10px;
-    box-shadow: 0 4px 14px rgba(74,144,226,.35);
-    transition: all .2s;
+.contact-card-hours {
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 24px;
 }
 
-.btn-mail:hover { background: var(--primary-dark); transform: translateY(-2px); }
+.contact-card-sep {
+    height: 1px;
+    background: #f1f5f9;
+    margin-bottom: 20px;
+}
 
-.contact-row {
-    display: flex; gap: 32px; justify-content: center;
-    font-size: 14px; color: #aaa;
-    flex-wrap: wrap;
+.contact-insta-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    font-size: 14px;
+    color: #aaa;
 }
 
 .contact-insta-link {
-    color: #aaa;
-    text-decoration: underline;
+    color: #555;
+    font-weight: 600;
+    text-decoration: none;
     transition: color .2s;
 }
 .contact-insta-link:hover { color: #e1306c; }
+
+.contact-trust {
+    font-size: 13px;
+    color: rgba(255,255,255,.35);
+    letter-spacing: .5px;
+}
 
 /* ── FOOTER ── */
 footer {
@@ -1366,7 +1405,9 @@ footer {
 
     .service-info-head .section-title { font-size: 26px; }
     .section-title { font-size: 28px; }
-    .final-cta h2 { font-size: 28px; }
+    .contact-title { font-size: 28px; }
+    .contact-card { padding: 36px 28px 28px; }
+    .btn-kakao-hero { font-size: 16px; padding: 18px 24px; }
     .footer-inner { flex-direction: column; text-align: center; }
 
     section { padding: 80px 0; }
@@ -1389,7 +1430,9 @@ footer {
 
     .service-info-head .section-title { font-size: 23px; }
     .section-title { font-size: 22px; }
-    .final-cta h2 { font-size: 22px; }
+    .contact-title { font-size: 22px; }
+    .contact-card { padding: 28px 20px 24px; }
+    .btn-kakao-hero { font-size: 15px; padding: 16px 20px; gap: 8px; }
 }
 
 /* ══════════════════════════════════════
