@@ -91,10 +91,10 @@ body.dark-nav .dot.active { background: #fff; border-color: #fff; }
 .s2cc-target { font-size: 11px; color: #777; font-weight: 600; padding: 5px 10px; background: #f5f5f5; border-radius: 6px; line-height: 1.4; flex-shrink: 0; }
 
 .s2cc-list { list-style: none; display: flex; flex-direction: column; gap: 5px; flex: none; }
-.s2cc-list li { font-size: clamp(11px, 1.1vw, 13px); color: #444; padding: 5px 9px 5px 19px; background: rgba(0,0,0,.025); border-radius: 7px; line-height: 1.4; }
+.s2cc-list li { font-size: clamp(11px, 1.1vw, 13px); color: #444; padding: 5px 9px 5px 28px; background: rgba(0,0,0,.025); border-radius: 7px; line-height: 1.4; }
 
-.s2cc-grade { font-size: 11px; font-weight: 900; padding: 5px 14px; border-radius: 20px; text-align: center; letter-spacing: .04em; flex-shrink: 0; margin-top: 2px; cursor: default; box-shadow: 0 3px 10px rgba(0,0,0,.12); transition: filter .2s, box-shadow .2s; }
-.s2cc-grade:hover { filter: brightness(.88); box-shadow: 0 5px 14px rgba(0,0,0,.2); }
+.s2cc-grade { font-size: 11px; font-weight: 900; padding: 5px 14px; border-radius: 20px; text-align: center; letter-spacing: .04em; flex-shrink: 0; margin-top: 2px; cursor: pointer; box-shadow: 0 4px 0 rgba(0,0,0,.18), 0 6px 16px rgba(0,0,0,.12); transition: filter .2s, box-shadow .2s, transform .15s; }
+.s2cc-grade:hover { filter: brightness(.88); box-shadow: 0 2px 0 rgba(0,0,0,.18), 0 4px 12px rgba(0,0,0,.16); transform: translateY(2px); }
 .s2cc-1 .s2cc-grade { background: linear-gradient(90deg, #FF8F00, #FFD740); color: #fff; }
 .s2cc-2 .s2cc-grade { background: linear-gradient(90deg, #1565c0, #1976d2); color: #fff; }
 .s2cc-3 .s2cc-grade { background: linear-gradient(90deg, #4a148c, #7b1fa2); color: #fff; }
@@ -112,10 +112,10 @@ body.dark-nav .dot.active { background: #fff; border-color: #fff; }
    S3 — 강사진 / 콘텐츠 카드
 ══════════════════════════════════════════ */
 #s3 { background: #fff; display: flex; flex-direction: column; }
-#s3 .gnb { display: flex; align-items: center; justify-content: space-between; padding: 14px 36px; border-bottom: 1px solid #e0e0e0; flex-shrink: 0; }
+#s3 .gnb { display: flex; align-items: center; justify-content: space-between; padding: 19px 36px; border-bottom: 1px solid #e0e0e0; flex-shrink: 0; }
 #s3 .gnb .logo { font-weight: 700; font-size: 14px; letter-spacing: .05em; }
-#s3 .gnb nav a { font-size: 13px; color: #444; margin-left: 22px; }
-#s3 .gnb .icons { display: flex; gap: 14px; font-size: 15px; color: #444; align-items: center; }
+#s3 .gnb nav a { font-size: 13px; color: #444; margin-left: 32px; }
+#s3 .gnb .icons { display: flex; gap: 22px; font-size: 15px; color: #444; align-items: center; }
 #s3 .gnb .icons .eng { font-size: 12px; font-weight: 700; }
 
 #s3 .grid { flex: 1; min-height: 0; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; grid-template-rows: 1fr 1fr; gap: 24px; padding: 16px 96px 12px; }
@@ -163,6 +163,7 @@ body.dark-nav .dot.active { background: #fff; border-color: #fff; }
    S4 — 학원 비전 (캠퍼스 배경)
 ══════════════════════════════════════════ */
 #s4 { display: flex; flex-direction: column; }
+#s4::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 160px; background: linear-gradient(transparent, rgba(0,0,0,.55)); z-index: 4; pointer-events: none; }
 #s4 .s4-bg { position: absolute; inset: 0; z-index: 0; background: url('./img/campus.jpg') center/cover no-repeat; animation: bgZoom 10s ease-out forwards; }
 @keyframes bgZoom { from { transform: scale(1.06); } to { transform: scale(1); } }
 #s4 .s4-ov { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to bottom, rgba(0,0,0,.55) 0%, rgba(0,0,0,.35) 50%, rgba(0,0,0,.65) 100%); }
@@ -226,7 +227,7 @@ body.dark-nav .dot.active { background: #fff; border-color: #fff; }
 #s5 .fg input, #s5 .fg select, #s5 .fg textarea { border: 1px solid #ddd; background: #fff; padding: 9px 12px; font-size: 14px; font-family: 'Noto Sans KR', sans-serif; outline: none; color: #131618; border-radius: 2px; transition: border-color .15s, box-shadow .15s; }
 #s5 .fg input:focus, #s5 .fg select:focus, #s5 .fg textarea:focus { border-color: #03C75A; box-shadow: 0 0 0 2px rgba(3,199,90,.1); }
 #s5 .fg textarea { resize: none; height: 114px; }
-#s5 .form-btn { width: 100%; background: linear-gradient(135deg, #03C75A, #00a848); color: #fff; padding: 14px; font-size: 16px; font-weight: 700; font-family: 'Noto Sans KR', sans-serif; border-radius: 6px; letter-spacing: .04em; transition: filter .2s, box-shadow .2s; margin-top: 6px; box-shadow: 0 4px 18px rgba(3,199,90,.35), 0 2px 6px rgba(0,0,0,.1); }
+#s5 .form-btn { width: 100%; background: linear-gradient(135deg, #00b84a, #006430); color: #fff; padding: 14px; font-size: 16px; font-weight: 700; font-family: 'Noto Sans KR', sans-serif; border-radius: 6px; letter-spacing: .04em; transition: filter .2s, box-shadow .2s; margin-top: 6px; box-shadow: 0 6px 24px rgba(0,160,60,.5), 0 3px 8px rgba(0,0,0,.18); }
 #s5 .form-btn:hover { filter: brightness(.93); box-shadow: 0 6px 24px rgba(3,199,90,.45); }
 #s5 .form-note { font-size: 11px; color: #bbb; text-align: center; margin-top: 10px; line-height: 1.7; letter-spacing: .02em; }
 #s5 .form-ok { display: none; text-align: center; padding: 40px 20px; font-size: 18px; color: #03C75A; font-weight: 700; line-height: 2.4; }
@@ -301,3 +302,113 @@ body.dark-nav .dot.active { background: #fff; border-color: #fff; }
 
 .kakao-btn { display: inline-flex; align-items: center; gap: 10px; background: #FEE500; color: #3C1E1E; font-size: 15px; font-weight: 700; padding: 14px 30px; border-radius: 50px; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: 0 6px 28px rgba(254,229,0,.55), 0 2px 8px rgba(0,0,0,.25); letter-spacing: .02em; font-family: 'Noto Sans KR', sans-serif; }
 .kakao-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 36px rgba(254,229,0,.7), 0 4px 12px rgba(0,0,0,.3); }
+
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+
+/* ── 중간 데스크톱 (≤1100px): S5 폼 레이아웃 조정 ── */
+@media (max-width: 1100px) {
+  #s5 .s5-window { width: calc(100% - 80px); }
+  #s5 .form-area { padding: 16px 32px; gap: 24px; }
+  #s5 .form-intro { flex: 0 1 220px; min-width: 0; }
+  #s5 .form-card { flex: 1; min-width: 0; max-width: 490px; }
+}
+
+/* ── 태블릿 (≤768px) ── */
+@media (max-width: 768px) {
+  #nav-dots { display: none; }
+
+  /* S1 */
+  #s1 .hdr { padding: 12px 20px; font-size: 10px; }
+  #s1 .s1-bar { padding: 10px 20px; font-size: 9px; }
+  #s1 .hero-img { width: min(240px, 68vw); }
+
+  /* S2 */
+  #s2 .gnb { padding: 10px 20px; }
+  #s2 .gnb nav { display: none; }
+  .s2-content { padding: 0 16px 20px; }
+  .s2-cur-cards { flex-direction: row; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; max-width: 100%; gap: 12px; padding-bottom: 8px; }
+  .s2cc { min-width: 230px; flex: none; scroll-snap-align: start; gap: 10px; }
+  .s2cc:nth-child(2) { transform: none; }
+  .s2cc-list li { font-size: 11px; padding: 3px 8px 3px 16px; }
+
+  /* S3 */
+  #s3 .gnb { padding: 14px 20px; }
+  #s3 .gnb nav { display: none; }
+  #s3 .gnb .icons { gap: 16px; }
+  #s3 .grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; padding: 10px 16px 8px; gap: 8px; }
+  .card-inst { grid-row: auto; grid-column: 1 / 3; height: 180px; }
+  #s3 .view-all { width: calc(100% - 32px); margin: 0 16px 10px; }
+
+  /* S4 */
+  #s4 .gnb { padding: 14px 24px; }
+  #s4 .gnb nav { display: none; }
+  #s4 .symbol { font-size: clamp(60px, 18vw, 110px); }
+  #s4 .bot-left { left: 24px; bottom: 24px; }
+  #s4 .bot-right { display: none; }
+
+  /* S5 */
+  #s5 .s5-window { width: calc(100% - 32px); height: calc(100vh - 50px); border-radius: 10px; border-width: 1.5px; }
+  #s5 .win-hdr { padding: 10px 18px; }
+  #s5 .win-hdr .logo { font-size: 14px; }
+  #s5 .win-hdr .links { display: none; }
+  #s5 .tabs { overflow-x: auto; }
+  #s5 .tab { padding: 8px 14px; font-size: 11px; white-space: nowrap; }
+  #s5 .form-area { flex-direction: column; padding: 14px 18px; gap: 12px; overflow-y: auto; align-items: stretch; }
+  #s5 .form-intro { flex: none; }
+  #s5 .form-intro h2 { font-size: 20px; margin-bottom: 8px; }
+  #s5 .form-intro p { font-size: 12px; line-height: 1.7; margin-bottom: 8px; }
+  #s5 .form-intro .fi-info { display: none; }
+  #s5 .form-card { flex: none; padding: 18px 16px; }
+  #s5 .fg textarea { height: 80px; }
+  #s5 .win-footer { padding: 8px 18px; }
+  #s5 .win-footer .logos { display: none; }
+  #s5 .win-footer .phone { font-size: 14px; }
+
+  /* S6 */
+  #s6 .sw-arc-outer { max-height: 260px; }
+  .sw-arc { width: 680px; height: 260px; }
+  .sw-pg-card { width: 110px; height: 150px; top: 56px; left: calc(50% - 55px); transform-origin: 50% calc(100% + 330px); }
+  .sw-pg-card:nth-child(1) { transform: rotate(-36deg); }
+  .sw-pg-card:nth-child(2) { transform: rotate(-18deg); }
+  .sw-pg-card:nth-child(3) { transform: rotate(0deg); }
+  .sw-pg-card:nth-child(4) { transform: rotate(18deg); }
+  .sw-pg-card:nth-child(5) { transform: rotate(36deg); }
+  .sw-pg-card:nth-child(1):hover { transform: rotate(-36deg) translateY(132px) scale(1.4); }
+  .sw-pg-card:nth-child(2):hover { transform: rotate(-18deg) translateY(132px) scale(1.4); }
+  .sw-pg-card:nth-child(3):hover { transform: rotate(0deg)   translateY(132px) scale(1.4); }
+  .sw-pg-card:nth-child(4):hover { transform: rotate(18deg)  translateY(132px) scale(1.4); }
+  .sw-pg-card:nth-child(5):hover { transform: rotate(36deg)  translateY(132px) scale(1.4); }
+  .sw-body { padding: 20px 0 6px; }
+  .sw-footer { gap: 14px; padding-bottom: 30px; }
+  .kakao-btn { font-size: 13px; padding: 11px 22px; }
+}
+
+/* ── 소형 모바일 (≤480px) ── */
+@media (max-width: 480px) {
+  /* S1 */
+  #s1 .hdr .ctr { display: none; }
+
+  /* S2 */
+  .s2-title-main { font-size: clamp(50px, 14vw, 80px); }
+  .s2-title-sub { font-size: 11px; padding: 5px 14px; }
+  .s2cc { min-width: 200px; }
+
+  /* S3 */
+  #s3 .grid { grid-template-columns: 1fr; padding: 8px 12px 6px; }
+  .card-inst { grid-column: 1; height: 150px; }
+  .ccard { padding: 12px; }
+
+  /* S5 */
+  #s5 .s5-window { width: calc(100% - 20px); height: calc(100vh - 36px); }
+  #s5 .form-row { flex-direction: column; gap: 0; }
+  #s5 .form-area { padding: 10px 14px; }
+
+  /* S6 */
+  .sw-pg-card:nth-child(1), .sw-pg-card:nth-child(5) { opacity: 0; pointer-events: none; }
+  .sw-arc { width: 460px; }
+  .sw-headline { font-size: clamp(32px, 12vw, 60px); }
+  .kakao-btn { font-size: 12px; padding: 10px 18px; gap: 7px; }
+}
