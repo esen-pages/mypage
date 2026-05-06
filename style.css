@@ -585,6 +585,7 @@ section { padding: 110px 0; }
     box-shadow: 0 0 60px rgba(34,197,94,.1);
     max-width: 860px;
     margin: 0 auto 32px;
+    overflow-x: auto;
 }
 
 .sheet-mockup {
@@ -1548,6 +1549,28 @@ footer {
 
     /* pricing pass */
     .plan-features-cols { grid-template-columns: 1fr; gap: 24px; }
+
+    /* 요금제 카드 모바일 */
+    .pricing-card { padding: 40px 24px 36px; }
+    .plan-price { font-size: 52px; letter-spacing: -2px; }
+    .plan-name-main { font-size: 28px; letter-spacing: -1px; }
+    .plan-original-note { font-size: 18px; }
+    .popular-badge { font-size: 11px; padding: 6px 16px; }
+
+    /* why 통계 수치 축소 */
+    .why-stat-lg .why-stat-num { font-size: 56px; }
+    .why-stat-lg .why-stat-num span { font-size: 32px; }
+    .why-stat-2x .why-stat-num { font-size: 72px; }
+    .why-stat-2x .why-stat-num span { font-size: 40px; }
+
+    /* 자동화 피처 2열 (태블릿) */
+    .auto-features { grid-template-columns: 1fr 1fr; }
+
+    /* 인용문 */
+    .pain-quote blockquote { font-size: 16px; }
+
+    /* 서비스 비주얼 패딩 축소 */
+    .service-visual { padding: 16px; }
 }
 
 @media (max-width: 480px) {
@@ -1561,6 +1584,30 @@ footer {
     .contact-title { font-size: 22px; }
     .contact-card { padding: 28px 20px 24px; }
     .btn-kakao-hero { font-size: 15px; padding: 16px 20px; gap: 8px; }
+
+    /* 요금제 카드 소형 화면 */
+    .pricing-card { padding: 28px 16px 24px; }
+    .plan-price { font-size: 40px; letter-spacing: -1px; }
+    .plan-name-main { font-size: 22px; }
+    .plan-original-note { font-size: 14px; }
+    .plan-compare { font-size: 13px; }
+    .plan-features li { font-size: 14px; }
+
+    /* 자동화 피처 1열 (소형) */
+    .auto-features { grid-template-columns: 1fr; }
+
+    /* 자동화 플로우 세로 배치 */
+    .auto-flow { flex-direction: column; align-items: stretch; }
+    .auto-step { flex: none; text-align: left; }
+
+    /* why 통계 소형 */
+    .why-stat-lg .why-stat-num { font-size: 48px; }
+    .why-stat-lg .why-stat-num span { font-size: 28px; }
+    .why-stat-2x .why-stat-num { font-size: 56px; }
+    .why-stat-2x .why-stat-num span { font-size: 32px; }
+
+    /* 영웅 버튼 */
+    .btn-primary { padding: 14px 24px; font-size: 15px; }
 }
 
 /* ══════════════════════════════════════
