@@ -69,17 +69,35 @@ cardTl
   // ── Step 3: 신뢰의 간극 텍스트 페이드인 ─────────────
   .to("#card-trust-layer",
     { opacity: 1, duration: 1, ease: "power2.out" }
-  )
-  .to(["#compare-left-col", "#compare-right-col"],
-    { opacity: 1, y: 0, duration: 1.1, stagger: 0.12, ease: "power3.out" }, "-=0.4"
-  )
-  .to("#vs-col",
-    { opacity: 1, y: 0, duration: 0.7, ease: "back.out(2)" }, "-=0.9"
-  )
+  );
 
-  // Hold — 텍스트 읽을 시간
-  .to({}, { duration: 2.5 })
+// 모바일: 왼쪽+VS 먼저 등장 → 스크롤시 왼쪽 사라지고 오른쪽 등장
+// 데스크탑: 좌/우 카드 + VS 동시 등장
+if (isMobile) {
+  cardTl
+    .to(["#compare-left-col", "#vs-col"],
+      { opacity: 1, y: 0, duration: 1.1, ease: "power3.out" }, "-=0.4"
+    )
+    .to({}, { duration: 2.0 })
+    .to("#compare-left-col",
+      { opacity: 0, duration: 0.5, ease: "power2.in" }, "compareSwap"
+    )
+    .to("#compare-right-col",
+      { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, "compareSwap+=0.5"
+    )
+    .to({}, { duration: 2.0 });
+} else {
+  cardTl
+    .to(["#compare-left-col", "#compare-right-col"],
+      { opacity: 1, y: 0, duration: 1.1, stagger: 0.12, ease: "power3.out" }, "-=0.4"
+    )
+    .to("#vs-col",
+      { opacity: 1, y: 0, duration: 0.7, ease: "back.out(2)" }, "-=0.9"
+    )
+    .to({}, { duration: 2.5 });
+}
 
+cardTl
   // ── Step 4: 신뢰의 간극 텍스트 사라짐 ───────────────
   .to(["#compare-left-col", "#vs-col", "#compare-right-col"],
     { opacity: 0, y: -20, duration: 0.6, stagger: 0.08, ease: "power2.in" }, "trustOut"

@@ -91,10 +91,10 @@
             </div>
 
             <!-- Comparison: Naver Place vs Homepage -->
-            <div class="grid grid-cols-1 md:grid-cols-[1fr_180px_1fr] items-center gap-4 md:gap-8">
+            <div id="compare-grid" class="grid grid-cols-1 md:grid-cols-[1fr_180px_1fr] items-center gap-4 md:gap-8">
 
               <!-- LEFT: 네이버 플레이스 (작게) -->
-              <div id="compare-left-col" class="hidden md:flex justify-end">
+              <div id="compare-left-col" class="flex justify-end">
                 <div id="compare-left" class="rounded-2xl overflow-hidden w-full" style="backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);">
                   <!-- Section header -->
                   <div class="flex items-center justify-center gap-2 px-4 py-3"
@@ -160,7 +160,7 @@
               </div>
 
               <!-- VS -->
-              <div id="vs-col" class="hidden md:flex items-center justify-center">
+              <div id="vs-col" class="flex items-center justify-center">
                 <span id="vs-text" class="font-black" style="font-size: clamp(1.6rem,7vw,4.5rem); line-height: 1; letter-spacing: -0.06em; background: linear-gradient(160deg, rgba(255,255,255,0.7) 0%, rgba(147,197,253,0.55) 50%, rgba(59,130,246,0.35) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 2px 12px rgba(59,130,246,0.3));">VS</span>
               </div>
 
@@ -335,25 +335,25 @@
             <!-- Floating Badges -->
             <div id="badge-1" class="floating-badge glass-badge absolute top-6 left-0 lg:-left-24 flex items-center gap-2 lg:gap-3 rounded-xl lg:rounded-2xl p-2 lg:p-5 z-30 opacity-0">
               <div class="w-9 h-9 lg:w-11 lg:h-11 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-400/30 text-base lg:text-xl flex-none">🎨</div>
-              <div class="hidden lg:block">
-                <p class="text-white text-base font-bold">맞춤 홈페이지 제작</p>
-                <p class="text-blue-200/50 text-xs">전문 디자인 포함</p>
+              <div>
+                <p class="text-white text-xs lg:text-base font-bold whitespace-nowrap">맞춤 홈페이지 제작</p>
+                <p class="text-blue-200/50 text-xs hidden lg:block">전문 디자인 포함</p>
               </div>
             </div>
 
             <div id="badge-2" class="floating-badge glass-badge absolute bottom-16 right-0 lg:-right-24 flex items-center gap-2 lg:gap-3 rounded-xl lg:rounded-2xl p-2 lg:p-5 z-30 opacity-0">
               <div class="w-9 h-9 lg:w-11 lg:h-11 rounded-full bg-indigo-500/10 flex items-center justify-center border border-indigo-400/30 text-base lg:text-xl flex-none">🚀</div>
-              <div class="hidden lg:block">
-                <p class="text-white text-base font-bold">도메인 구매 & 즉시 배포</p>
-                <p class="text-blue-200/50 text-xs">URL 설정 완료</p>
+              <div>
+                <p class="text-white text-xs lg:text-base font-bold whitespace-nowrap">도메인 구매 &amp; 즉시 배포</p>
+                <p class="text-blue-200/50 text-xs hidden lg:block">URL 설정 완료</p>
               </div>
             </div>
 
             <div id="badge-3" class="floating-badge glass-badge absolute top-6 right-0 lg:-right-24 flex items-center gap-2 lg:gap-3 rounded-xl lg:rounded-2xl p-2 lg:p-5 z-30 opacity-0">
               <div class="w-9 h-9 lg:w-11 lg:h-11 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-400/30 text-base lg:text-xl flex-none">🔄</div>
-              <div class="hidden lg:block">
-                <p class="text-white text-base font-bold">월 1회 무료 업데이트</p>
-                <p class="text-blue-200/50 text-xs">콘텐츠 수정 포함</p>
+              <div>
+                <p class="text-white text-xs lg:text-base font-bold whitespace-nowrap">월 1회 무료 업데이트</p>
+                <p class="text-blue-200/50 text-xs hidden lg:block">콘텐츠 수정 포함</p>
               </div>
             </div>
           </div>
@@ -678,7 +678,7 @@
         원장님은 <span style="-webkit-text-fill-color: #60A5FA;">교육</span>에만 집중하세요,<br><span style="-webkit-text-fill-color: #BAE6FD;">홈페이지</span> 관리는 저희가 합니다.
       </h2>
       <p class="text-neutral-400 text-lg md:text-xl mb-14 max-w-xl mx-auto leading-relaxed">
-        무료 상담을 통해 원장님의 학원에 딱 맞는 홈페이지를 제안드립니다.<br>지금 바로 연락주시면 24시간 내 답변 드립니다.
+        무료 상담을 통해 원장님의 학원에 딱 맞는<br class="md:hidden"> 홈페이지를 제안드립니다.<br>지금 바로 연락주시면 24시간 내 답변 드립니다.
       </p>
 
       <div class="flex justify-center mb-20">

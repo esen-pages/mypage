@@ -462,4 +462,25 @@
   #compare-right .text-xs {
     font-size: 0.6rem;
   }
+
+  /* 모바일: 왼쪽/오른쪽 카드를 같은 셀에 겹쳐서 GSAP으로 교체 */
+  #compare-grid {
+    grid-template-columns: 1fr;
+  }
+  #compare-left-col,
+  #compare-right-col {
+    grid-column: 1;
+    grid-row: 1;
+    justify-content: center;
+  }
+  #vs-col {
+    grid-column: 1;
+    grid-row: 2;
+    justify-content: center;
+  }
+  #compare-left,
+  #compare-right {
+    transform: scale(1) !important;
+    width: 100%;
+  }
 }
