@@ -1,0 +1,465 @@
+/* ====================================================
+   Base & Reset
+==================================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ====================================================
+   Film Grain Overlay
+==================================================== */
+.film-grain {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 50; opacity: 0.05; mix-blend-mode: overlay;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%25" height="100%25" filter="url(%23n)"/></svg>');
+}
+
+/* ====================================================
+   Grid Background
+==================================================== */
+.bg-grid {
+  background-size: 60px 60px;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
+}
+
+/* ====================================================
+   Text Effects
+==================================================== */
+.text-silver-matte {
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.45) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transform: translateZ(0);
+  filter:
+    drop-shadow(0px 10px 20px rgba(255,255,255,0.12))
+    drop-shadow(0px 2px 4px rgba(255,255,255,0.08));
+}
+
+.text-card-silver {
+  background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transform: translateZ(0);
+  filter:
+    drop-shadow(0px 12px 24px rgba(0,0,0,0.8))
+    drop-shadow(0px 4px 8px rgba(0,0,0,0.6));
+}
+
+/* ====================================================
+   Premium Deep Blue Card
+==================================================== */
+.premium-card {
+  background: linear-gradient(145deg, #162C6D 0%, #0A101D 100%);
+  box-shadow:
+    0 40px 100px -20px rgba(0,0,0,0.9),
+    0 20px 40px -20px rgba(0,0,0,0.8),
+    inset 0 1px 2px rgba(255,255,255,0.2),
+    inset 0 -2px 4px rgba(0,0,0,0.8);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Dynamic mouse-follow sheen */
+.card-sheen {
+  position: absolute; inset: 0; border-radius: inherit;
+  pointer-events: none; z-index: 2;
+  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.05) 0%, transparent 40%);
+  mix-blend-mode: screen;
+  transition: opacity 0.3s ease;
+}
+
+/* ====================================================
+   Glass Card (dark variant) — solid bg, no backdrop-filter
+   to prevent bleed-through from pinned card layer
+==================================================== */
+.glass-dark {
+  background: #111318;
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.glass-dark:hover {
+  border-color: rgba(255,255,255,0.12);
+  background: #16191f;
+}
+
+/* ====================================================
+   Glass Floating Badge
+==================================================== */
+.glass-badge {
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.01) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.1),
+    0 25px 50px -12px rgba(0,0,0,0.8),
+    inset 0 1px 1px rgba(255,255,255,0.2),
+    inset 0 -1px 1px rgba(0,0,0,0.5);
+}
+
+/* ====================================================
+   iPhone Mockup Hardware
+==================================================== */
+.iphone-bezel {
+  background-color: #111;
+  box-shadow:
+    inset 0 0 0 2px #52525B,
+    inset 0 0 0 7px #000,
+    0 40px 80px -15px rgba(0,0,0,0.95),
+    0 15px 25px -5px rgba(0,0,0,0.7);
+  transform-style: preserve-3d;
+}
+
+.hardware-btn {
+  background: linear-gradient(90deg, #404040 0%, #171717 100%);
+  box-shadow:
+    -2px 0 5px rgba(0,0,0,0.8),
+    inset -1px 0 1px rgba(255,255,255,0.15),
+    inset 1px 0 2px rgba(0,0,0,0.8);
+  border-left: 1px solid rgba(255,255,255,0.05);
+}
+
+.screen-glare {
+  background: linear-gradient(110deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 45%);
+}
+
+.widget-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+  box-shadow:
+    0 10px 20px rgba(0,0,0,0.3),
+    inset 0 1px 1px rgba(255,255,255,0.05),
+    inset 0 -1px 1px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* ====================================================
+   Progress Ring
+==================================================== */
+.progress-ring {
+  transition: stroke-dashoffset 2s ease;
+}
+
+/* ====================================================
+   Buttons
+==================================================== */
+.btn-light {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+  color: #0F172A;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.05),
+    0 2px 4px rgba(0,0,0,0.1),
+    0 12px 24px -4px rgba(0,0,0,0.3),
+    inset 0 1px 1px rgba(255,255,255,1),
+    inset 0 -3px 6px rgba(0,0,0,0.06);
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-light:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.05),
+    0 6px 12px -2px rgba(0,0,0,0.15),
+    0 20px 32px -6px rgba(0,0,0,0.4),
+    inset 0 1px 1px rgba(255,255,255,1),
+    inset 0 -3px 6px rgba(0,0,0,0.06);
+}
+.btn-light:active {
+  transform: translateY(1px);
+  background: linear-gradient(180deg, #F1F5F9 0%, #E2E8F0 100%);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.1), inset 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.btn-dark {
+  background: linear-gradient(180deg, #27272A 0%, #18181B 100%);
+  color: #FFFFFF;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.1),
+    0 2px 4px rgba(0,0,0,0.6),
+    0 12px 24px -4px rgba(0,0,0,0.9),
+    inset 0 1px 1px rgba(255,255,255,0.15),
+    inset 0 -3px 6px rgba(0,0,0,0.8);
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-dark:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(180deg, #3F3F46 0%, #27272A 100%);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.15),
+    0 6px 12px -2px rgba(0,0,0,0.7),
+    0 20px 32px -6px rgba(0,0,0,1),
+    inset 0 1px 1px rgba(255,255,255,0.2),
+    inset 0 -3px 6px rgba(0,0,0,0.8);
+}
+.btn-dark:active {
+  transform: translateY(1px);
+  background: #18181B;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.05), inset 0 3px 8px rgba(0,0,0,0.9);
+}
+
+.btn-glass {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: #FFFFFF;
+  border: 1px solid rgba(255,255,255,0.22);
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.3),
+    inset 0 1px 1px rgba(255,255,255,0.2),
+    inset 0 -1px 1px rgba(0,0,0,0.2);
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-glass:hover {
+  background: rgba(255,255,255,0.16);
+  border-color: rgba(255,255,255,0.35);
+  transform: translateY(-3px);
+  box-shadow:
+    0 16px 40px rgba(0,0,0,0.4),
+    inset 0 1px 1px rgba(255,255,255,0.25),
+    inset 0 -1px 1px rgba(0,0,0,0.2);
+}
+.btn-glass:active {
+  transform: translateY(1px);
+  background: rgba(255,255,255,0.07);
+}
+
+.btn-kakao-glass {
+  background: rgba(254,229,0,0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: #FEE500;
+  border: 1px solid rgba(254,229,0,0.35);
+  box-shadow:
+    0 8px 32px rgba(254,229,0,0.12),
+    inset 0 1px 1px rgba(255,255,255,0.15),
+    inset 0 -1px 1px rgba(0,0,0,0.15);
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-kakao-glass:hover {
+  background: rgba(254,229,0,0.22);
+  border-color: rgba(254,229,0,0.55);
+  transform: translateY(-3px);
+  box-shadow:
+    0 16px 40px rgba(254,229,0,0.2),
+    inset 0 1px 1px rgba(255,255,255,0.2),
+    inset 0 -1px 1px rgba(0,0,0,0.15);
+}
+.btn-kakao-glass:active {
+  transform: translateY(1px);
+  background: rgba(254,229,0,0.1);
+}
+
+.btn-kakao {
+  background: linear-gradient(180deg, #FEE500 0%, #F5D800 100%);
+  color: #3A1D1D;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.08),
+    0 2px 4px rgba(0,0,0,0.15),
+    0 12px 24px -4px rgba(254,229,0,0.35),
+    inset 0 1px 1px rgba(255,255,255,0.6),
+    inset 0 -3px 6px rgba(0,0,0,0.08);
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-kakao:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.08),
+    0 6px 12px -2px rgba(0,0,0,0.1),
+    0 20px 32px -6px rgba(254,229,0,0.5),
+    inset 0 1px 1px rgba(255,255,255,0.6),
+    inset 0 -3px 6px rgba(0,0,0,0.08);
+}
+.btn-kakao:active {
+  transform: translateY(1px);
+  background: linear-gradient(180deg, #F5D800 0%, #EDD000 100%);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.1), inset 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.btn-outline-white {
+  background: transparent;
+  color: #FFFFFF;
+  border: 1px solid rgba(255,255,255,0.15);
+  text-decoration: none;
+  cursor: pointer;
+  display: block;
+  transition: all 0.3s ease;
+}
+.btn-outline-white:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.3);
+}
+
+/* ====================================================
+   Pulse animation for Dynamic Island dot
+==================================================== */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ====================================================
+   Reveal animations (scroll-triggered via GSAP)
+==================================================== */
+.reveal-block {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* ====================================================
+   Feature card hover
+==================================================== */
+.feature-card {
+  transition: transform 0.3s ease;
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ====================================================
+   Pricing card
+==================================================== */
+.pricing-card {
+  transition: transform 0.3s ease;
+}
+
+/* ====================================================
+   Testimonial card
+==================================================== */
+.testimonial-card {
+  transition: transform 0.3s ease;
+}
+.testimonial-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ====================================================
+   Stat number
+==================================================== */
+.stat-number {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+}
+
+/* ====================================================
+   Compare containers — hover expand
+==================================================== */
+#compare-left {
+  transform: scale(0.75);
+  transform-origin: center;
+  transition: transform 0.45s cubic-bezier(0.34, 1.4, 0.64, 1),
+              box-shadow 0.45s ease,
+              border-color 0.45s ease;
+  position: relative;
+  z-index: 1;
+}
+#compare-left:hover {
+  transform: scale(0.94) !important;
+  box-shadow: 0 0 40px rgba(239,68,68,0.35), 0 0 80px rgba(239,68,68,0.15), 0 20px 56px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.12) !important;
+  border-color: rgba(239,68,68,0.35) !important;
+  z-index: 10;
+}
+
+#compare-right {
+  transform: scale(0.95);
+  transform-origin: center;
+  transition: transform 0.45s cubic-bezier(0.34, 1.4, 0.64, 1),
+              box-shadow 0.45s ease;
+  position: relative;
+  z-index: 1;
+}
+#compare-right:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 0 0 48px rgba(59,130,246,0.35), 0 20px 56px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.18) !important;
+  z-index: 10;
+}
+
+/* ====================================================
+   Bottom Navigation Bar
+==================================================== */
+.nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.38);
+  cursor: pointer;
+  min-width: 44px;
+  height: 40px;
+  text-decoration: none;
+  gap: 0;
+  transition: background 0.22s ease, color 0.22s ease;
+}
+.nav-btn:hover {
+  color: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.05);
+}
+.nav-btn.active {
+  background: rgba(59, 130, 246, 0.15);
+  color: #93C5FD;
+  gap: 7px;
+}
+.nav-btn.nav-kakao:hover {
+  background: rgba(254, 229, 0, 0.1);
+  color: #FEE500;
+}
+.nav-btn.nav-kakao.active {
+  background: rgba(254, 229, 0, 0.14);
+  color: #FEE500;
+}
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.nav-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 0;
+  opacity: 0;
+  transition:
+    max-width 0.38s cubic-bezier(0.34, 1.2, 0.64, 1),
+    opacity 0.2s ease;
+}
+.nav-btn.active .nav-label {
+  max-width: 96px;
+  opacity: 1;
+}
+
+/* ====================================================
+   Responsive tweaks
+==================================================== */
+@media (max-width: 768px) {
+  .iphone-bezel {
+    transform: scale(0.75);
+    transform-origin: center center;
+  }
+
+  /* 모바일에서 비교 카드 내부 텍스트 축소 */
+  #compare-left .text-sm,
+  #compare-right .text-sm {
+    font-size: 0.65rem;
+  }
+  #compare-left .text-base,
+  #compare-right .text-base {
+    font-size: 0.7rem;
+  }
+  #compare-left .text-xs,
+  #compare-right .text-xs {
+    font-size: 0.6rem;
+  }
+}
