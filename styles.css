@@ -449,31 +449,18 @@
     transform-origin: center center;
   }
 
-  /* 모바일에서 비교 카드 내부 텍스트 축소 */
-  #compare-left .text-sm,
-  #compare-right .text-sm {
-    font-size: 0.65rem;
-  }
-  #compare-left .text-base,
-  #compare-right .text-base {
-    font-size: 0.7rem;
-  }
-  #compare-left .text-xs,
-  #compare-right .text-xs {
-    font-size: 0.6rem;
-  }
-
-  /* 모바일: 왼쪽/오른쪽 카드를 같은 셀에 겹쳐서 GSAP으로 교체 */
+  /* 모바일: VS 위, 카드 아래 순서로 배치 — GSAP으로 left/right 교체 */
   #compare-grid {
     grid-template-columns: 1fr;
+    padding: 0 16px;
   }
-  #compare-left-col,
-  #compare-right-col {
+  #vs-col {
     grid-column: 1;
     grid-row: 1;
     justify-content: center;
   }
-  #vs-col {
+  #compare-left-col,
+  #compare-right-col {
     grid-column: 1;
     grid-row: 2;
     justify-content: center;

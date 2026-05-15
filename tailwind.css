@@ -1870,6 +1870,10 @@ video {
 }
 
 @media (min-width: 768px) {
+  .md\:mb-7 {
+    margin-bottom: 1.75rem;
+  }
+
   .md\:block {
     display: block;
   }
