@@ -13,15 +13,50 @@
 }
 
 /* ====================================================
-   Grid Background
+   Background Boxes — Hero
 ==================================================== */
-.bg-grid {
-  background-size: 60px 60px;
-  background-image:
-    linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
-  mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
+#hero-boxes {
+  transform: translate(-40%, -60%) skewX(-48deg) skewY(14deg) scale(0.675) translateZ(0);
+  position: absolute;
+  left: 25%;
+  top: -25%;
+  display: flex;
+  pointer-events: auto;
+}
+
+.hero-box-col {
+  flex-shrink: 0;
+  width: 64px;
+  border-left: 1px solid rgb(51 65 85 / 0.9);
+  position: relative;
+}
+
+.hero-box-cell {
+  width: 64px;
+  height: 32px;
+  border-right: 1px solid rgb(51 65 85 / 0.9);
+  border-top: 1px solid rgb(51 65 85 / 0.9);
+  position: relative;
+  transition: background-color 1s ease;
+}
+
+.hero-box-plus {
+  position: absolute;
+  top: -14px;
+  left: -22px;
+  width: 40px;
+  height: 24px;
+  color: rgb(51 65 85 / 0.9);
+  pointer-events: none;
+  stroke-width: 1px;
+}
+
+.hero-boxes-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse 65% 65% at 50% 50%, transparent 0%, rgb(10 10 10) 80%);
 }
 
 /* ====================================================
@@ -53,13 +88,14 @@
    Premium Deep Blue Card
 ==================================================== */
 .premium-card {
-  background: linear-gradient(145deg, #162C6D 0%, #0A101D 100%);
+  background: linear-gradient(145deg, #192E7A 0%, #091019 100%);
   box-shadow:
-    0 40px 100px -20px rgba(0,0,0,0.9),
-    0 20px 40px -20px rgba(0,0,0,0.8),
-    inset 0 1px 2px rgba(255,255,255,0.2),
-    inset 0 -2px 4px rgba(0,0,0,0.8);
-  border: 1px solid rgba(255,255,255,0.04);
+    0 40px 100px -20px rgba(0,0,0,0.95),
+    0 20px 40px -20px rgba(0,0,0,0.85),
+    0 0 0 1px rgba(255,255,255,0.06),
+    inset 0 1px 2px rgba(255,255,255,0.22),
+    inset 0 -2px 4px rgba(0,0,0,0.85);
+  border: 1px solid rgba(255,255,255,0.05);
 }
 
 /* Dynamic mouse-follow sheen */
@@ -76,13 +112,14 @@
    to prevent bleed-through from pinned card layer
 ==================================================== */
 .glass-dark {
-  background: #111318;
-  border: 1px solid rgba(255,255,255,0.07);
-  transition: border-color 0.3s ease, background 0.3s ease;
+  background: linear-gradient(145deg, #121519 0%, #0e1117 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: border-color 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
 }
 .glass-dark:hover {
-  border-color: rgba(255,255,255,0.12);
-  background: #16191f;
+  border-color: rgba(255,255,255,0.15);
+  background: linear-gradient(145deg, #181c24 0%, #131720 100%);
+  box-shadow: 0 28px 56px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.06);
 }
 
 /* ====================================================
@@ -144,63 +181,6 @@
 /* ====================================================
    Buttons
 ==================================================== */
-.btn-light {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
-  color: #0F172A;
-  box-shadow:
-    0 0 0 1px rgba(0,0,0,0.05),
-    0 2px 4px rgba(0,0,0,0.1),
-    0 12px 24px -4px rgba(0,0,0,0.3),
-    inset 0 1px 1px rgba(255,255,255,1),
-    inset 0 -3px 6px rgba(0,0,0,0.06);
-  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-  text-decoration: none;
-  cursor: pointer;
-}
-.btn-light:hover {
-  transform: translateY(-3px);
-  box-shadow:
-    0 0 0 1px rgba(0,0,0,0.05),
-    0 6px 12px -2px rgba(0,0,0,0.15),
-    0 20px 32px -6px rgba(0,0,0,0.4),
-    inset 0 1px 1px rgba(255,255,255,1),
-    inset 0 -3px 6px rgba(0,0,0,0.06);
-}
-.btn-light:active {
-  transform: translateY(1px);
-  background: linear-gradient(180deg, #F1F5F9 0%, #E2E8F0 100%);
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.1), inset 0 3px 6px rgba(0,0,0,0.1);
-}
-
-.btn-dark {
-  background: linear-gradient(180deg, #27272A 0%, #18181B 100%);
-  color: #FFFFFF;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.1),
-    0 2px 4px rgba(0,0,0,0.6),
-    0 12px 24px -4px rgba(0,0,0,0.9),
-    inset 0 1px 1px rgba(255,255,255,0.15),
-    inset 0 -3px 6px rgba(0,0,0,0.8);
-  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-  text-decoration: none;
-  cursor: pointer;
-}
-.btn-dark:hover {
-  transform: translateY(-3px);
-  background: linear-gradient(180deg, #3F3F46 0%, #27272A 100%);
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.15),
-    0 6px 12px -2px rgba(0,0,0,0.7),
-    0 20px 32px -6px rgba(0,0,0,1),
-    inset 0 1px 1px rgba(255,255,255,0.2),
-    inset 0 -3px 6px rgba(0,0,0,0.8);
-}
-.btn-dark:active {
-  transform: translateY(1px);
-  background: #18181B;
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.05), inset 0 3px 8px rgba(0,0,0,0.9);
-}
-
 .btn-glass {
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(20px);
@@ -285,20 +265,6 @@
   box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.1), inset 0 3px 6px rgba(0,0,0,0.1);
 }
 
-.btn-outline-white {
-  background: transparent;
-  color: #FFFFFF;
-  border: 1px solid rgba(255,255,255,0.15);
-  text-decoration: none;
-  cursor: pointer;
-  display: block;
-  transition: all 0.3s ease;
-}
-.btn-outline-white:hover {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(255,255,255,0.3);
-}
-
 /* ====================================================
    Pulse animation for Dynamic Island dot
 ==================================================== */
@@ -312,75 +278,18 @@
 ==================================================== */
 .reveal-block {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(28px);
 }
 
 /* ====================================================
    Feature card hover
 ==================================================== */
 .feature-card {
-  transition: transform 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s ease, border-color 0.35s ease;
 }
 .feature-card:hover {
-  transform: translateY(-4px);
-}
-
-/* ====================================================
-   Pricing card
-==================================================== */
-.pricing-card {
-  transition: transform 0.3s ease;
-}
-
-/* ====================================================
-   Testimonial card
-==================================================== */
-.testimonial-card {
-  transition: transform 0.3s ease;
-}
-.testimonial-card:hover {
-  transform: translateY(-4px);
-}
-
-/* ====================================================
-   Stat number
-==================================================== */
-.stat-number {
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.04em;
-}
-
-/* ====================================================
-   Compare containers — hover expand
-==================================================== */
-#compare-left {
-  transform: scale(0.75);
-  transform-origin: center;
-  transition: transform 0.45s cubic-bezier(0.34, 1.4, 0.64, 1),
-              box-shadow 0.45s ease,
-              border-color 0.45s ease;
-  position: relative;
-  z-index: 1;
-}
-#compare-left:hover {
-  transform: scale(0.94) !important;
-  box-shadow: 0 0 40px rgba(239,68,68,0.35), 0 0 80px rgba(239,68,68,0.15), 0 20px 56px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.12) !important;
-  border-color: rgba(239,68,68,0.35) !important;
-  z-index: 10;
-}
-
-#compare-right {
-  transform: scale(0.95);
-  transform-origin: center;
-  transition: transform 0.45s cubic-bezier(0.34, 1.4, 0.64, 1),
-              box-shadow 0.45s ease;
-  position: relative;
-  z-index: 1;
-}
-#compare-right:hover {
-  transform: scale(1.15) !important;
-  box-shadow: 0 0 48px rgba(59,130,246,0.35), 0 20px 56px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.18) !important;
-  z-index: 10;
+  transform: translateY(-6px);
+  box-shadow: 0 32px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1);
 }
 
 /* ====================================================
@@ -469,5 +378,1317 @@
   #compare-right {
     transform: scale(1) !important;
     width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
   }
+}
+
+/* ====================================================
+   Step row hover
+==================================================== */
+.step-row {
+  transition: background 0.3s ease;
+  border-radius: 20px;
+}
+.step-row:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+/* ====================================================
+   Global smooth scrollbar & selection color
+==================================================== */
+::selection {
+  background: rgba(147,197,253,0.25);
+  color: #ffffff;
+}
+
+/* ====================================================
+   Consulting Form Inputs
+==================================================== */
+.consulting-input {
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.consulting-input:focus {
+  border-color: rgba(147,197,253,0.4) !important;
+  background: rgba(255,255,255,0.06) !important;
+  box-shadow: 0 0 0 3px rgba(147,197,253,0.1);
+}
+.consulting-input option {
+  background: #111827;
+}
+
+/* ====================================================
+   FAQ — left column offset
+==================================================== */
+.faq-left-col { margin-top: 0; }
+@media (min-width: 1024px) {
+  .faq-left-col { margin-top: 90px; }
+}
+
+/* ====================================================
+   FAQ — KakaoTalk glass badge CTA
+==================================================== */
+.faq-kakao-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 20px 11px 16px;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #FEE500;
+  background: rgba(254, 229, 0, 0.08);
+  border: 1px solid rgba(254, 229, 0, 0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 16px rgba(254, 229, 0, 0.08), inset 0 1px 0 rgba(255,255,255,0.06);
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+.faq-kakao-badge:hover {
+  background: rgba(254, 229, 0, 0.14);
+  border-color: rgba(254, 229, 0, 0.4);
+  box-shadow: 0 4px 24px rgba(254, 229, 0, 0.15), inset 0 1px 0 rgba(255,255,255,0.08);
+  transform: translateY(-1px);
+}
+.faq-kakao-icon {
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+/* ====================================================
+   FAQ — Portrait phone mockup (large)
+==================================================== */
+
+/* Phone frame */
+.faq-phone-frame {
+  position: relative;
+  width: 320px;
+  height: 648px;
+  will-change: transform;
+  /* Titanium Natural finish — multi-stop gradient for realistic metal look */
+  background: linear-gradient(158deg,
+    #3e3e40 0%,
+    #2c2c2e 12%,
+    #1c1c1e 40%,
+    #0e0e10 72%,
+    #1a1a1c 100%
+  );
+  border-radius: 52px;
+  padding: 12px;
+  box-shadow:
+    /* Outer edge highlight (titanium chamfer) */
+    0 0 0 1px rgba(255,255,255,0.13),
+    0 0 0 2px rgba(0,0,0,0.75),
+    /* Inner face lighting */
+    inset 0 1.5px 3px rgba(255,255,255,0.18),
+    inset 1px 0 2px rgba(255,255,255,0.06),
+    inset 0 -1.5px 2px rgba(0,0,0,0.75),
+    inset -1px 0 1px rgba(0,0,0,0.45),
+    /* Drop shadows */
+    0 80px 140px -24px rgba(0,0,0,0.95),
+    0 32px 64px -16px rgba(0,0,0,0.8),
+    0 8px 24px rgba(0,0,0,0.55);
+  flex: none;
+}
+
+/* Remove old pseudo-element buttons — replaced with HTML elements */
+.faq-phone-frame::before,
+.faq-phone-frame::after {
+  content: none;
+}
+
+/* ── Side hardware buttons ── */
+/* Action button (top-left, iPhone 15 style) */
+.faq-btn-action {
+  position: absolute;
+  left: -3.5px;
+  top: 95px;
+  width: 3.5px;
+  height: 34px;
+  border-radius: 1.5px 0 0 1.5px;
+  background: linear-gradient(to right, #3e3e40, #2a2a2c);
+  box-shadow: -1px 0 4px rgba(0,0,0,0.65), inset 0 0.5px 0 rgba(255,255,255,0.14);
+}
+/* Volume up */
+.faq-btn-vol-up {
+  position: absolute;
+  left: -3.5px;
+  top: 148px;
+  width: 3.5px;
+  height: 52px;
+  border-radius: 1.5px 0 0 1.5px;
+  background: linear-gradient(to right, #3e3e40, #2a2a2c);
+  box-shadow: -1px 0 4px rgba(0,0,0,0.65), inset 0 0.5px 0 rgba(255,255,255,0.14);
+}
+/* Volume down */
+.faq-btn-vol-down {
+  position: absolute;
+  left: -3.5px;
+  top: 214px;
+  width: 3.5px;
+  height: 52px;
+  border-radius: 1.5px 0 0 1.5px;
+  background: linear-gradient(to right, #3e3e40, #2a2a2c);
+  box-shadow: -1px 0 4px rgba(0,0,0,0.65), inset 0 0.5px 0 rgba(255,255,255,0.14);
+}
+/* Power / sleep-wake button */
+.faq-btn-power {
+  position: absolute;
+  right: -3.5px;
+  top: 168px;
+  width: 3.5px;
+  height: 80px;
+  border-radius: 0 1.5px 1.5px 0;
+  background: linear-gradient(to left, #3e3e40, #2a2a2c);
+  box-shadow: 1px 0 4px rgba(0,0,0,0.65), inset 0 0.5px 0 rgba(255,255,255,0.14);
+}
+
+/* Screen surface glare — sits above screen content */
+.faq-screen-glare {
+  position: absolute;
+  inset: 12px;
+  border-radius: 41px;
+  background: linear-gradient(130deg,
+    rgba(255,255,255,0.09) 0%,
+    rgba(255,255,255,0.03) 30%,
+    transparent 55%
+  );
+  pointer-events: none;
+  z-index: 20;
+}
+
+.faq-phone-screen {
+  width: 100%;
+  height: 100%;
+  background: #05050a;
+  border-radius: 41px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dynamic island */
+.faq-phone-island {
+  width: 110px;
+  height: 30px;
+  background: #000;
+  border-radius: 15px;
+  margin: 11px auto 0;
+  flex: none;
+}
+
+/* Status bar */
+.faq-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 22px 7px;
+  flex-none;
+}
+.faq-status-time {
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.02em;
+}
+.faq-status-icons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: white;
+}
+.faq-battery {
+  position: relative;
+  width: 22px;
+  height: 11px;
+  border: 1.2px solid rgba(255,255,255,0.55);
+  border-radius: 3px;
+  padding: 1.5px;
+}
+.faq-battery-nub {
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.5px;
+  height: 6px;
+  background: rgba(255,255,255,0.55);
+  border-radius: 0 1px 1px 0;
+}
+.faq-battery-level {
+  width: 72%;
+  height: 100%;
+  background: white;
+  border-radius: 1px;
+}
+
+/* Chat header */
+.faq-chat-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px 11px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(0,0,0,0.32);
+  flex-none;
+}
+.faq-chat-back {
+  flex-none;
+  display: flex;
+  align-items: center;
+}
+.faq-chat-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(59,130,246,0.22);
+  border: 1px solid rgba(147,197,253,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8.5px;
+  font-weight: 900;
+  color: #93C5FD;
+  letter-spacing: -0.02em;
+  flex-none;
+}
+.faq-chat-info { flex: 1; min-width: 0; }
+.faq-chat-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+}
+.faq-chat-online {
+  font-size: 9px;
+  color: rgba(255,255,255,0.4);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 1px;
+}
+.faq-online-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  flex-none;
+}
+.faq-chat-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: none;
+}
+
+/* Messages */
+.faq-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scrollbar-width: none;
+}
+.faq-messages::-webkit-scrollbar { display: none; }
+
+.faq-bot-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+.faq-msg-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(59,130,246,0.2);
+  border: 1px solid rgba(147,197,253,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7px;
+  font-weight: 900;
+  color: #93C5FD;
+  flex-none;
+}
+.faq-bot-bubble {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  border-bottom-left-radius: 4px;
+  padding: 9px 12px;
+  max-width: calc(100% - 38px);
+}
+.faq-user-row { display: flex; justify-content: flex-end; }
+.faq-user-bubble {
+  background: rgba(59,130,246,0.22);
+  border: 1px solid rgba(147,197,253,0.2);
+  border-radius: 16px;
+  border-bottom-right-radius: 4px;
+  padding: 9px 12px;
+  max-width: 82%;
+}
+.faq-bubble-text {
+  font-size: 11.5px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.88);
+}
+
+/* Q/A fade */
+#faq-phone-q,
+#faq-phone-a {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+#faq-phone-q.faq-msg-out,
+#faq-phone-a.faq-msg-out {
+  opacity: 0;
+  transform: translateY(7px);
+}
+
+/* Typing cursor */
+.faq-cursor {
+  display: inline-block;
+  color: rgba(255,255,255,0.55);
+  font-size: 0.85em;
+  line-height: 1;
+  margin-left: 1px;
+  animation: faq-blink 0.65s steps(1) infinite;
+}
+@keyframes faq-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Typing indicator dots */
+.faq-typing-dots {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  padding: 3px 0;
+}
+.faq-typing-dots span {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  animation: faq-dot 1.1s ease-in-out infinite;
+}
+.faq-typing-dots span:nth-child(2) { animation-delay: 0.18s; }
+.faq-typing-dots span:nth-child(3) { animation-delay: 0.36s; }
+@keyframes faq-dot {
+  0%, 80%, 100% { transform: scale(0.75); opacity: 0.35; }
+  40%           { transform: scale(1.2);  opacity: 1; }
+}
+
+
+/* ====================================================
+   FAQ — Accordion (replaces suggestion chips)
+==================================================== */
+.faq-accordion {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  overflow-y: auto;
+  flex-none;
+  scrollbar-width: none;
+}
+.faq-accordion::-webkit-scrollbar { display: none; }
+
+.faq-acc-item {
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.faq-acc-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.72);
+  font-size: 11.5px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, color 0.15s;
+}
+.faq-acc-q:hover {
+  background: rgba(255,255,255,0.04);
+}
+.faq-acc-item.faq-acc-open .faq-acc-q {
+  color: #93C5FD;
+  background: rgba(59,130,246,0.07);
+}
+.faq-acc-chevron {
+  flex-shrink: 0;
+  color: rgba(255,255,255,0.25);
+  transition: transform 0.22s ease, color 0.15s;
+}
+.faq-acc-item.faq-acc-open .faq-acc-chevron {
+  transform: rotate(180deg);
+  color: #93C5FD;
+}
+.faq-acc-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.28s ease, padding 0.22s ease;
+  padding: 0 14px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.48);
+  line-height: 1.7;
+  background: rgba(59,130,246,0.04);
+}
+.faq-acc-item.faq-acc-open .faq-acc-body {
+  max-height: 80px;
+  padding: 5px 14px 10px;
+}
+
+/* Home indicator */
+.faq-home-bar {
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-none;
+}
+.faq-home-bar::after {
+  content: '';
+  width: 90px;
+  height: 4px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 2px;
+}
+
+/* ====================================================
+   Pricing Card — Spotlight Follow Effect
+==================================================== */
+[data-glow] {
+  --border-size: calc(var(--border, 2) * 1px);
+  --spotlight-size: calc(var(--size, 200) * 1px);
+  --hue: calc(var(--base, 220) + (var(--xp, 0) * var(--spread, 180)));
+}
+
+#pricing-spotlight-card {
+  border: var(--border-size) solid rgba(147,197,253,0.22);
+  background-image: radial-gradient(
+    var(--spotlight-size) var(--spotlight-size) at
+    calc(var(--x, -9999) * 1px) calc(var(--y, -9999) * 1px),
+    hsl(var(--hue) 100% 70% / 0.07),
+    transparent
+  );
+  background-size: calc(100% + (2 * var(--border-size))) calc(100% + (2 * var(--border-size)));
+  background-position: 50% 50%;
+  background-attachment: fixed;
+}
+
+[data-glow]::before,
+[data-glow]::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  inset: calc(var(--border-size) * -1);
+  border: var(--border-size) solid transparent;
+  border-radius: calc(var(--radius, 24) * 1px);
+  background-attachment: fixed;
+  background-size: calc(100% + (2 * var(--border-size))) calc(100% + (2 * var(--border-size)));
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  -webkit-mask: linear-gradient(transparent, transparent), linear-gradient(white, white);
+  mask: linear-gradient(transparent, transparent), linear-gradient(white, white);
+  -webkit-mask-clip: padding-box, border-box;
+  mask-clip: padding-box, border-box;
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
+}
+
+[data-glow]::before {
+  background-image: radial-gradient(
+    calc(var(--spotlight-size) * 0.75) calc(var(--spotlight-size) * 0.75) at
+    calc(var(--x, -9999) * 1px) calc(var(--y, -9999) * 1px),
+    hsl(var(--hue) 100% 50% / 1),
+    transparent 100%
+  );
+  filter: brightness(2);
+}
+
+[data-glow]::after {
+  background-image: radial-gradient(
+    calc(var(--spotlight-size) * 0.5) calc(var(--spotlight-size) * 0.5) at
+    calc(var(--x, -9999) * 1px) calc(var(--y, -9999) * 1px),
+    hsl(0 100% 100% / 1),
+    transparent 100%
+  );
+}
+
+[data-glow] [data-glow] {
+  position: absolute;
+  inset: 0;
+  will-change: filter;
+  opacity: var(--outer, 1);
+  border-radius: calc(var(--radius, 24) * 1px);
+  filter: blur(calc(var(--border-size) * 10));
+  background: none;
+  pointer-events: none;
+  border: none;
+}
+
+/* ====================================================
+   Consulting — Tablet Scroll Animation
+==================================================== */
+
+.consulting-tablet-frame {
+  width: 100%;
+  border-radius: 36px;
+  border: 8px solid transparent;
+  background:
+    linear-gradient(170deg, #28282c 0%, #1c1c20 45%, #141416 100%) padding-box,
+    linear-gradient(145deg,
+      rgba(255,255,255,0.30) 0%,
+      rgba(255,255,255,0.12) 18%,
+      rgba(255,255,255,0.05) 48%,
+      rgba(0,0,0,0.18) 78%,
+      rgba(255,255,255,0.10) 100%
+    ) border-box;
+  position: relative;
+  transform-origin: center top;
+  will-change: transform;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.6),
+    -4px 8px 0 rgba(0,0,0,0.55),
+    4px 8px 0 rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 20px 40px rgba(0,0,0,0.5),
+    0 60px 80px rgba(0,0,0,0.35),
+    0 120px 160px rgba(0,0,0,0.18);
+}
+
+/* Physical side buttons */
+/* Power button — left short edge, upper area */
+.consulting-btn-power {
+  position: absolute;
+  left: -10px; right: auto;
+  top: 28px;
+  width: 3px; height: 36px;
+  border-radius: 2px 0 0 2px;
+  background: linear-gradient(to left, rgba(255,255,255,0.20), rgba(255,255,255,0.08));
+  box-shadow: -1px 0 2px rgba(0,0,0,0.5);
+}
+/* Home button — right bezel, center, recessed */
+.consulting-btn-home {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 45% 40%, #1a1a1f, #111115);
+  border: 1px solid rgba(255,255,255,0.07);
+  box-shadow:
+    inset 0 2px 5px rgba(0,0,0,0.85),
+    inset 0 1px 3px rgba(0,0,0,0.7),
+    inset 0 -1px 1px rgba(255,255,255,0.04),
+    0 1px 0 rgba(255,255,255,0.06);
+}
+/* Volume buttons — top long edge */
+.consulting-btn-vol-up,
+.consulting-btn-vol-down {
+  position: absolute;
+  top: -9px; left: auto; right: auto;
+  width: 38px; height: 3px;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(to top, rgba(255,255,255,0.20), rgba(255,255,255,0.08));
+  box-shadow: 0 -1px 2px rgba(0,0,0,0.5);
+}
+.consulting-btn-vol-up   { left: 108px; }
+.consulting-btn-vol-down { left: 159px; }
+
+
+/* Landscape: top/bottom = long edges → thin */
+.consulting-bezel-top {
+  height: 18px;
+}
+.consulting-bezel-bottom {
+  height: 18px;
+}
+
+/* Face ID — left short edge, vertical pill */
+.consulting-faceid {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 46px;
+  border-radius: 3px;
+  background: #0a0a0e;
+  border: 1px solid rgba(80,80,88,0.6);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+}
+/* Camera dot below Face ID */
+.consulting-faceid::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 110%; top: auto;
+  transform: translateX(-50%);
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #0a0a0e;
+  border: 1px solid rgba(80,80,90,0.5);
+  box-shadow: 0 0 5px rgba(59,130,246,0.18);
+}
+
+/* Speaker grille — left short edge */
+.consulting-speaker-l {
+  position: absolute;
+  left: 9px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 38px;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.10) 0px,
+    rgba(255,255,255,0.10) 2px,
+    transparent 2px,
+    transparent 5px
+  );
+  border-radius: 2px;
+}
+
+.consulting-screen {
+  display: flex;
+  border-radius: 13px;
+  overflow: hidden;
+  background: #07070b;
+  height: 574px;
+  margin: 0 54px 0 36px;
+}
+
+.consulting-panel-left {
+  width: 247px;
+  flex-shrink: 0;
+  padding: 1.25rem;
+  background: linear-gradient(160deg, #10101a 0%, #0c0c12 100%);
+  border-right: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  flex-direction: column;
+}
+.consulting-panel-right {
+  flex: 1;
+  min-width: 0;
+  padding: 1.125rem 1.25rem 1rem;
+  background: #07070b;
+  display: flex;
+  flex-direction: column;
+}
+
+.consulting-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 0.875rem;
+}
+.consulting-brand-name {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+.consulting-brand-badge {
+  font-size: 10px;
+  color: #60a5fa;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  background: rgba(96,165,250,0.1);
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(96,165,250,0.2);
+}
+.consulting-brand-desc {
+  color: #4a4a52;
+  font-size: 13px;
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+.consulting-features-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+.consulting-features-list li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.consulting-features-list li span {
+  color: #a3a3a3;
+  font-size: 13px;
+}
+.consulting-feat-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid;
+}
+
+.consulting-sep {
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.consulting-kakao-cta {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 10px 10px !important;
+  border-radius: 10px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  text-decoration: none;
+}
+
+.consulting-label {
+  display: block;
+  font-size: 17px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #4a4a52;
+  margin-bottom: 5px;
+}
+.consulting-field {
+  width: 100%;
+  background: rgba(255,255,255,0.05) !important;
+  border: 1px solid rgba(255,255,255,0.09) !important;
+  padding: 9px 11px !important;
+  border-radius: 9px !important;
+  font-size: 15px !important;
+  color: #fff;
+}
+select.consulting-field {
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 10px center !important;
+  padding-right: 28px !important;
+}
+.consulting-submit {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 11px 16px !important;
+  border-radius: 10px !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  cursor: pointer;
+}
+
+/* ---- Gmail redesign ---- */
+.consulting-screen { background: #f6f8fc; }
+
+.gmail-sidebar {
+  background: #fff;
+  padding: 0;
+  border-right: 1px solid #e0e0e0;
+  overflow-y: auto;
+}
+.gmail-logo-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px 18px;
+}
+.gmail-wordmark {
+  font-size: 22px;
+  font-weight: 400;
+  color: #5f6368;
+  letter-spacing: -0.3px;
+}
+.gmail-compose-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 8px 12px;
+  padding: 14px 18px;
+  border-radius: 28px;
+  background: #fff;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 4px 8px rgba(0,0,0,0.08);
+  cursor: pointer;
+  font-size: 14px;
+  color: #202124;
+  font-weight: 500;
+  font-family: inherit;
+  width: calc(100% - 16px);
+}
+.gmail-compose-btn:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25), 0 6px 12px rgba(0,0,0,0.12);
+}
+.gmail-nav { margin-top: 4px; }
+.gmail-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 16px 4px 22px;
+  height: 32px;
+  border-radius: 0 16px 16px 0;
+  cursor: pointer;
+  font-size: 13px;
+  color: #202124;
+  font-weight: 400;
+  margin-right: 16px;
+  transition: background 0.15s;
+}
+.gmail-nav-item:hover { background: #f1f3f4; }
+.gmail-nav-active { background: #d3e3fd !important; font-weight: 600; }
+.gmail-nav-active svg { color: #0b57d0; }
+.gmail-badge { margin-left: auto; font-size: 12px; color: #202124; }
+.gmail-sidebar-sep { height: 1px; background: #e0e0e0; margin: 10px 16px; }
+.gmail-sidebar-section-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #444746;
+  padding: 8px 24px 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Right main */
+.gmail-main {
+  background: #f6f8fc;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.gmail-topbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: #f6f8fc;
+  height: 52px;
+  flex-shrink: 0;
+}
+.gmail-hamburger-btn {
+  width: 40px; height: 40px;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.gmail-search-input-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #eaf1fb;
+  border-radius: 24px;
+  padding: 9px 18px;
+  color: #5f6368;
+  font-size: 14px;
+  max-width: 340px;
+}
+.gmail-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+.gmail-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: #1a73e8;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+/* Inbox background */
+.gmail-content-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+.gmail-inbox {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  overflow: hidden;
+}
+.gmail-inbox-toolbar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  height: 40px;
+}
+.gmail-inbox-check {
+  width: 16px; height: 16px;
+  border: 1.5px solid #bbb;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.gmail-inbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  height: 44px;
+  border-bottom: 1px solid #f1f3f4;
+  cursor: pointer;
+  background: #fff;
+  transition: background 0.15s;
+}
+.gmail-inbox-row:hover { background: #f6f8fc; }
+.gmail-inbox-unread { font-weight: 600; }
+.gmail-inbox-star-icon { flex-shrink: 0; }
+.gmail-inbox-sender {
+  width: 80px;
+  flex-shrink: 0;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #202124;
+}
+.gmail-inbox-subject {
+  flex: 1;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #5f6368;
+}
+.gmail-inbox-unread .gmail-inbox-subject { color: #202124; }
+.gmail-inbox-time {
+  font-size: 12px;
+  color: #5f6368;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.gmail-inbox-unread .gmail-inbox-time { color: #202124; font-weight: 600; }
+
+/* Compose window — top-anchored so toolbar stays above the clipped tablet bottom */
+.gmail-compose-window {
+  position: absolute;
+  top: 4px;
+  bottom: auto;
+  right: 16px;
+  width: 460px;
+  height: 460px;
+  background: #fff;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.gmail-compose-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px 8px 16px;
+  background: #404040;
+  border-radius: 12px 12px 0 0;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.gmail-compose-title { font-size: 14px; font-weight: 500; color: #fff; }
+.gmail-compose-header-btns { display: flex; align-items: center; gap: 2px; }
+.gmail-compose-header-btn {
+  width: 28px; height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(255,255,255,0.85);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gmail-compose-header-btn:hover { background: rgba(255,255,255,0.15); }
+
+/* To / Subject rows */
+.gmail-compose-to-row {
+  display: flex;
+  align-items: center;
+  padding: 4px 12px;
+  min-height: 30px;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.gmail-compose-field-label {
+  font-size: 11px;
+  color: #444746;
+  min-width: 48px;
+  flex-shrink: 0;
+}
+.gmail-to-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: #e8e8e8;
+  border-radius: 16px;
+  padding: 2px 4px 2px 10px;
+  font-size: 13px;
+  color: #202124;
+  font-weight: 500;
+}
+.gmail-to-chip-x {
+  width: 20px; height: 20px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  color: #5f6368;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gmail-to-chip-x:hover { background: rgba(0,0,0,0.1); }
+.gmail-cc-bcc {
+  margin-left: auto;
+  font-size: 12px;
+  color: #444746;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.gmail-compose-divider { height: 1px; background: #e0e0e0; margin: 0 12px; flex-shrink: 0; }
+.gmail-subject-static {
+  font-size: 15px;
+  font-weight: 500;
+  color: #202124;
+  padding: 6px 12px;
+  flex-shrink: 0;
+}
+
+/* Body area */
+.gmail-compose-body-area {
+  flex: 1;
+  min-height: 0;
+  padding: 10px 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.gmail-form-label { font-size: 12px; color: #5f6368; margin-bottom: 3px; font-weight: 500; }
+.gmail-form-input {
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 13px;
+  color: #202124;
+  outline: none;
+  font-family: inherit;
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.gmail-form-input:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 2px rgba(26,115,232,0.2);
+}
+.gmail-form-select {
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%235f6368'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 26px;
+}
+.gmail-form-textarea {
+  flex: 1;
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 13px;
+  color: #202124;
+  outline: none;
+  font-family: inherit;
+  resize: none;
+  min-height: 80px;
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.gmail-form-textarea:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 2px rgba(26,115,232,0.2);
+}
+
+/* Toolbar */
+.gmail-compose-toolbar-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 12px;
+  border-top: 1px solid #e0e0e0;
+  flex-shrink: 0;
+}
+.gmail-send-btn {
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  margin-right: 8px;
+  transition: background 0.15s;
+}
+.gmail-send-btn:hover { background: #1765cc; }
+.gmail-send-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.gmail-toolbar-icon-btn {
+  width: 30px; height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #444746;
+  transition: background 0.15s;
+}
+.gmail-toolbar-icon-btn:hover { background: #f1f3f4; }
+.gmail-toolbar-divider { width: 1px; height: 16px; background: #e0e0e0; margin: 0 4px; }
+.gmail-toolbar-trash-btn {
+  margin-left: auto;
+  width: 30px; height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #444746;
+  transition: background 0.15s, color 0.15s;
+}
+.gmail-toolbar-trash-btn:hover { background: #fce8e6; color: #c5221f; }
+
+/* Success state */
+.gmail-success-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: #fff;
+}
+
+/* ---- KakaoTalk channel CTA in consulting sidebar ---- */
+.gmail-kakao-channel-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 8px 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #FEE500;
+  color: #3A1D1D;
+  text-decoration: none;
+  font-size: 12.5px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  border: none;
+}
+.gmail-kakao-channel-btn:hover {
+  background: #F5D800;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.16);
+}
+.gmail-kakao-icon-bg {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Mobile: disable scroll trick, stack panels */
+@media (max-width: 767px) {
+  #consulting-scroll  { height: auto !important; }
+  #consulting-sticky  {
+    position: relative !important;
+    top: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 4.5rem 1rem 2rem !important;
+  }
+  .consulting-screen  { flex-direction: column; height: auto; }
+  .consulting-panel-left {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 1rem;
+  }
+  .consulting-panel-right { padding: 1rem; }
+  .consulting-tablet-frame { border-radius: 14px; border-width: 2px; }
+  .consulting-bezel-top  { height: 12px; }
+  .consulting-bezel-bottom { height: 10px; }
+
+  /* Consulting — 모바일에서 compose 창 정상 흐름으로 */
+  .consulting-screen      { margin: 0 !important; }
+  .consulting-speaker-l,
+  .consulting-faceid,
+  .consulting-btn-home    { display: none; }
+  .gmail-topbar           { display: none; }
+  .gmail-inbox            { display: none; }
+  .gmail-content-area     { position: static; height: auto; overflow: visible; }
+  .gmail-compose-window   {
+    position: static;
+    width: 100%;
+    height: auto;
+    right: auto;
+    top: auto;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .gmail-compose-body-area > div[style] { grid-template-columns: 1fr !important; }
+  .gmail-form-textarea    { min-height: 100px; }
+}
+
+[data-glow] > [data-glow]::before {
+  inset: -10px;
+  border-width: 10px;
 }

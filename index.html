@@ -23,8 +23,20 @@
   <meta name="twitter:description" content="제작·배포·운영까지 한 번에. 학원 원장님을 위한 맞춤 홈페이지 구독 서비스." />
   <meta name="twitter:image" content="og-image.svg" />
 
-  <!-- Tailwind CSS (CLI build) -->
-  <link rel="stylesheet" href="tailwind.css" />
+  <!-- Tailwind CSS (CDN — no build step required) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: { DEFAULT: '#3B82F6', dark: '#1D4ED8', light: '#93C5FD' }
+          }
+        }
+      }
+    }
+  </script>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -46,8 +58,11 @@
     <!-- Film Grain -->
     <div class="film-grain" aria-hidden="true"></div>
 
-    <!-- Grid Background -->
-    <div class="bg-grid absolute inset-0 z-0 pointer-events-none" aria-hidden="true"></div>
+    <!-- Background Boxes -->
+    <div id="hero-boxes-wrapper" class="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+      <div id="hero-boxes"></div>
+      <div class="hero-boxes-vignette"></div>
+    </div>
 
     <!-- Hero Text -->
     <div id="hero-text" class="absolute z-10 flex flex-col items-center justify-center text-center w-full px-4">
@@ -79,148 +94,7 @@
         <!-- Card sheen effect -->
         <div class="card-sheen"></div>
 
-        <!-- ── PHASE 1: 블로그 vs 홈페이지 비교 레이어 ── -->
-        <div id="card-trust-layer" class="absolute inset-0 z-20 flex items-center justify-center px-6 md:px-12 lg:px-20" style="opacity:0;">
-          <div class="max-w-5xl w-full">
-
-            <!-- Centered Headline -->
-            <div class="text-center mb-4 md:mb-7">
-              <h2 id="trust-heading" class="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-[1.1] text-white" style="min-height: 1.2em; text-shadow: 0 0 60px rgba(147,197,253,0.55), 0 0 20px rgba(147,197,253,0.3), 0 6px 32px rgba(0,0,0,0.8);">
-                <span id="typewriter-text"></span><span id="typewriter-cursor" style="opacity:1; color:#fff;">|</span>
-              </h2>
-            </div>
-
-            <!-- Comparison: Naver Place vs Homepage -->
-            <div id="compare-grid" class="grid grid-cols-1 md:grid-cols-[1fr_180px_1fr] items-center gap-4 md:gap-8">
-
-              <!-- LEFT: 네이버 플레이스 (작게) -->
-              <div id="compare-left-col" class="flex justify-end">
-                <div id="compare-left" class="rounded-2xl overflow-hidden w-full" style="backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);">
-                  <!-- Section header -->
-                  <div class="flex items-center justify-center gap-2 px-4 py-3"
-                       style="background: rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.08);">
-                    <span class="text-base">❌</span>
-                    <span class="text-white text-sm font-extrabold tracking-tight">네이버 플레이스 검색 결과</span>
-                  </div>
-                  <!-- Body -->
-                  <div class="p-5">
-                    <div class="flex items-center gap-3 mb-4">
-                      <div class="w-11 h-11 rounded-xl flex items-center justify-center text-white text-lg font-black flex-none" style="background: #03c75a;">N</div>
-                      <div>
-                        <p class="text-slate-200 text-base font-bold leading-none">OO 수학학원</p>
-                        <p class="text-slate-500 text-sm mt-1">학원 · 강남구</p>
-                      </div>
-                    </div>
-                    <div class="space-y-2 mb-4">
-                      <div class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-slate-600 flex-none" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                        <span class="text-slate-500 text-sm">서울시 강남구 OO로 123</span>
-                      </div>
-                      <div class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-slate-600 flex-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                        <span class="text-slate-500 text-sm">02-XXXX-XXXX</span>
-                      </div>
-                    </div>
-                    <!-- Blurred rows (장식용, 모바일에서 숨김) -->
-                    <div class="space-y-2.5 mb-4 hidden md:block">
-                      <div class="flex items-center gap-2">
-                        <div class="w-5 h-5 rounded" style="background:rgba(148,163,184,0.1)"></div>
-                        <div class="h-3 rounded flex-1" style="background:rgba(148,163,184,0.1); max-width:72%"></div>
-                      </div>
-                      <div class="flex items-center gap-2">
-                        <div class="w-5 h-5 rounded" style="background:rgba(148,163,184,0.1)"></div>
-                        <div class="h-3 rounded flex-1" style="background:rgba(148,163,184,0.1); max-width:58%"></div>
-                      </div>
-                      <div class="flex items-center gap-2">
-                        <div class="w-5 h-5 rounded" style="background:rgba(148,163,184,0.1)"></div>
-                        <div class="h-3 rounded flex-1" style="background:rgba(148,163,184,0.1); max-width:65%"></div>
-                      </div>
-                    </div>
-                    <!-- Bullets -->
-                    <div class="space-y-2.5 mb-4">
-                      <div class="flex items-center gap-2.5">
-                        <span class="text-red-500 font-bold text-base flex-none">✗</span>
-                        <span class="text-slate-300 text-sm">커리큘럼·수업 방식을 알 수 없음</span>
-                      </div>
-                      <div class="flex items-center gap-2.5">
-                        <span class="text-red-500 font-bold text-base flex-none">✗</span>
-                        <span class="text-slate-300 text-sm">강사 이력·합격 실적 확인 불가</span>
-                      </div>
-                      <div class="flex items-center gap-2.5">
-                        <span class="text-red-500 font-bold text-base flex-none">✗</span>
-                        <span class="text-slate-300 text-sm">타 학원과 차별점 파악 어려움</span>
-                      </div>
-                    </div>
-                    <!-- Warning (하단) -->
-                    <div class="rounded-lg px-3 py-2.5 text-center" style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.2);">
-                      <span class="text-red-400 text-sm font-semibold">정보 부족 → 타 학원으로 이탈</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- VS -->
-              <div id="vs-col" class="flex items-center justify-center">
-                <span id="vs-text" class="font-black" style="font-size: clamp(1.6rem,7vw,4.5rem); line-height: 1; letter-spacing: -0.06em; background: linear-gradient(160deg, rgba(255,255,255,0.7) 0%, rgba(147,197,253,0.55) 50%, rgba(59,130,246,0.35) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 2px 12px rgba(59,130,246,0.3));">VS</span>
-              </div>
-
-              <!-- RIGHT: 전문 홈페이지 (크게) -->
-              <div id="compare-right-col">
-                <div id="compare-right" class="rounded-2xl overflow-hidden" style="backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(59,130,246,0.08); border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.12);">
-                  <!-- Section header -->
-                  <div class="flex items-center justify-center gap-2 px-4 py-3"
-                       style="background: rgba(59,130,246,0.15); border-bottom: 1px solid rgba(255,255,255,0.08);">
-                    <span class="text-base">✅</span>
-                    <span class="text-white text-sm font-extrabold tracking-tight">전문 홈페이지 보유 시</span>
-                  </div>
-                  <!-- Browser mockup -->
-                  <div>
-                    <!-- Chrome bar -->
-                    <div class="flex items-center gap-2 px-3 py-2" style="background:rgba(255,255,255,0.04); border-bottom:1px solid rgba(255,255,255,0.07);">
-                      <div class="flex gap-1 flex-none">
-                        <div class="w-2.5 h-2.5 rounded-full" style="background:rgba(239,68,68,0.5)"></div>
-                        <div class="w-2.5 h-2.5 rounded-full" style="background:rgba(234,179,8,0.5)"></div>
-                        <div class="w-2.5 h-2.5 rounded-full" style="background:rgba(34,197,94,0.5)"></div>
-                      </div>
-                      <div class="flex-1 rounded px-2 py-1 text-xs text-white/25" style="background:rgba(255,255,255,0.06);">www.학원이름.com</div>
-                    </div>
-                    <!-- Hero -->
-                    <div class="px-4 py-5 text-center" style="background: linear-gradient(135deg, rgba(30,58,138,0.8) 0%, rgba(37,99,235,0.8) 100%);">
-                      <p class="text-white text-base font-black leading-none mb-1">OO 수학학원</p>
-                      <p class="text-blue-200/80 text-xs mb-3">수능 최강 — 합격률 92%</p>
-                      <button class="px-4 py-2 rounded-md text-xs font-bold text-blue-900 bg-white leading-none">무료 상담 신청하기</button>
-                    </div>
-                    <!-- Tab nav -->
-                    <div class="flex" style="background:rgba(255,255,255,0.03); border-bottom:1px solid rgba(255,255,255,0.07);">
-                      <span class="px-3 py-2.5 text-xs font-bold text-blue-400" style="border-bottom: 2px solid #60a5fa;">커리큘럼</span>
-                      <span class="px-3 py-2.5 text-xs text-white/30">강사진</span>
-                      <span class="px-3 py-2.5 text-xs text-white/30">합격 실적</span>
-                      <span class="px-3 py-2.5 text-xs text-white/30">상담 신청</span>
-                    </div>
-                    <!-- Checklist -->
-                    <div class="p-5 space-y-3" style="background: transparent;">
-                      <div class="flex items-center gap-2.5">
-                        <svg class="w-4 h-4 text-green-400 flex-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-                        <span class="text-white/80 text-sm">강사 이력 & 합격 실적 공개</span>
-                      </div>
-                      <div class="flex items-center gap-2.5">
-                        <svg class="w-4 h-4 text-green-400 flex-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-                        <span class="text-white/80 text-sm">24시간 상담 신청 자동 접수</span>
-                      </div>
-                      <div class="flex items-center gap-2.5">
-                        <svg class="w-4 h-4 text-green-400 flex-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-                        <span class="text-white/80 text-sm">학부모 신뢰도·전환율 상승</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- ── PHASE 2: 아이폰 레이아웃 ── -->
+        <!-- ── 아이폰 레이아웃 ── -->
         <!-- Inner layout -->
         <div class="relative w-full h-full max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-3 items-center gap-6 lg:gap-8 z-10 py-10 lg:py-0">
 
@@ -413,11 +287,11 @@
   <section id="features" class="relative z-20 py-32 px-6 bg-neutral-950">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-20 reveal-block">
-        <span class="text-brand text-sm font-semibold uppercase tracking-widest mb-4 block">Features</span>
-        <h2 class="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6">
+        <span class="text-brand text-xs font-bold uppercase tracking-[0.2em] mb-5 block opacity-80">Features</span>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-5 leading-tight">
           <span class="text-white">Sub</span><span style="color:#93C5FD">Web</span>만의 차별점
         </h2>
-        <p class="text-neutral-400 text-lg max-w-2xl mx-auto leading-relaxed">
+        <p class="text-neutral-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
           도메인부터 운영까지, 한 번에 해결하는 올인원 솔루션
         </p>
       </div>
@@ -425,67 +299,67 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Feature Card 1 -->
         <div class="feature-card glass-dark rounded-3xl p-8 reveal-block">
-          <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="w-11 h-11 rounded-2xl flex items-center justify-center mb-6" style="background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.25); box-shadow: 0 4px 16px rgba(59,130,246,0.12);">
+            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-white mb-3">학원의 분위기를 담은 맞춤 디자인</h3>
+          <h3 class="text-lg font-bold text-white mb-3 leading-snug">학원의 분위기를 담은 맞춤 디자인</h3>
           <p class="text-neutral-400 text-sm leading-relaxed">학원만의 색깔과 분위기가 그대로 느껴지는 맞춤 디자인으로 제작합니다. 강사진 소개, 커리큘럼, 합격 실적까지 학부모가 원하는 정보를 보기 좋게 구성합니다.</p>
         </div>
 
         <!-- Feature Card 2 -->
         <div class="feature-card glass-dark rounded-3xl p-8 reveal-block">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="w-11 h-11 rounded-2xl flex items-center justify-center mb-6" style="background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.25); box-shadow: 0 4px 16px rgba(16,185,129,0.1);">
+            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-white mb-3">도메인 연결 & 배포</h3>
+          <h3 class="text-lg font-bold text-white mb-3 leading-snug">도메인 연결 & 배포</h3>
           <p class="text-neutral-400 text-sm leading-relaxed">도메인 구매부터 서버 세팅, 인터넷 공개까지 모든 배포 과정을 대행합니다. 원장님은 완성된 홈페이지 주소만 받으시면 됩니다.</p>
         </div>
 
         <!-- Feature Card 3 -->
         <div class="feature-card glass-dark rounded-3xl p-8 reveal-block">
-          <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="w-11 h-11 rounded-2xl flex items-center justify-center mb-6" style="background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.25); box-shadow: 0 4px 16px rgba(139,92,246,0.1);">
+            <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-white mb-3">꾸준한 관리와 업데이트</h3>
+          <h3 class="text-lg font-bold text-white mb-3 leading-snug">꾸준한 관리와 업데이트</h3>
           <p class="text-neutral-400 text-sm leading-relaxed">시간표 변경, 공지사항, 이벤트 배너 등 내용이 바뀔 때마다 빠르게 반영합니다. 월 1회 무료 업데이트로 항상 최신 상태의 홈페이지를 유지하세요.</p>
         </div>
 
         <!-- Feature Card 4 -->
         <div class="feature-card glass-dark rounded-3xl p-8 reveal-block">
-          <div class="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="w-11 h-11 rounded-2xl flex items-center justify-center mb-6" style="background: rgba(244,63,94,0.12); border: 1px solid rgba(244,63,94,0.25); box-shadow: 0 4px 16px rgba(244,63,94,0.1);">
+            <svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-white mb-3">필요한 기능, 맞춤 추가</h3>
+          <h3 class="text-lg font-bold text-white mb-3 leading-snug">필요한 기능, 맞춤 추가</h3>
           <p class="text-neutral-400 text-sm leading-relaxed">모바일 최적화 디자인으로 스마트폰에서도 깔끔하게 보입니다. 상담 신청 폼과 구글 시트 자동 연동까지, 학원 운영에 실제로 필요한 기능을 골라 담을 수 있습니다.</p>
         </div>
 
         <!-- Feature Card 5 -->
         <div class="feature-card glass-dark rounded-3xl p-8 reveal-block">
-          <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="w-11 h-11 rounded-2xl flex items-center justify-center mb-6" style="background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.25); box-shadow: 0 4px 16px rgba(245,158,11,0.1);">
+            <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-white mb-3">부담 없는 초기 비용</h3>
+          <h3 class="text-lg font-bold text-white mb-3 leading-snug">부담 없는 초기 비용</h3>
           <p class="text-neutral-400 text-sm leading-relaxed">고가의 제작비 없이 합리적인 연간 구독료로 시작할 수 있습니다. 신규 수강생 한 명으로 원금 회수가 가능한, 학원 운영에 딱 맞는 가격입니다.</p>
         </div>
 
         <!-- Feature Card 6 -->
         <div class="feature-card glass-dark rounded-3xl p-8 reveal-block">
-          <div class="w-12 h-12 rounded-2xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="w-11 h-11 rounded-2xl flex items-center justify-center mb-6" style="background: rgba(20,184,166,0.12); border: 1px solid rgba(20,184,166,0.25); box-shadow: 0 4px 16px rgba(20,184,166,0.1);">
+            <svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-white mb-3">카카오톡 한 통으로 바로 적용</h3>
+          <h3 class="text-lg font-bold text-white mb-3 leading-snug">카카오톡 한 통으로 바로 적용</h3>
           <p class="text-neutral-400 text-sm leading-relaxed">수정 사항이 생기면 카카오톡으로 메시지 하나만 보내세요. 복잡한 절차 없이 담당자가 빠르게 확인하고 홈페이지에 반영해 드립니다.</p>
         </div>
       </div>
@@ -498,8 +372,8 @@
   <section id="how-it-works" class="relative z-20 py-32 px-6 bg-neutral-900">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-20 reveal-block">
-        <span class="text-brand text-sm font-semibold uppercase tracking-widest mb-4 block">How it works</span>
-        <h2 class="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6">
+        <span class="text-brand text-xs font-bold uppercase tracking-[0.2em] mb-5 block opacity-80">How it works</span>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-5 leading-tight">
           부담 없이 시작하세요.<br>모든 과정을 함께 합니다.
         </h2>
       </div>
@@ -568,154 +442,496 @@
        SECTION 7 — PRICING
   ====================================================== -->
   <section id="pricing" class="relative z-20 py-32 px-6 bg-neutral-950">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-20 reveal-block">
-        <span class="text-brand text-sm font-semibold uppercase tracking-widest mb-4 block">Pricing</span>
-        <h2 class="text-4xl md:text-5xl font-bold text-white tracking-tight mb-6">
+    <div class="max-w-5xl mx-auto">
+
+      <div class="text-center mb-14 reveal-block">
+        <span class="text-brand text-xs font-bold uppercase tracking-[0.2em] mb-5 block opacity-80">Pricing</span>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-5 leading-tight">
           하나로 끝내는<br><span class="text-white">Sub</span><span style="color:#93C5FD">Web</span> 연간 PASS
         </h2>
-        <p class="text-neutral-400 text-lg max-w-xl mx-auto">
-          신규 수강생 1명으로 원금 회수 완료!<br>제작부터 운영까지 모두 포함된 단 하나의 플랜으로 시작하세요.
+        <p class="text-neutral-400 text-base md:text-lg max-w-lg mx-auto leading-relaxed">
+          신규 수강생 한 명으로 원금 회수 완료.<br>제작부터 운영까지 모두 포함된 단 하나의 플랜.
         </p>
       </div>
 
-      <div class="flex justify-center">
-        <div class="w-full max-w-lg reveal-block">
+      <!-- Billing Toggle -->
+      <div class="flex items-center justify-center gap-3 mb-10 reveal-block">
+        <span id="billing-label-monthly" class="text-sm font-medium text-neutral-500 cursor-pointer select-none" onclick="setBilling(false)">월 환산</span>
+        <button id="billing-toggle-btn" role="switch" aria-checked="true" onclick="toggleBilling()"
+          class="relative inline-flex items-center rounded-full flex-none"
+          style="width:44px;height:24px;background:rgba(59,130,246,0.85);transition:background 0.2s ease;cursor:pointer;border:none;padding:0;">
+          <span id="billing-thumb" class="block rounded-full bg-white"
+            style="width:20px;height:20px;transform:translateX(22px);transition:transform 0.2s ease;margin-left:2px;box-shadow:0 1px 4px rgba(0,0,0,0.3);"></span>
+        </button>
+        <span id="billing-label-annual" class="text-sm font-semibold cursor-pointer select-none" style="color:#93C5FD;" onclick="setBilling(true)">
+          연간 결제
+        </span>
+      </div>
 
-          <!-- 카드 본체 -->
-          <div class="premium-card rounded-3xl py-8 px-5 sm:py-12 sm:px-10 overflow-hidden">
+      <!-- Card — 가로로 넓게, 좌우 분리 레이아웃 -->
+      <div class="flex justify-center reveal-block">
+        <div class="relative w-full" style="max-width:720px;">
 
-            <!-- 런칭 기념 배지 -->
-            <div class="flex items-center gap-2 mb-6 px-5 py-2.5 rounded-xl w-fit mx-auto" style="background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.3);">
-              <span class="text-sm">🎉</span>
-              <span class="text-amber-300 text-xs font-bold tracking-wide">런칭 기념 특가 · 선착순 10개 학원 한정</span>
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+            <div class="flex items-center gap-1 px-3 py-0.5 rounded-full text-[11px] font-bold whitespace-nowrap"
+                 style="background:linear-gradient(90deg,#1d4ed8,#3b82f6);color:#fff;box-shadow:0 4px 16px rgba(59,130,246,0.4);">
+              <span>🎉</span><span>런칭 특가 · 선착순 10개</span>
             </div>
+          </div>
 
-            <!-- 타이틀 -->
-            <div class="mb-6">
-              <div class="flex items-center gap-3 mb-1.5">
-                <h3 class="text-white text-4xl font-black tracking-tight leading-none">연간 PASS</h3>
+          <div class="premium-card rounded-3xl relative"
+               id="pricing-spotlight-card"
+               data-glow
+               style="--base:220;--spread:180;--radius:24;--border:2;--size:300;--outer:1;box-shadow:0 0 0 4px rgba(59,130,246,0.06),0 40px 80px -16px rgba(0,0,0,0.95);">
+            <div data-glow></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-[22px]">
+
+              <!-- LEFT: 가격 영역 -->
+              <div class="px-7 py-7 flex flex-col justify-between" style="border-right:1px solid rgba(255,255,255,0.07);">
+                <div>
+                  <p class="text-blue-200/70 text-[28px] font-bold uppercase tracking-widest mb-3">연간 PASS</p>
+                  <p id="price-original" class="text-neutral-500 text-sm line-through mb-1">정가 ₩390,000</p>
+                  <div class="flex items-baseline gap-1 mb-1">
+                    <span class="text-blue-300/60 text-2xl font-black">₩</span>
+                    <span id="price-value" class="text-white font-black tracking-tighter leading-none" style="font-size:3.25rem;">190,000</span>
+                  </div>
+                  <p id="price-period" class="text-blue-200/40 text-sm font-medium mb-5">연간 1회 결제</p>
+                </div>
+                <div>
+                  <a href="#consulting" onclick="document.getElementById('consulting').scrollIntoView({behavior:'smooth'});return false;"
+                     class="btn-glass flex items-center justify-center gap-2 w-full py-3 px-6 rounded-2xl font-bold text-white text-sm mb-2.5" style="max-width:220px;margin-left:auto;margin-right:auto;">
+                    무료 상담 신청하기
+                  </a>
+                  <p class="text-center text-neutral-600 text-xs">24시간 내 답변 · 부담 없이 문의</p>
+                </div>
               </div>
-              <p class="text-blue-300/40 text-xs font-bold tracking-[0.22em] uppercase ml-1 mt-2">Annual Management Pass</p>
-            </div>
 
-            <!-- 가격 -->
-            <div class="mb-7 pb-7" style="border-bottom: 1px solid rgba(255,255,255,0.08);">
-              <p class="text-neutral-500 text-base line-through mb-2">정가 ₩390,000</p>
-              <div class="flex items-end gap-1">
-                <span class="text-white/50 text-xl font-black self-start mt-1">₩</span>
-                <span class="text-white text-3xl font-black tracking-tighter leading-none">190,000</span>
-              </div>
-              <p class="text-blue-200/45 text-sm mt-3">연간 1회 결제 · 월 환산 약 15,800원</p>
-            </div>
-
-            <!-- 기능 2열 (3개씩) -->
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
-              <!-- 제작 & 배포 -->
-              <div>
-                <p class="text-blue-300/40 text-[11px] font-bold tracking-[0.18em] uppercase mb-4">🏷 제작 &amp; 배포</p>
-                <ul class="space-y-3">
-                  <li class="flex items-start gap-2.5 text-sm text-blue-100/75">
-                    <svg class="w-4 h-4 text-emerald-400 flex-none mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                    맞춤형 학원 홈페이지 제작
+              <!-- RIGHT: 포함 내역 -->
+              <div class="px-7 py-7 flex flex-col justify-center">
+                <ul class="space-y-4">
+                  <li class="flex items-start gap-3">
+                    <svg class="w-4 h-4 text-emerald-400 flex-none mt-[1px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                    <div>
+                      <p class="text-white text-sm font-semibold leading-snug">맞춤형 학원 홈페이지 제작</p>
+                      <p class="text-neutral-500 text-xs leading-snug">학원 분위기·커리큘럼 반영, 모바일 최적화</p>
+                    </div>
                   </li>
-                  <li class="flex items-start gap-2.5 text-sm text-blue-100/75">
-                    <svg class="w-4 h-4 text-emerald-400 flex-none mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                    도메인(URL) 구매 및 설정 포함
+                  <li class="flex items-start gap-3">
+                    <svg class="w-4 h-4 text-emerald-400 flex-none mt-[1px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                    <div>
+                      <p class="text-white text-sm font-semibold leading-snug">도메인 구매 · 배포 전 과정 대행</p>
+                      <p class="text-neutral-500 text-xs leading-snug">학원 이름 도메인 연결, 서버 세팅 포함</p>
+                    </div>
                   </li>
-                  <li class="flex items-start gap-2.5 text-sm text-blue-100/75">
-                    <svg class="w-4 h-4 text-emerald-400 flex-none mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                    웹 서버 배포 및 공개
+                  <li class="flex items-start gap-3">
+                    <svg class="w-4 h-4 text-emerald-400 flex-none mt-[1px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                    <div>
+                      <p class="text-white text-sm font-semibold leading-snug">월 1회 무료 콘텐츠 업데이트</p>
+                      <p class="text-neutral-500 text-xs leading-snug">시간표·공지·이벤트 배너 등 빠른 반영</p>
+                    </div>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg class="w-4 h-4 text-emerald-400 flex-none mt-[1px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                    <div>
+                      <p class="text-white text-sm font-semibold leading-snug">카카오톡 요청 → 빠른 반영</p>
+                      <p class="text-neutral-500 text-xs leading-snug">메시지 하나로 수정 요청, 복잡한 절차 없음</p>
+                    </div>
                   </li>
                 </ul>
               </div>
-              <!-- 운영 & 업데이트 -->
-              <div>
-                <p class="text-blue-300/40 text-[11px] font-bold tracking-[0.18em] uppercase mb-4">🔄 운영 &amp; 업데이트</p>
-                <ul class="space-y-3">
-                  <li class="flex items-start gap-2.5 text-sm text-blue-100/75">
-                    <svg class="w-4 h-4 text-emerald-400 flex-none mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                    월 1회 무료 콘텐츠 업데이트
-                  </li>
-                  <li class="flex items-start gap-2.5 text-sm text-blue-100/75">
-                    <svg class="w-4 h-4 text-emerald-400 flex-none mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                    시간표 · 공지 · 이벤트 수정
-                  </li>
-                  <li class="flex items-start gap-2.5 text-sm text-blue-100/75">
-                    <svg class="w-4 h-4 text-emerald-400 flex-none mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                    카카오톡 요청 → 빠른 반영
-                  </li>
-                </ul>
-              </div>
-            </div>
 
-            <!-- CTA 버튼 -->
-            <div class="mt-8 pt-7" style="border-top: 1px solid rgba(255,255,255,0.08);">
-              <a href="http://pf.kakao.com/_lRxfTX/chat" target="_blank" rel="noopener noreferrer"
-                 class="btn-kakao flex items-center justify-center gap-3 w-full py-4 rounded-2xl" style="box-shadow:none;">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 3C6.477 3 2 6.477 2 10.5c0 2.611 1.574 4.91 3.963 6.315l-1.01 3.737a.375.375 0 0 0 .55.415L9.74 18.61A11.6 11.6 0 0 0 12 18c5.523 0 10-3.477 10-7.5S17.523 3 12 3z"/>
-                </svg>
-                <span class="text-base font-black text-yellow-900">지금 무료 상담 신청하기</span>
-              </a>
-              <p class="text-center text-neutral-600 text-xs mt-3">카카오톡으로 연결 · 24시간 내 답변</p>
             </div>
-
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
   <!-- =====================================================
-       SECTION 8 — FINAL CTA + FOOTER
+       SECTION 5 — FAQ
   ====================================================== -->
-  <section id="footer-cta" class="relative z-20 py-40 px-6 bg-neutral-900 overflow-hidden">
-    <div class="absolute inset-0 bg-grid opacity-30 pointer-events-none"></div>
+  <section id="faq" class="relative z-20 py-32 px-6 bg-neutral-900">
+    <div class="max-w-5xl mx-auto">
 
-    <div class="max-w-3xl mx-auto text-center relative z-10 reveal-block">
-      <h2 class="text-3xl md:text-5xl font-black text-white tracking-tighter mb-6 leading-tight">
-        원장님은 <span style="-webkit-text-fill-color: #60A5FA;">교육</span>에만 집중하세요,<br><span style="-webkit-text-fill-color: #BAE6FD;">홈페이지</span> 관리는 저희가 합니다.
-      </h2>
-      <p class="text-neutral-400 text-lg md:text-xl mb-14 max-w-xl mx-auto leading-relaxed">
-        무료 상담을 통해 원장님의 학원에 딱 맞는<br class="md:hidden"> 홈페이지를 제안드립니다.<br>지금 바로 연락주시면 24시간 내 답변 드립니다.
-      </p>
+      <div class="flex flex-col lg:flex-row items-start justify-center gap-10 lg:gap-16">
 
-      <div class="flex justify-center mb-20">
-        <a href="http://pf.kakao.com/_lRxfTX/chat" target="_blank" rel="noopener noreferrer" class="btn-kakao flex items-center justify-center gap-4 px-12 py-5 rounded-[1.5rem]">
-          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 3C6.477 3 2 6.477 2 10.5c0 2.611 1.574 4.91 3.963 6.315l-1.01 3.737a.375.375 0 0 0 .55.415L9.74 18.61A11.6 11.6 0 0 0 12 18c5.523 0 10-3.477 10-7.5S17.523 3 12 3z"/>
-          </svg>
-          <div class="text-left">
-            <div class="text-xs font-bold tracking-wider text-yellow-900/70 uppercase">무료 상담 신청</div>
-            <div class="text-2xl font-black leading-none text-yellow-900">카카오톡 채널</div>
-          </div>
-        </a>
+        <!-- LEFT: 제목 + 소제목 + CTA -->
+        <div class="faq-left-col flex-none w-full lg:w-[460px] text-center lg:text-left reveal-block">
+          <span class="text-brand text-xs font-bold uppercase tracking-[0.2em] mb-5 block opacity-80">FAQ</span>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-8 leading-tight">
+            자주 묻는 질문
+          </h2>
+          <p class="text-neutral-400 text-base leading-relaxed mb-10 mx-auto lg:mx-0" style="max-width:460px;">
+            홈페이지 제작 기간, 비용 구조, 도메인 연결 방법, 운영 중 수정 절차까지<br class="hidden lg:block" />
+            원장님들이 가장 많이 궁금해하시는 질문들을 한곳에 모았습니다.<br class="hidden lg:block" />
+            <br class="hidden lg:block" />
+            처음 문의하시는 분도 부담 없이 시작하실 수 있도록, 궁금한 점은 무엇이든 편하게 물어봐 주세요.
+            카카오톡으로 문의하시면 <span class="text-white font-medium">평균 2시간 이내</span>로 답변드립니다.
+          </p>
+          <a href="http://pf.kakao.com/_lRxfTX/chat" target="_blank" rel="noopener noreferrer"
+             class="faq-kakao-badge inline-flex items-center gap-2.5 mx-auto lg:mx-0">
+            <!-- KakaoTalk bubble icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="faq-kakao-icon">
+              <path d="M12 3C6.477 3 2 6.477 2 10.5c0 2.514 1.505 4.73 3.793 6.098L4.75 21l4.688-2.848A11.9 11.9 0 0012 18.5c5.523 0 10-3.477 10-7.5S17.523 3 12 3z"/>
+            </svg>
+            카카오톡으로 직접 문의하기
+          </a>
+        </div>
+
+        <!-- RIGHT: 세로 폰 목업 -->
+        <div class="flex-none flex justify-center" id="faq-phone-wrapper" style="perspective:1000px;">
+          <div class="faq-phone-frame" id="faq-phone-frame">
+            <!-- Hardware buttons (explicit elements for realism) -->
+            <div class="faq-btn-action"   aria-hidden="true"></div>
+            <div class="faq-btn-vol-up"   aria-hidden="true"></div>
+            <div class="faq-btn-vol-down" aria-hidden="true"></div>
+            <div class="faq-btn-power"    aria-hidden="true"></div>
+            <!-- Screen surface glare -->
+            <div class="faq-screen-glare" aria-hidden="true"></div>
+            <div class="faq-phone-screen">
+
+              <!-- Dynamic island -->
+              <div class="faq-phone-island"></div>
+
+              <!-- Status bar -->
+              <div class="faq-status-bar">
+                <span class="faq-status-time">9:41</span>
+                <div class="faq-status-icons">
+                  <svg width="14" height="10" viewBox="0 0 14 10" fill="white">
+                    <rect x="0"    y="5.5" width="2.5" height="4.5" rx="0.5" opacity="0.35"/>
+                    <rect x="3.8"  y="3.2" width="2.5" height="6.8" rx="0.5" opacity="0.6"/>
+                    <rect x="7.6"  y="1.5" width="2.5" height="8.5" rx="0.5" opacity="0.8"/>
+                    <rect x="11.4" y="0"   width="2.5" height="10"  rx="0.5"/>
+                  </svg>
+                  <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="white" stroke-width="1.4" stroke-linecap="round">
+                    <path d="M1.2 4.8C2.8 3.1 5 2 7 2s4.2 1.1 5.8 2.8" opacity="0.35"/>
+                    <path d="M3.4 6.5C4.4 5.4 5.6 4.8 7 4.8s2.6.6 3.6 1.7" opacity="0.65"/>
+                    <circle cx="7" cy="9.2" r="0.9" fill="white" stroke="none"/>
+                  </svg>
+                  <div class="faq-battery">
+                    <div class="faq-battery-level"></div>
+                    <div class="faq-battery-nub"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Chat header -->
+              <div class="faq-chat-header">
+                <div class="faq-chat-back">
+                  <svg width="7" height="12" viewBox="0 0 7 12" fill="none" stroke="#93C5FD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 1L1 6l5 5"/>
+                  </svg>
+                </div>
+                <div class="faq-chat-avatar">SW</div>
+                <div class="faq-chat-info">
+                  <p class="faq-chat-name">SubWeb</p>
+                  <p class="faq-chat-online"><span class="faq-online-dot"></span>온라인</p>
+                </div>
+                <div class="faq-chat-actions">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-linecap="round">
+                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .9h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.73a16 16 0 006.18 6.18l1.2-1.2a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                  </svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-linecap="round">
+                    <circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Messages -->
+              <div class="faq-messages">
+                <div class="faq-bot-row">
+                  <div class="faq-msg-avatar">SW</div>
+                  <div class="faq-bot-bubble">
+                    <p class="faq-bubble-text">궁금하신 항목을 눌러 확인해 보세요 😊</p>
+                  </div>
+                </div>
+                <div class="faq-user-row" id="faq-phone-q">
+                  <div class="faq-user-bubble">
+                    <p class="faq-bubble-text" id="faq-question-text"></p>
+                  </div>
+                </div>
+                <div class="faq-bot-row" id="faq-phone-a">
+                  <div class="faq-msg-avatar">SW</div>
+                  <div class="faq-bot-bubble">
+                    <p class="faq-bubble-text" id="faq-answer-text"></p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion FAQ -->
+              <div class="faq-accordion" id="faq-accordion"></div>
+
+              <!-- Input bar -->
+              <!-- Home indicator -->
+              <div class="faq-home-bar"></div>
+
+            </div><!-- /faq-phone-screen -->
+          </div><!-- /faq-phone-frame -->
+        </div>
+
       </div>
 
-      <!-- Footer Nav -->
-      <div class="border-t border-white/5 pt-12">
+    </div>
+  </section>
 
-        <!-- Brand -->
+  <!-- =====================================================
+       SECTION 8 — CONSULTING FORM + FOOTER
+  ====================================================== -->
+  <section id="consulting" class="relative z-20 bg-neutral-950" style="padding-top:12vh;">
+
+    <!-- ── Scroll-driven zone (tall = room to scrub) ── -->
+    <div id="consulting-scroll" style="height:200vh;position:relative;">
+      <div id="consulting-sticky"
+           style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:80px 24px 0;">
+
+        <!-- Radial blue glow -->
+        <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 45% at 50% 0%,rgba(59,130,246,0.08) 0%,transparent 65%);"></div>
+
+        <!-- Section heading -->
+        <div id="consulting-header" style="text-align:center;position:relative;z-index:10;margin-bottom:20px;max-width:560px;width:100%;">
+          <span style="display:block;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:#3B82F6;opacity:0.8;margin-bottom:0.4rem;">Free Consulting</span>
+          <h2 style="font-size:clamp(1.5rem,3.2vw,2.6rem);font-weight:700;letter-spacing:-0.01em;line-height:1.15;margin-bottom:0.5rem;">
+            <span style="color:#fff;display:block;">원장님은 교육에만,</span>
+            <span style="display:block;color:#93C5FD;">나머지는 저희가.</span>
+          </h2>
+          <p style="color:#737373;font-size:0.85rem;line-height:1.6;">
+            홈페이지 제작부터 도메인, 운영까지 모든 과정을 대신합니다.<br>
+            아래 폼으로 신청하시면 24시간 내에 연락드립니다.
+          </p>
+        </div>
+
+        <!-- Perspective wrapper -->
+        <div style="width:100%;max-width:1033px;perspective:1530px;position:relative;z-index:10;">
+
+          <!-- Tablet frame -->
+          <div id="consulting-tablet" class="consulting-tablet-frame">
+
+            <!-- Physical hardware details -->
+            <div class="consulting-btn-power"    aria-hidden="true"></div>
+            <div class="consulting-btn-vol-up"   aria-hidden="true"></div>
+            <div class="consulting-btn-vol-down" aria-hidden="true"></div>
+            <div class="consulting-btn-home"     aria-hidden="true"></div>
+            <div class="consulting-faceid"       aria-hidden="true"></div>
+
+            <!-- Top bezel (thin long edge) -->
+            <div class="consulting-bezel-top"></div>
+
+            <!-- Screen -->
+            <div class="consulting-screen">
+
+              <!-- Left: Gmail sidebar -->
+              <div class="consulting-panel-left gmail-sidebar">
+                <div class="gmail-logo-row">
+                  <img src="subweb.svg" width="108" height="43" alt="SubWeb" style="display:block;" />
+                </div>
+                <button class="gmail-compose-btn" type="button">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                  <span>작성</span>
+                </button>
+                <nav class="gmail-nav">
+                  <div class="gmail-nav-item gmail-nav-active">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H4.99c-1.11 0-1.98.89-1.98 2L3 19c0 1.11.88 2 1.99 2H19c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 12h-4c0 1.66-1.35 3-3 3s-3-1.34-3-3H4.99V5H19v10z"/></svg>
+                    <span>받은편지함</span>
+                    <span class="gmail-badge">3</span>
+                  </div>
+                  <div class="gmail-nav-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <span>별표편지함</span>
+                  </div>
+                  <div class="gmail-nav-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                    <span>보낸편지함</span>
+                  </div>
+                  <div class="gmail-nav-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8v2H5v14h14v-6h2v8H3V3zm10 0h8v8h-2V6.4l-9.3 9.3-1.4-1.4L18.6 5H13V3z"/></svg>
+                    <span>임시보관함</span>
+                    <span class="gmail-badge">1</span>
+                  </div>
+                </nav>
+                <div class="gmail-sidebar-sep"></div>
+                <div class="gmail-sidebar-section-label">카카오 채널</div>
+                <a href="http://pf.kakao.com/_lRxfTX/chat" target="_blank" rel="noopener noreferrer"
+                   class="gmail-kakao-channel-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#3A1D1D">
+                    <path d="M12 3C6.477 3 2 6.477 2 10.5c0 2.611 1.574 4.91 3.963 6.315l-1.01 3.737a.375.375 0 0 0 .55.415L9.74 18.61A11.6 11.6 0 0 0 12 18c5.523 0 10-3.477 10-7.5S17.523 3 12 3z"/>
+                  </svg>
+                  카카오톡 채널 연결하기
+                </a>
+              </div>
+
+              <!-- Right: Gmail main -->
+              <div class="consulting-panel-right gmail-main">
+
+                <!-- Topbar -->
+                <div class="gmail-topbar">
+                  <button class="gmail-hamburger-btn" type="button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#5f6368"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+                  </button>
+                  <div class="gmail-search-input-wrap">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#5f6368"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                    <span>메일 검색</span>
+                  </div>
+                  <div class="gmail-topbar-right">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#5f6368"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+                    <div class="gmail-avatar">원</div>
+                  </div>
+                </div>
+
+                <!-- Content area -->
+                <div class="gmail-content-area">
+
+                  <!-- Inbox (background) -->
+                  <div class="gmail-inbox">
+                    <div class="gmail-inbox-toolbar-row">
+                      <div class="gmail-inbox-check"></div>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="#5f6368"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="#5f6368"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                    </div>
+                    <div class="gmail-inbox-row gmail-inbox-unread">
+                      <div class="gmail-inbox-check"></div>
+                      <svg class="gmail-inbox-star-icon" width="16" height="16" viewBox="0 0 24 24" fill="#f4b400"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      <span class="gmail-inbox-sender">SubWeb 팀</span>
+                      <span class="gmail-inbox-subject">상담 신청 확인 — 안녕하세요, 신청해 주셔서 감사합니다. 24시간 내에...</span>
+                      <span class="gmail-inbox-time">오전 10:24</span>
+                    </div>
+                    <div class="gmail-inbox-row gmail-inbox-unread">
+                      <div class="gmail-inbox-check"></div>
+                      <svg class="gmail-inbox-star-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      <span class="gmail-inbox-sender">SubWeb</span>
+                      <span class="gmail-inbox-subject">무료 상담 일정 안내 — 선택하신 시간에 맞춰 담당자가 연락드리겠습니다...</span>
+                      <span class="gmail-inbox-time">어제</span>
+                    </div>
+                    <div class="gmail-inbox-row">
+                      <div class="gmail-inbox-check"></div>
+                      <svg class="gmail-inbox-star-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      <span class="gmail-inbox-sender">SubWeb</span>
+                      <span class="gmail-inbox-subject">홈페이지 리뉴얼 완료 — 새 홈페이지가 성공적으로 오픈되었습니다. 확인...</span>
+                      <span class="gmail-inbox-time">6월 1일</span>
+                    </div>
+                  </div>
+
+                  <!-- Compose window -->
+                  <div class="gmail-compose-window">
+                    <div class="gmail-compose-header">
+                      <span class="gmail-compose-title">새 메시지</span>
+                      <div class="gmail-compose-header-btns">
+                        <button type="button" class="gmail-compose-header-btn">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13H5v-2h14v2z"/></svg>
+                        </button>
+                        <button type="button" class="gmail-compose-header-btn">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3v18h18V3zm-2 16H5V5h14v14z"/></svg>
+                        </button>
+                        <button type="button" class="gmail-compose-header-btn">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                        </button>
+                      </div>
+                    </div>
+                    <form id="consulting-form" style="flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;">
+                      <div class="gmail-compose-to-row">
+                        <span class="gmail-compose-field-label">받는사람</span>
+                        <div class="gmail-to-chip">
+                          <span>subweb@subweb.co.kr</span>
+                          <button type="button" class="gmail-to-chip-x">✕</button>
+                        </div>
+                        <span class="gmail-cc-bcc">참조&nbsp;&nbsp;숨은참조</span>
+                      </div>
+                      <div class="gmail-compose-divider"></div>
+                      <div class="gmail-subject-static">무료 상담 신청</div>
+                      <div class="gmail-compose-divider"></div>
+                      <div class="gmail-compose-body-area">
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+                          <div>
+                            <div class="gmail-form-label">학원명 <span style="color:#d93025;">*</span></div>
+                            <input type="text" name="academy_name" class="gmail-form-input" placeholder="OO 수학학원" required />
+                          </div>
+                          <div>
+                            <div class="gmail-form-label">학원 과목</div>
+                            <select name="subject" class="gmail-form-input gmail-form-select">
+                              <option value="">과목 선택</option>
+                              <option value="수학">수학</option>
+                              <option value="영어">영어</option>
+                              <option value="과학">과학</option>
+                              <option value="국어">국어</option>
+                              <option value="입시종합">입시종합</option>
+                              <option value="예체능">예체능</option>
+                              <option value="기타">기타</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+                          <div>
+                            <div class="gmail-form-label">연락처 <span style="color:#d93025;">*</span></div>
+                            <input type="tel" name="phone" class="gmail-form-input" placeholder="010-0000-0000" required />
+                          </div>
+                          <div>
+                            <div class="gmail-form-label">참고 사이트</div>
+                            <input type="url" name="reference_site" class="gmail-form-input" placeholder="https://example.com" />
+                          </div>
+                        </div>
+                        <div class="gmail-form-label" style="margin-bottom:4px;">문의 내용</div>
+                        <textarea name="message" class="gmail-form-textarea" placeholder="문의하실 내용을 자유롭게 작성해주세요."></textarea>
+                      </div>
+                      <div class="gmail-compose-toolbar-row">
+                        <button type="submit" id="form-submit-btn" class="gmail-send-btn">보내기</button>
+                        <div style="display:flex;align-items:center;gap:2px;">
+                          <button type="button" class="gmail-toolbar-icon-btn" title="굵게">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M15.6 10.79c.97-.67 1.65-1.77 1.65-2.79 0-2.26-1.75-4-4-4H7v14h7.04c2.09 0 3.71-1.7 3.71-3.79 0-1.52-.86-2.82-2.15-3.42zM10 6.5h3c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-3v-3zm3.5 9H10v-3h3.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5z"/></svg>
+                          </button>
+                          <button type="button" class="gmail-toolbar-icon-btn" title="기울임">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M10 4v3h2.21l-3.42 8H6v3h8v-3h-2.21l3.42-8H18V4z"/></svg>
+                          </button>
+                          <button type="button" class="gmail-toolbar-icon-btn" title="밑줄">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17c3.31 0 6-2.69 6-6V3h-2.5v8c0 1.93-1.57 3.5-3.5 3.5S8.5 12.93 8.5 11V3H6v8c0 3.31 2.69 6 6 6zm-7 2v2h14v-2H5z"/></svg>
+                          </button>
+                          <div class="gmail-toolbar-divider"></div>
+                          <button type="button" class="gmail-toolbar-icon-btn" title="파일 첨부">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5a2.5 2.5 0 015 0v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5a2.5 2.5 0 005 0V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6h-1.5z"/></svg>
+                          </button>
+                          <button type="button" class="gmail-toolbar-icon-btn" title="링크">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+                          </button>
+                        </div>
+                        <button type="button" class="gmail-toolbar-trash-btn">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                        </button>
+                      </div>
+                    </form>
+                    <div id="form-success" class="hidden gmail-success-state">
+                      <div style="width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;background:#e6f4ea;border:1px solid #81c995;">
+                        <svg width="26" height="26" fill="none" stroke="#1a73e8" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                      </div>
+                      <h4 style="color:#202124;font-weight:600;font-size:16px;margin-bottom:6px;">메일이 전송되었습니다!</h4>
+                      <p style="color:#5f6368;font-size:13px;line-height:1.65;">24시간 내에 담당자가<br>직접 연락드리겠습니다.</p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom bezel -->
+            <div class="consulting-bezel-bottom"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer Nav -->
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+      <div class="border-t border-white/5 pt-8 pb-4 text-center">
         <div class="flex items-center justify-center gap-2 mb-3">
-          <span class="text-white text-xl font-black tracking-tight">SubWeb</span>
+          <span class="text-white text-xl font-black tracking-tight">Sub<span style="color:#93C5FD;">Web</span></span>
         </div>
         <p class="text-neutral-600 text-sm mb-8">도메인부터 운영까지, 학원 홈페이지 올인원 구독 서비스</p>
-
-        <!-- Nav Links -->
-        <div class="flex flex-wrap justify-center gap-6 mb-10">
-          <a href="#features" class="text-neutral-500 text-sm hover:text-neutral-300 transition-colors">FEATURES</a>
-          <a href="#how-it-works" class="text-neutral-500 text-sm hover:text-neutral-300 transition-colors">HOW IT WORKS</a>
-          <a href="#pricing" class="text-neutral-500 text-sm hover:text-neutral-300 transition-colors">PRICING</a>
-          <a href="http://pf.kakao.com/_lRxfTX/chat" target="_blank" rel="noopener noreferrer" class="text-neutral-500 text-sm hover:text-neutral-300 transition-colors">CONSULTING</a>
-        </div>
-
-        <!-- Divider -->
         <div class="border-t border-white/5 pt-8">
           <p class="text-neutral-700 text-xs">© 2026 SubWeb. All rights reserved.</p>
         </div>
       </div>
     </div>
+
   </section>
 
   <!-- =====================================================
@@ -747,13 +963,19 @@
         <span class="nav-label">PRICING</span>
       </button>
 
-      <a href="http://pf.kakao.com/_lRxfTX/chat" target="_blank" rel="noopener noreferrer"
-         class="nav-btn nav-kakao" data-section="footer-cta" aria-label="무료 상담">
+      <button class="nav-btn" data-target="#faq" aria-label="자주 묻는 질문">
+        <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span class="nav-label">FAQ</span>
+      </button>
+
+      <button class="nav-btn" data-target="#consulting" aria-label="상담 신청">
         <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 3C6.477 3 2 6.477 2 10.5c0 2.611 1.574 4.91 3.963 6.315l-1.01 3.737a.375.375 0 0 0 .55.415L9.74 18.61A11.6 11.6 0 0 0 12 18c5.523 0 10-3.477 10-7.5S17.523 3 12 3z"/>
         </svg>
         <span class="nav-label">CONSULTING</span>
-      </a>
+      </button>
 
     </nav>
   </div>
