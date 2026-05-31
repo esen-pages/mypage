@@ -358,18 +358,18 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
     if (isAnnual) {
       btn.style.background   = 'rgba(59,130,246,0.85)';
       thumb.style.transform  = 'translateX(22px)';
-      val.textContent        = '190,000';
+      val.textContent        = '140,000';
       period.textContent     = '연간 1회 결제';
-      orig.textContent       = '정가 ₩390,000';
+      orig.textContent       = '정가 ₩240,000';
       orig.style.visibility  = 'visible';
       lblM.style.color       = '';
       lblA.style.color       = '#93C5FD';
     } else {
       btn.style.background   = 'rgba(82,82,82,0.6)';
       thumb.style.transform  = 'translateX(2px)';
-      val.textContent        = '15,800';
+      val.textContent        = '11,600';
       period.textContent     = '월 환산 기준 (연간 결제 시)';
-      orig.textContent       = '정가 ₩32,500/월';
+      orig.textContent       = '정가 ₩20,000/월';
       orig.style.visibility  = 'visible';
       lblM.style.color       = '#93C5FD';
       lblA.style.color       = '';
@@ -530,15 +530,15 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
 }());
 
 /* ====================================================
-   13. Consulting Form Submission
-   ⚠️  Formspree 설정: formspree.io 에서 폼을 만들고
-       아래 FORMSPREE_URL의 YOUR_FORM_ID를 교체하세요.
+   13. Consulting Form Submission — Google Sheets 연동
+   ⚠️  설정: Google Apps Script 배포 후 아래 URL을 교체하세요.
+       배포 주소 형식: https://script.google.com/macros/s/.../exec
 ==================================================== */
 (function () {
   const form = document.getElementById('consulting-form');
   if (!form) return;
 
-  const FORMSPREE_URL = 'https://formspree.io/f/YOUR_FORM_ID';
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxbCh3P13FygLsDULPnHIHtdLZlzN_Ej9J6gdCaorQrSRA8YVDkhqTvVcN9JY98GYovBg/exec';
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -548,19 +548,23 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
     btn.disabled = true;
     btn.innerHTML = '<span style="opacity:0.7">전송 중...</span>';
 
+    // FormData → 일반 객체로 변환 후 JSON 전송
+    const payload = {};
+    new FormData(form).forEach((val, key) => { payload[key] = val; });
+
     try {
-      const res = await fetch(FORMSPREE_URL, {
+      await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
+        // Apps Script는 no-cors 환경에서 CORS 헤더를 내려주지 않으므로
+        // mode:'no-cors'로 요청하고 응답 본문 대신 타임아웃으로 성공 판단
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       });
 
-      if (res.ok) {
-        form.style.display = 'none';
-        document.getElementById('form-success').classList.remove('hidden');
-      } else {
-        throw new Error('submission failed');
-      }
+      // no-cors 특성상 res.ok를 확인할 수 없어 요청 완료 자체를 성공으로 처리
+      form.style.display = 'none';
+      document.getElementById('form-success').classList.remove('hidden');
     } catch {
       btn.disabled = false;
       btn.innerHTML = originalHTML;
