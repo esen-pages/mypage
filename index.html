@@ -851,8 +851,8 @@
                             <input type="text" name="academy_name" class="gmail-form-input" placeholder="OO 수학학원" required maxlength="50" />
                           </div>
                           <div>
-                            <div class="gmail-form-label">학원 과목</div>
-                            <select name="subject" class="gmail-form-input gmail-form-select">
+                            <div class="gmail-form-label">학원 과목 <span style="color:#d93025;">*</span></div>
+                            <select name="subject" class="gmail-form-input gmail-form-select" required>
                               <option value="">과목 선택</option>
                               <option value="수학">수학</option>
                               <option value="영어">영어</option>
@@ -870,8 +870,8 @@
                             <input type="tel" name="phone" class="gmail-form-input" placeholder="010-0000-0000" required maxlength="20" pattern="[0-9\-]{9,20}" title="숫자와 하이픈만 입력 가능합니다 (예: 010-0000-0000)" />
                           </div>
                           <div>
-                            <div class="gmail-form-label">참고 사이트</div>
-                            <input type="url" name="reference_site" class="gmail-form-input" placeholder="https://example.com" maxlength="200" />
+                            <div class="gmail-form-label">참고 사이트 <span style="color:#888;font-weight:400;">(선택)</span></div>
+                            <input type="text" name="reference_site" class="gmail-form-input" placeholder="https://example.com" maxlength="200" />
                           </div>
                         </div>
                         <div class="gmail-form-label" style="margin-bottom:4px;">문의 내용</div>
