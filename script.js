@@ -360,7 +360,7 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
       thumb.style.transform  = 'translateX(22px)';
       val.textContent        = '140,000';
       period.textContent     = '연간 1회 결제';
-      orig.textContent       = '정가 ₩240,000';
+      orig.textContent       = '정가 ₩230,000';
       orig.style.visibility  = 'visible';
       lblM.style.color       = '';
       lblA.style.color       = '#93C5FD';
@@ -558,7 +558,7 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
         // Apps Script는 no-cors 환경에서 CORS 헤더를 내려주지 않으므로
         // mode:'no-cors'로 요청하고 응답 본문 대신 타임아웃으로 성공 판단
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify(payload)
       });
 
