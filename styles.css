@@ -833,6 +833,25 @@
   display: none;
 }
 
+/* Small screen: scale down phone frame */
+@media (max-width: 374px) {
+  .faq-phone-frame {
+    width: 280px;
+    height: 566px;
+  }
+  .faq-screen-glare {
+    inset: 12px;
+    border-radius: 36px;
+  }
+  .faq-phone-screen {
+    border-radius: 36px;
+  }
+  .faq-phone-island {
+    width: 95px;
+    height: 26px;
+  }
+}
+
 /* Home indicator */
 .faq-home-bar {
   height: 22px;

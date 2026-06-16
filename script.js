@@ -555,6 +555,10 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
     // FormData → 일반 객체로 변환 후 JSON 전송
     const payload = {};
     new FormData(form).forEach((val, key) => { payload[key] = val; });
+    // 체크박스는 미체크 시 FormData에서 누락되므로 명시적으로 O/X 세팅
+    form.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      payload[cb.name] = cb.checked ? 'O' : 'X';
+    });
 
     try {
       await fetch(APPS_SCRIPT_URL, {
