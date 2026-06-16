@@ -553,13 +553,10 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
     btn.innerHTML = '<span style="opacity:0.7">전송 중...</span>';
 
     // FormData → 일반 객체로 변환 후 JSON 전송
+    // 체크박스: 체크 시 FormData에 포함(truthy), 미체크 시 자동 제외(undefined→falsy)
+    // 앱스 스크립트의 data.google_sheet ? 'O' : 'X' 판단과 자연스럽게 호환
     const payload = {};
     new FormData(form).forEach((val, key) => { payload[key] = val; });
-    // 체크박스는 미체크 시 FormData에서 누락되므로 명시적으로 값 세팅
-    // 앱스 스크립트가 truthy/falsy로 판단하므로: 체크=value, 미체크=''
-    form.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-      payload[cb.name] = cb.checked ? cb.value : '';
-    });
 
     try {
       await fetch(APPS_SCRIPT_URL, {
