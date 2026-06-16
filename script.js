@@ -397,7 +397,7 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
     },
     {
       q: '홈페이지 내용을 수정하고 싶으면 어떻게 하나요?',
-      a: '카카오톡으로 수정 내용을 보내주시면 빠르게 반영해 드립니다. 구독 기간 내 <strong style="color:#fff;">월 1회 무료 업데이트</strong>가 포함되어 있으며, 시간표 변경, 공지사항, 이벤트 배너 등 대부분의 콘텐츠 수정이 가능합니다.',
+      a: '카카오톡으로 수정 내용을 보내주시면 빠르게 반영해 드립니다. 구독 기간 내 <strong style="color:#fff;">월 1회 무료 업데이트</strong>가 포함되어 있으며, 시간표 변경, 공지사항, 이벤트 배너 등 콘텐츠 수정·추가가 가능합니다. 단, <strong style="color:#fff;">디자인을 새롭게 변경하는 작업은 포함되지 않습니다.</strong>',
       short: '내용 수정'
     },
     {
@@ -406,14 +406,14 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
       short: '도메인 구매'
     },
     {
-      q: '어떤 종류의 학원에 적합한가요?',
-      a: '수학, 영어, 과학, 예체능, 입시 등 <strong style="color:#fff;">모든 종류의 학원</strong>에 적합합니다. 규모나 업력에 상관없이 학원 홍보와 상담 신청이 필요한 모든 학원 원장님을 위한 서비스입니다.',
-      short: '적합한 학원'
+      q: '가격이 저렴한 이유가 있나요?',
+      a: 'SubWeb은 불필요한 기능을 뺀 1페이지의 <strong style="color:#fff;">랜딩 페이지</strong>를 전문적으로 제작합니다. 한 가지에만 집중하기 때문에 제작 과정이 철저히 <strong style="color:#fff;">표준화</strong>되어 있고, 그 효율이 그대로 가격에 반영됩니다.',
+      short: '저렴한 가격'
     },
     {
-      q: '구독 기간 중 해지가 가능한가요?',
-      a: '네, 언제든지 해지하실 수 있습니다. 다만 연간 구독 특성상 중도 해지 시 환불 정책이 적용됩니다. 자세한 내용은 카카오톡 상담을 통해 안내해 드리겠습니다.',
-      short: '중도 해지'
+      q: '기능 추가는 어떻게 하나요?',
+      a: '<strong style="color:#fff;">모바일 반응형</strong>은 기본 플랜에 무료로 포함됩니다. <strong style="color:#fff;">구글 시트 연동</strong>(상담 신청 정보 자동 수집)은 일회성 비용 <strong style="color:#fff;">+1만원</strong>으로 추가하실 수 있습니다.',
+      short: '기능 추가'
     }
   ];
 
@@ -443,14 +443,9 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
       `<div class="faq-acc-body"><p>${item.q}</p></div>`;
 
     el.querySelector('.faq-acc-q').addEventListener('click', () => {
-      const isOpen = el.classList.contains('faq-acc-open');
-      // Close all
       accordion.querySelectorAll('.faq-acc-item.faq-acc-open').forEach(x => x.classList.remove('faq-acc-open'));
-      // Open this item and trigger chat
-      if (!isOpen) {
-        el.classList.add('faq-acc-open');
-        showFaq(i);
-      }
+      el.classList.add('faq-acc-open');
+      showFaq(i);
     });
 
     accordion.appendChild(el);
@@ -503,28 +498,37 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
   }
 
   function showFaq(index) {
-    if (animating || index === current) return;
+    if (animating) return;
     animating = true;
+    current = index;
 
-    qRow.classList.add('faq-msg-out');
-    aRow.classList.add('faq-msg-out');
+    // 사용자 질문 버블 생성
+    const newQRow = document.createElement('div');
+    newQRow.className = 'faq-user-row faq-msg-appear';
+    newQRow.innerHTML = `<div class="faq-user-bubble"><p class="faq-bubble-text">${faqData[index].q}</p></div>`;
+    msgs.appendChild(newQRow);
+    msgs.scrollTop = msgs.scrollHeight;
 
+    // 답변 버블 생성 (타이핑 표시)
     setTimeout(() => {
-      current = index;
-      qText.innerHTML = faqData[index].q;
-      qRow.classList.remove('faq-msg-out');
+      const newARow = document.createElement('div');
+      newARow.className = 'faq-bot-row faq-msg-appear';
+      newARow.innerHTML =
+        `<div class="faq-msg-avatar">SW</div>` +
+        `<div class="faq-bot-bubble"><p class="faq-bubble-text"></p></div>`;
+      msgs.appendChild(newARow);
+      msgs.scrollTop = msgs.scrollHeight;
 
-      aText.innerHTML = '<span class="faq-typing-dots"><span></span><span></span><span></span></span>';
-      aRow.classList.remove('faq-msg-out');
-      if (msgs) msgs.scrollTop = msgs.scrollHeight;
+      const newAText = newARow.querySelector('.faq-bubble-text');
+      newAText.innerHTML = '<span class="faq-typing-dots"><span></span><span></span><span></span></span>';
 
       setTimeout(() => {
-        typeHtml(aText, faqData[index].a, () => { animating = false; });
+        typeHtml(newAText, faqData[index].a, () => { animating = false; });
       }, 650);
-    }, 200);
+    }, 300);
   }
 
-  // Init — 아무 항목도 선택되지 않은 상태
+  // Init — 템플릿 행 숨김
   qRow.classList.add('faq-msg-out');
   aRow.classList.add('faq-msg-out');
 }());
@@ -667,9 +671,14 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
   const rotY = gsap.quickTo(frame, 'rotationY', { duration: 1.2, ease: 'power3.out' });
   const rotX = gsap.quickTo(frame, 'rotationX', { duration: 1.2, ease: 'power3.out' });
 
+  let overPhone = false;
+  wrapper.addEventListener('mouseenter', () => { overPhone = true; rotY(0); rotX(0); });
+  wrapper.addEventListener('mouseleave', () => { overPhone = false; });
+
   section.addEventListener('mousemove', (e) => {
-    rotY((e.clientX / window.innerWidth  - 0.5) * 10);
-    rotX((e.clientY / window.innerHeight - 0.5) * -10);
+    if (overPhone) return;
+    rotY((e.clientX / window.innerWidth  - 0.5) * 8.5);
+    rotX((e.clientY / window.innerHeight - 0.5) * -8.5);
   });
 
   section.addEventListener('mouseleave', () => {
