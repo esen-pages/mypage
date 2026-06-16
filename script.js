@@ -555,9 +555,10 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
     // FormData → 일반 객체로 변환 후 JSON 전송
     const payload = {};
     new FormData(form).forEach((val, key) => { payload[key] = val; });
-    // 체크박스는 미체크 시 FormData에서 누락되므로 명시적으로 O/X 세팅
+    // 체크박스는 미체크 시 FormData에서 누락되므로 명시적으로 값 세팅
+    // 앱스 스크립트가 truthy/falsy로 판단하므로: 체크=value, 미체크=''
     form.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-      payload[cb.name] = cb.checked ? 'O' : 'X';
+      payload[cb.name] = cb.checked ? cb.value : '';
     });
 
     try {
