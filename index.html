@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SubWeb - 학원 홈페이지 올인원 구독 서비스</title>
-  <meta name="description" content="제작·배포·운영까지 한 번에. 학원 원장님을 위한 맞춤 홈페이지 구독 서비스. 연 190,000원으로 시작하세요." />
+  <meta name="description" content="제작·배포·운영까지 한 번에. 학원 원장님을 위한 맞춤 홈페이지 구독 서비스. 연 15만원으로 시작하세요." />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="subweb.svg" />
@@ -12,7 +12,7 @@
   <!-- Open Graph (카카오톡·SNS 공유 미리보기) -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="SubWeb - 학원 홈페이지 올인원 구독 서비스" />
-  <meta property="og:description" content="제작·배포·운영까지 한 번에. 학원 원장님을 위한 맞춤 홈페이지 구독 서비스. 연 190,000원으로 시작하세요." />
+  <meta property="og:description" content="제작·배포·운영까지 한 번에. 학원 원장님을 위한 맞춤 홈페이지 구독 서비스. 연 15만원으로 시작하세요." />
   <meta property="og:image" content="og-image.svg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -353,7 +353,7 @@
             </svg>
           </div>
           <h3 class="text-lg font-bold text-white mb-3 leading-snug">부담 없는 초기 비용</h3>
-          <p class="text-neutral-400 text-sm leading-relaxed">고가의 제작비 없이 합리적인 연간 구독료로 시작할 수 있습니다. 신규 수강생 한 명으로 원금 회수가 가능한, 학원 운영에 딱 맞는 가격입니다.</p>
+          <p class="text-neutral-400 text-sm leading-relaxed">제작비 포함 첫해 29만원, 이후 연 15만원으로 운영할 수 있습니다. 신규 수강생 한 명으로 원금 회수가 가능한, 학원 운영에 딱 맞는 가격입니다.</p>
         </div>
 
         <!-- Feature Card 6 -->
@@ -454,92 +454,110 @@
           하나로 끝내는<br><span class="text-white">Sub</span><span style="color:#93C5FD">Web</span> 연간 PASS
         </h2>
         <p class="text-neutral-400 text-base md:text-lg max-w-lg mx-auto leading-relaxed">
-          신규 수강생 한 명으로 원금 회수 완료.<br>제작부터 운영까지 모두 포함된 단 하나의 플랜.
+          첫해 29만원으로 제작부터 운영까지, 이후 연 15만원으로 계속 운영.<br>신규 수강생 한 명으로 원금 회수 완료.
         </p>
       </div>
 
-      <!-- Billing Toggle -->
-      <div class="flex items-center justify-center gap-3 mb-10 reveal-block">
-        <span id="billing-label-monthly" class="text-sm font-medium text-neutral-500 cursor-pointer select-none" onclick="setBilling(false)">월 환산</span>
-        <button id="billing-toggle-btn" role="switch" aria-checked="true" onclick="toggleBilling()"
-          class="relative inline-flex items-center rounded-full flex-none"
-          style="width:44px;height:24px;background:rgba(59,130,246,0.85);transition:background 0.2s ease;cursor:pointer;border:none;padding:0;">
-          <span id="billing-thumb" class="block rounded-full bg-white"
-            style="width:20px;height:20px;transform:translateX(22px);transition:transform 0.2s ease;margin-left:2px;box-shadow:0 1px 4px rgba(0,0,0,0.3);"></span>
-        </button>
-        <span id="billing-label-annual" class="text-sm font-semibold cursor-pointer select-none" style="color:#93C5FD;" onclick="setBilling(true)">
-          연간 결제
-        </span>
-      </div>
 
-      <!-- Card — 가로로 넓게, 좌우 분리 레이아웃 -->
+      <!-- Card — 세로 레이아웃 -->
       <div class="flex justify-center reveal-block">
         <div class="relative w-full" style="max-width:720px;">
 
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-            <div class="flex items-center gap-1 px-3 py-0.5 rounded-full text-[11px] font-bold whitespace-nowrap"
-                 style="background:linear-gradient(90deg,#1d4ed8,#3b82f6);color:#fff;box-shadow:0 4px 16px rgba(59,130,246,0.4);">
-              <span>🎉</span><span>런칭 특가 · 선착순 10개</span>
+          <!-- 배지 1: 선착순 (우상단) — 외부: float, 내부: hover scale -->
+          <div class="pricing-badge-1 absolute z-20 hidden lg:block" style="top:-30px;right:-150px;">
+            <div class="pricing-badge-inner"
+                 style="position:relative;width:179px;height:179px;border-radius:50%;background:radial-gradient(circle at 40% 35%,rgba(0,18,48,0.98) 0%,rgba(8,8,14,0.98) 70%);border:1.5px solid rgba(147,197,253,0.5);box-shadow:0 0 28px rgba(147,197,253,0.22),0 0 0 4px rgba(147,197,253,0.05),0 12px 40px rgba(0,0,0,0.85);">
+              <!-- 상단: EVENT 라벨 -->
+              <p class="badge-event-label font-bold uppercase tracking-widest" style="font-size:0.72rem;color:rgba(147,197,253,0.55);letter-spacing:0.15em;">EVENT 1</p>
+              <!-- 중앙: 이모지 + 굵은 글씨 -->
+              <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-align:center;transform:translateY(-12px);">
+                <span style="font-size:1.32rem;line-height:1;">⚡</span>
+                <p class="font-black leading-tight" style="font-size:0.75rem;color:#93C5FD;">선착순 5명 한정</p>
+                <p class="font-black leading-none" style="font-size:1.1rem;color:#93C5FD;">제작비 무료</p>
+              </div>
+              <!-- 하단: 설명 -->
+              <p class="badge-desc-label leading-snug" style="font-size:0.64rem;color:rgba(147,197,253,0.45);">첫해 구매부터<br>연간 150,000원 유지</p>
+            </div>
+          </div>
+
+          <!-- 배지 2: 추천인 (좌하단) — 외부: float, 내부: hover scale -->
+          <div class="pricing-badge-2 absolute z-20 hidden lg:block" style="bottom:-55px;left:-160px;">
+            <div class="pricing-badge-inner"
+                 style="position:relative;width:179px;height:179px;border-radius:50%;background:radial-gradient(circle at 40% 35%,rgba(0,18,48,0.98) 0%,rgba(8,8,14,0.98) 70%);border:1.5px solid rgba(147,197,253,0.5);box-shadow:0 0 28px rgba(147,197,253,0.22),0 0 0 4px rgba(147,197,253,0.05),0 12px 40px rgba(0,0,0,0.85);">
+              <!-- 상단: EVENT 라벨 -->
+              <p class="badge-event-label font-bold uppercase tracking-widest" style="font-size:0.72rem;color:rgba(147,197,253,0.55);letter-spacing:0.15em;">EVENT 2</p>
+              <!-- 중앙: 이모지 + 굵은 글씨 -->
+              <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-align:center;transform:translateY(-12px);">
+                <span style="font-size:1.32rem;line-height:1;">🎁</span>
+                <p class="font-black leading-tight" style="font-size:0.75rem;color:#93C5FD;">추천인 이벤트</p>
+                <p class="font-black leading-none" style="font-size:1.1rem;color:#93C5FD;">각 ₩30,000</p>
+              </div>
+              <!-- 하단: 설명 -->
+              <p class="badge-desc-label leading-snug" style="font-size:0.64rem;color:rgba(147,197,253,0.45);">문의 시 추천 학원명 기재<br>기존 캐쉬백·신규 즉시 할인</p>
             </div>
           </div>
 
           <div class="premium-card rounded-3xl relative"
                id="pricing-spotlight-card"
                data-glow
-               style="--base:220;--spread:180;--radius:24;--border:2;--size:300;--outer:1;box-shadow:0 0 0 4px rgba(59,130,246,0.06),0 40px 80px -16px rgba(0,0,0,0.95);">
+               style="--base:220;--spread:180;--radius:24;--border:2;--size:380;--outer:1;">
             <div data-glow></div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-[22px]">
+            <div class="flex flex-col lg:flex-row overflow-hidden rounded-[22px]">
 
-              <!-- LEFT: 가격 영역 -->
-              <div class="px-7 py-7 flex flex-col justify-between" style="border-right:1px solid rgba(255,255,255,0.07);">
+              <!-- 좌측: 가격 + CTA -->
+              <div class="flex flex-col justify-between px-8 pt-8 pb-8 lg:w-[46%]">
                 <div>
-                  <p class="text-blue-200/70 text-[28px] font-bold uppercase tracking-widest mb-3">연간 PASS</p>
-                  <p id="price-original" class="text-neutral-500 text-sm line-through mb-1">정가 ₩230,000</p>
-                  <div class="flex items-baseline gap-1 mb-1">
-                    <span class="text-blue-300/60 text-2xl font-black">₩</span>
-                    <span id="price-value" class="text-white font-black tracking-tighter leading-none" style="font-size:3.25rem;">140,000</span>
+                  <p class="text-white text-2xl font-bold uppercase tracking-widest mb-4">Annual PASS</p>
+                  <div style="border-top:1px solid rgba(255,255,255,0.12);margin-bottom:1.5rem;"></div>
+                  <p class="text-neutral-400 text-sm mb-2">제작비 포함 첫해 한정: <span class="text-neutral-400">₩290,000</span></p>
+                  <div class="flex items-baseline gap-1 mb-1.5">
+                    <span class="text-blue-300/60 text-xl font-black">₩</span>
+                    <span class="text-white font-black tracking-tighter leading-none" style="font-size:3rem;">150,000</span>
+                    <span class="text-blue-300/40 text-lg font-bold">/년</span>
                   </div>
-                  <p id="price-period" class="text-blue-200/40 text-sm font-medium mb-5">연간 1회 결제</p>
                 </div>
-                <div>
+                <div class="mt-8">
                   <a href="#consulting" onclick="document.getElementById('consulting').scrollIntoView({behavior:'smooth'});return false;"
-                     class="btn-glass flex items-center justify-center gap-2 w-full py-3 px-6 rounded-2xl font-bold text-white text-sm mb-2.5" style="max-width:220px;margin-left:auto;margin-right:auto;">
+                     class="btn-glass flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl font-bold text-white text-sm mb-2.5">
                     무료 상담 신청하기
                   </a>
-                  <p class="text-center text-neutral-600 text-xs">24시간 내 답변 · 부담 없이 문의</p>
                 </div>
               </div>
 
-              <!-- RIGHT: 포함 내역 -->
-              <div class="px-7 py-7 flex flex-col justify-center">
-                <ul class="space-y-4">
-                  <li class="flex items-start gap-3">
-                    <svg class="w-4 h-4 text-emerald-400 flex-none mt-[1px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <!-- 수직 구분선 (데스크탑) / 수평 구분선 (모바일) -->
+              <div class="hidden lg:block flex-none" style="width:1px;background:rgba(255,255,255,0.07);margin:1.5rem 0;"></div>
+              <div class="lg:hidden" style="height:1px;background:rgba(255,255,255,0.07);"></div>
+
+              <!-- 우측: 포함 내역 (1열 4줄) -->
+              <div class="lg:w-[54%] px-8 py-8 flex flex-col justify-center" style="background:rgba(255,255,255,0.018);">
+                <ul class="space-y-5">
+                  <li class="flex items-start gap-4">
+                    <svg class="w-5 h-5 flex-none mt-0.5" fill="none" stroke="#a3e635" stroke-width="2.5" viewBox="0 0 24 24" style="filter:drop-shadow(0 0 5px rgba(163,230,53,0.8));"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                     <div>
-                      <p class="text-white text-sm font-semibold leading-snug">맞춤형 학원 홈페이지 제작</p>
-                      <p class="text-neutral-500 text-xs leading-snug">학원 분위기·커리큘럼 반영, 모바일 최적화</p>
+                      <p class="text-white font-semibold leading-snug">원장님 학원만의 맞춤 제작</p>
+                      <p class="text-neutral-500 text-sm leading-snug mt-0.5">분위기·커리큘럼 100% 반영, 모바일 완전 최적화</p>
                     </div>
                   </li>
-                  <li class="flex items-start gap-3">
-                    <svg class="w-4 h-4 text-emerald-400 flex-none mt-[1px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <li class="flex items-start gap-4">
+                    <svg class="w-5 h-5 flex-none mt-0.5" fill="none" stroke="#a3e635" stroke-width="2.5" viewBox="0 0 24 24" style="filter:drop-shadow(0 0 5px rgba(163,230,53,0.8));"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                     <div>
-                      <p class="text-white text-sm font-semibold leading-snug">도메인 구매 · 배포 전 과정 대행</p>
-                      <p class="text-neutral-500 text-xs leading-snug">학원 이름 도메인 연결, 서버 세팅 포함</p>
+                      <p class="text-white font-semibold leading-snug">도메인부터 서버 배포까지 100% 대행</p>
+                      <p class="text-neutral-500 text-sm leading-snug mt-0.5">학원 이름 그대로 주소 연결, 세팅 걱정 Zero</p>
                     </div>
                   </li>
-                  <li class="flex items-start gap-3">
-                    <svg class="w-4 h-4 text-emerald-400 flex-none mt-[1px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <li class="flex items-start gap-4">
+                    <svg class="w-5 h-5 flex-none mt-0.5" fill="none" stroke="#a3e635" stroke-width="2.5" viewBox="0 0 24 24" style="filter:drop-shadow(0 0 5px rgba(163,230,53,0.8));"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                     <div>
-                      <p class="text-white text-sm font-semibold leading-snug">월 1회 무료 콘텐츠 업데이트</p>
-                      <p class="text-neutral-500 text-xs leading-snug">시간표·공지·이벤트 배너 등 빠른 반영</p>
+                      <p class="text-white font-semibold leading-snug">월 1회 무료 업데이트 포함</p>
+                      <p class="text-neutral-500 text-sm leading-snug mt-0.5">시간표·공지·이벤트, 카톡으로 전달만 하면 끝</p>
                     </div>
                   </li>
-                  <li class="flex items-start gap-3">
-                    <svg class="w-4 h-4 text-emerald-400 flex-none mt-[1px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <li class="flex items-start gap-4">
+                    <svg class="w-5 h-5 flex-none mt-0.5" fill="none" stroke="#a3e635" stroke-width="2.5" viewBox="0 0 24 24" style="filter:drop-shadow(0 0 5px rgba(163,230,53,0.8));"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                     <div>
-                      <p class="text-white text-sm font-semibold leading-snug">카카오톡 요청 → 빠른 반영</p>
-                      <p class="text-neutral-500 text-xs leading-snug">메시지 하나로 수정 요청, 복잡한 절차 없음</p>
+                      <p class="text-white font-semibold leading-snug">카톡 하나로 무제한 수정 요청</p>
+                      <p class="text-neutral-500 text-sm leading-snug mt-0.5">언제든 메시지 하나로, 절차 없이 바로 처리</p>
                     </div>
                   </li>
                 </ul>
@@ -549,6 +567,7 @@
           </div>
         </div>
       </div>
+
 
     </div>
   </section>

@@ -342,43 +342,6 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
 /* ====================================================
    10. Pricing Billing Toggle
 ==================================================== */
-(function () {
-  let isAnnual = true;
-
-  function update() {
-    const btn   = document.getElementById('billing-toggle-btn');
-    const thumb = document.getElementById('billing-thumb');
-    const val   = document.getElementById('price-value');
-    const period= document.getElementById('price-period');
-    const orig  = document.getElementById('price-original');
-    const lblM  = document.getElementById('billing-label-monthly');
-    const lblA  = document.getElementById('billing-label-annual');
-    if (!btn) return;
-
-    if (isAnnual) {
-      btn.style.background   = 'rgba(59,130,246,0.85)';
-      thumb.style.transform  = 'translateX(22px)';
-      val.textContent        = '140,000';
-      period.textContent     = '연간 1회 결제';
-      orig.textContent       = '정가 ₩230,000';
-      orig.style.visibility  = 'visible';
-      lblM.style.color       = '';
-      lblA.style.color       = '#93C5FD';
-    } else {
-      btn.style.background   = 'rgba(82,82,82,0.6)';
-      thumb.style.transform  = 'translateX(2px)';
-      val.textContent        = '11,600';
-      period.textContent     = '월 환산 기준 (연간 결제 시)';
-      orig.textContent       = '정가 약 ₩19,000/월';
-      orig.style.visibility  = 'visible';
-      lblM.style.color       = '#93C5FD';
-      lblA.style.color       = '';
-    }
-  }
-
-  window.toggleBilling = function () { isAnnual = !isAnnual; update(); };
-  window.setBilling    = function (v) { isAnnual = v; update(); };
-})();
 
 /* ====================================================
    12. FAQ — Phone mockup chat interface
@@ -387,12 +350,12 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
   const faqData = [
     {
       q: '홈페이지 제작 기간이 얼마나 걸리나요?',
-      a: '상담 후 자료를 받은 시점부터 약 <strong style="color:#fff;">7~14일</strong> 이내에 제작이 완료됩니다. 자료를 빠르게 제공해 주시면 더 일찍 완성될 수 있으며, 디자인 수정 횟수에 따라 일정이 조정될 수 있습니다.',
+      a: '상담 후 자료를 받은 시점부터 약 <strong style="color:#fff;">10일</strong> 이내에 제작이 완료됩니다. 자료를 빠르게 제공해 주시면 더 일찍 완성될 수 있으며, 디자인 수정 횟수에 따라 일정이 조정될 수 있습니다.',
       short: '제작 기간'
     },
     {
-      q: '연간 구독 이후 갱신 비용은 얼마인가요?',
-      a: '갱신 시에도 동일한 연간 구독료가 적용됩니다. 런칭 기념 특가로 시작하신 고객님은 갱신 시에도 동일한 혜택을 유지해 드립니다. 홈페이지 재제작이 아닌 <strong style="color:#fff;">운영 유지 비용</strong>으로 부담 없이 계속 이용하실 수 있습니다.',
+      q: '갱신 비용은 얼마인가요?',
+      a: '첫해는 제작비 포함 <strong style="color:#fff;">29만원</strong>이며, 2년차부터는 운영 유지 비용 <strong style="color:#fff;">연 15만원</strong>으로 계속 이용하실 수 있습니다. 홈페이지를 새로 만드는 것이 아니라 운영만 유지하는 비용이기 때문에 부담이 훨씬 줄어듭니다.',
       short: '갱신 비용'
     },
     {
@@ -401,9 +364,9 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
       short: '내용 수정'
     },
     {
-      q: '도메인(인터넷 주소)을 직접 구매해야 하나요?',
-      a: '아니요. 도메인 구매부터 서버 설정, 배포까지 <strong style="color:#fff;">모든 과정을 대행</strong>해 드립니다. 원장님은 원하시는 학원 이름이나 주소 형태만 알려주시면 나머지는 저희가 처리합니다.',
-      short: '도메인 구매'
+      q: '진행 중인 이벤트가 있나요?',
+      a: '현재 두 가지 이벤트를 진행 중입니다.<br><br><strong style="color:#93C5FD;">⚡ EVENT 1 · 선착순 5명 한정</strong><br>홈페이지 제작비가 무료로, 첫해부터<strong style="color:#fff;">연 15만원</strong>만으로 제작부터 운영까지 이용하실 수 있습니다. 선착순 마감 후에는 정상가(첫해 29만원)로 전환됩니다.<br><br><strong style="color:#93C5FD;">🎁 EVENT 2 · 추천인 이벤트</strong><br>상담 신청 시 문의 내용에 <strong style="color:#fff;">추천 학원명</strong>을 기재해 주세요. 추천인께 <strong style="color:#fff;">₩30,000 캐쉬백</strong>, 신규 고객께 <strong style="color:#fff;">₩30,000 즉시 할인</strong>이 적용됩니다.',
+      short: '진행 중 이벤트'
     },
     {
       q: '가격이 저렴한 이유가 있나요?',
@@ -462,6 +425,8 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
       } else if (node.nodeName === 'STRONG') {
         const style = node.getAttribute('style') || '';
         [...node.textContent].forEach(ch => chars.push({ ch, tag: 'strong', style }));
+      } else if (node.nodeName === 'BR') {
+        chars.push({ ch: '<br>', tag: 'br', style: '' });
       }
     });
 
@@ -469,6 +434,12 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
       let out = ''; let prevTag = null;
       for (let j = 0; j < upTo; j++) {
         const c = chars[j];
+        if (c.tag === 'br') {
+          if (prevTag === 'strong') out += '</strong>';
+          prevTag = null;
+          out += '<br>';
+          continue;
+        }
         if (c.tag !== prevTag) {
           if (prevTag === 'strong') out += '</strong>';
           if (c.tag === 'strong') out += `<strong style="${c.style}">`;
@@ -722,14 +693,17 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
   tl.to({}, { duration: 0.5 }); // hold — tablet stays flat while user scrolls
 }());
 
-// Spotlight follow effect — pricing card
+// Border spotlight — card-relative coords via background-position
 (function () {
   const card = document.getElementById('pricing-spotlight-card');
   if (!card) return;
   document.addEventListener('pointermove', (e) => {
-    card.style.setProperty('--x', e.clientX.toFixed(1));
-    card.style.setProperty('--xp', (e.clientX / window.innerWidth).toFixed(3));
-    card.style.setProperty('--y', e.clientY.toFixed(1));
-    card.style.setProperty('--yp', (e.clientY / window.innerHeight).toFixed(3));
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--x', x.toFixed(1));
+    card.style.setProperty('--y', y.toFixed(1));
+    card.style.setProperty('--xp', (x / rect.width).toFixed(3));
+    card.style.setProperty('--yp', (y / rect.height).toFixed(3));
   });
 }());
