@@ -454,118 +454,147 @@
           하나로 끝내는<br><span class="text-white">Sub</span><span style="color:#93C5FD">Web</span> 연간 PASS
         </h2>
         <p class="text-neutral-400 text-base md:text-lg max-w-lg mx-auto leading-relaxed">
-          첫해 29만원으로 제작부터 운영까지, 이후 연 15만원으로 계속 운영.<br>신규 수강생 한 명으로 원금 회수 완료.
+          첫해 29만원으로 제작부터 운영까지, 이후 연 15만원으로 계속 운영.<br>기본 요금제와 지금 진행 중인 이벤트를 한눈에 비교해보세요.
         </p>
       </div>
 
 
-      <!-- Card — 세로 레이아웃 -->
-      <div class="flex justify-center reveal-block">
-        <div class="relative w-full" style="max-width:720px;">
+      <!-- Cards — 3단 레이아웃 (좌: EVENT 1 / 중앙: 기본 요금제 / 우: EVENT 2) -->
+      <div id="pricing-cards" class="grid grid-cols-1 lg:grid-cols-3 gap-4 mx-auto items-end" style="max-width:1080px;">
 
-          <!-- 배지 1: 선착순 (우상단) — 외부: float, 내부: hover scale -->
-          <div class="pricing-badge-1 absolute z-20 hidden lg:block" style="top:-30px;right:-150px;">
-            <div class="pricing-badge-inner"
-                 style="position:relative;width:179px;height:179px;border-radius:50%;background:radial-gradient(circle at 40% 35%,rgba(0,18,48,0.98) 0%,rgba(8,8,14,0.98) 70%);border:1.5px solid rgba(147,197,253,0.5);box-shadow:0 0 28px rgba(147,197,253,0.22),0 0 0 4px rgba(147,197,253,0.05),0 12px 40px rgba(0,0,0,0.85);">
-              <!-- 상단: EVENT 라벨 -->
-              <p class="badge-event-label font-bold uppercase tracking-widest" style="font-size:0.72rem;color:rgba(147,197,253,0.55);letter-spacing:0.15em;">EVENT 1</p>
-              <!-- 중앙: 이모지 + 굵은 글씨 -->
-              <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-align:center;transform:translateY(-12px);">
-                <span style="font-size:1.32rem;line-height:1;">⚡</span>
-                <p class="font-black leading-tight" style="font-size:0.75rem;color:#93C5FD;">선착순 5명 한정</p>
-                <p class="font-black leading-none" style="font-size:1.1rem;color:#93C5FD;">제작비 무료</p>
-              </div>
-              <!-- 하단: 설명 -->
-              <p class="badge-desc-label leading-snug" style="font-size:0.64rem;color:rgba(147,197,253,0.45);">첫해 구매부터<br>연간 150,000원 유지</p>
+        <!-- 카드 1: EVENT 1 — 선착순 5명 제작비 무료 (조금 작게) -->
+        <div class="pricing-card--left lg:mb-6">
+        <div class="glass-dark rounded-3xl relative flex flex-col pricing-card-inner pricing-card-inner--side">
+          <div class="flex flex-col flex-1 px-6 py-7 rounded-[22px] overflow-hidden">
+            <p class="text-white text-lg font-bold tracking-tight mb-4 text-center">⚡ 제작비 무료 EVENT</p>
+
+            <div class="flex items-baseline gap-1">
+              <span class="text-blue-300/60 text-base font-black">₩</span>
+              <span class="text-white font-black tracking-tighter leading-none" style="font-size:2.5rem;">140,000</span>
             </div>
-          </div>
+            <p class="text-sm font-bold mb-4" style="color:#93C5FD;">제작비 14만원 전액 무료</p>
 
-          <!-- 배지 2: 추천인 (좌하단) — 외부: float, 내부: hover scale -->
-          <div class="pricing-badge-2 absolute z-20 hidden lg:block" style="bottom:-55px;left:-160px;">
-            <div class="pricing-badge-inner"
-                 style="position:relative;width:179px;height:179px;border-radius:50%;background:radial-gradient(circle at 40% 35%,rgba(0,18,48,0.98) 0%,rgba(8,8,14,0.98) 70%);border:1.5px solid rgba(147,197,253,0.5);box-shadow:0 0 28px rgba(147,197,253,0.22),0 0 0 4px rgba(147,197,253,0.05),0 12px 40px rgba(0,0,0,0.85);">
-              <!-- 상단: EVENT 라벨 -->
-              <p class="badge-event-label font-bold uppercase tracking-widest" style="font-size:0.72rem;color:rgba(147,197,253,0.55);letter-spacing:0.15em;">EVENT 2</p>
-              <!-- 중앙: 이모지 + 굵은 글씨 -->
-              <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-align:center;transform:translateY(-12px);">
-                <span style="font-size:1.32rem;line-height:1;">🎁</span>
-                <p class="font-black leading-tight" style="font-size:0.75rem;color:#93C5FD;">추천인 이벤트</p>
-                <p class="font-black leading-none" style="font-size:1.1rem;color:#93C5FD;">각 ₩30,000</p>
-              </div>
-              <!-- 하단: 설명 -->
-              <p class="badge-desc-label leading-snug" style="font-size:0.64rem;color:rgba(147,197,253,0.45);">문의 시 추천 학원명 기재<br>기존 캐쉬백·신규 즉시 할인</p>
-            </div>
-          </div>
+            <p class="text-neutral-500 text-sm leading-snug mb-5">선착순 5명, 제작비 면제로 첫해부터 연 15만원</p>
 
-          <div class="premium-card rounded-3xl relative"
-               id="pricing-spotlight-card"
-               data-glow
-               style="--base:220;--spread:180;--radius:24;--border:2;--size:380;--outer:1;">
-            <div data-glow></div>
+            <div style="border-top:1px solid rgba(255,255,255,0.1);margin-bottom:1.25rem;"></div>
 
-            <div class="flex flex-col lg:flex-row overflow-hidden rounded-[22px]">
+            <ul class="space-y-3.5 flex-1">
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 flex-none mt-0.5" fill="none" stroke="#a3e635" stroke-width="2.5" viewBox="0 0 24 24" style="filter:drop-shadow(0 0 5px rgba(163,230,53,0.8));"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <p class="text-white text-sm leading-snug"><span class="font-semibold">제작비 100% 무료</span> — 선착순 5명 한정</p>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 flex-none mt-0.5" fill="none" stroke="#a3e635" stroke-width="2.5" viewBox="0 0 24 24" style="filter:drop-shadow(0 0 5px rgba(163,230,53,0.8));"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <p class="text-neutral-300 text-sm leading-snug">첫해 구매부터 정가 인상 없이 유지</p>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 flex-none mt-0.5" fill="none" stroke="#a3e635" stroke-width="2.5" viewBox="0 0 24 24" style="filter:drop-shadow(0 0 5px rgba(163,230,53,0.8));"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <p class="text-neutral-300 text-sm leading-snug">기본 PASS 혜택 전체 포함</p>
+              </li>
+            </ul>
 
-              <!-- 좌측: 가격 + CTA -->
-              <div class="flex flex-col justify-between px-8 pt-8 pb-8 lg:w-[46%]">
-                <div>
-                  <p class="text-white text-2xl font-bold uppercase tracking-widest mb-4">Annual PASS</p>
-                  <div style="border-top:1px solid rgba(255,255,255,0.12);margin-bottom:1.5rem;"></div>
-                  <p class="text-neutral-400 text-sm mb-2">제작비 포함 첫해 한정: <span class="text-neutral-400">₩290,000</span></p>
-                  <div class="flex items-baseline gap-1 mb-1.5">
-                    <span class="text-blue-300/60 text-xl font-black">₩</span>
-                    <span class="text-white font-black tracking-tighter leading-none" style="font-size:3rem;">150,000</span>
-                    <span class="text-blue-300/40 text-lg font-bold">/년</span>
-                  </div>
-                </div>
-                <div class="mt-8">
-                  <a href="#consulting" onclick="document.getElementById('consulting').scrollIntoView({behavior:'smooth'});return false;"
-                     class="btn-glass flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl font-bold text-white text-sm mb-2.5">
-                    무료 상담 신청하기
-                  </a>
-                </div>
-              </div>
-
-              <!-- 수직 구분선 (데스크탑) / 수평 구분선 (모바일) -->
-              <div class="hidden lg:block flex-none" style="width:1px;background:rgba(255,255,255,0.07);margin:1.5rem 0;"></div>
-              <div class="lg:hidden" style="height:1px;background:rgba(255,255,255,0.07);"></div>
-
-              <!-- 우측: 포함 내역 (1열 4줄) -->
-              <div class="lg:w-[54%] px-8 py-8 flex flex-col justify-center" style="background:rgba(255,255,255,0.018);">
-                <ul class="space-y-5">
-                  <li class="flex items-start gap-4">
-                    <svg class="w-5 h-5 flex-none mt-0.5" fill="none" stroke="#a3e635" stroke-width="2.5" viewBox="0 0 24 24" style="filter:drop-shadow(0 0 5px rgba(163,230,53,0.8));"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                    <div>
-                      <p class="text-white font-semibold leading-snug">원장님 학원만의 맞춤 제작</p>
-                      <p class="text-neutral-500 text-sm leading-snug mt-0.5">분위기·커리큘럼 100% 반영, 모바일 완전 최적화</p>
-                    </div>
-                  </li>
-                  <li class="flex items-start gap-4">
-                    <svg class="w-5 h-5 flex-none mt-0.5" fill="none" stroke="#a3e635" stroke-width="2.5" viewBox="0 0 24 24" style="filter:drop-shadow(0 0 5px rgba(163,230,53,0.8));"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                    <div>
-                      <p class="text-white font-semibold leading-snug">도메인부터 서버 배포까지 100% 대행</p>
-                      <p class="text-neutral-500 text-sm leading-snug mt-0.5">학원 이름 그대로 주소 연결, 세팅 걱정 Zero</p>
-                    </div>
-                  </li>
-                  <li class="flex items-start gap-4">
-                    <svg class="w-5 h-5 flex-none mt-0.5" fill="none" stroke="#a3e635" stroke-width="2.5" viewBox="0 0 24 24" style="filter:drop-shadow(0 0 5px rgba(163,230,53,0.8));"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                    <div>
-                      <p class="text-white font-semibold leading-snug">월 1회 무료 업데이트 포함</p>
-                      <p class="text-neutral-500 text-sm leading-snug mt-0.5">시간표·공지·이벤트, 카톡으로 전달만 하면 끝</p>
-                    </div>
-                  </li>
-                  <li class="flex items-start gap-4">
-                    <svg class="w-5 h-5 flex-none mt-0.5" fill="none" stroke="#a3e635" stroke-width="2.5" viewBox="0 0 24 24" style="filter:drop-shadow(0 0 5px rgba(163,230,53,0.8));"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                    <div>
-                      <p class="text-white font-semibold leading-snug">카톡 하나로 무제한 수정 요청</p>
-                      <p class="text-neutral-500 text-sm leading-snug mt-0.5">언제든 메시지 하나로, 절차 없이 바로 처리</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-
-            </div>
+            <p class="text-neutral-500 text-xs leading-snug mt-6 text-center">선착순 마감 시 조기 종료될 수 있습니다</p>
           </div>
         </div>
+        </div>
+
+        <!-- 카드 2: 기본 요금제 (중앙, 크게) -->
+        <div class="pricing-card--center relative z-10">
+        <div class="glass-dark rounded-3xl relative flex flex-col z-10 pricing-card-inner" style="border-color:rgba(147,197,253,0.45);">
+          <div class="pricing-popular-ribbon flex items-center gap-1.5 px-4 py-1.5 rounded-full">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8L5.7 21l1.7-7L2 9.2l7.1-.6L12 2z"/></svg>
+            <span class="text-white text-xs font-bold tracking-wide">기본 요금제</span>
+          </div>
+
+          <div class="flex flex-col flex-1 px-8 pt-9 pb-8 rounded-[22px] overflow-hidden">
+            <p class="text-white text-2xl font-bold uppercase tracking-widest mb-4 text-center">연간 PASS</p>
+
+            <p class="text-neutral-400 text-sm mb-2">제작비 포함 첫해 한정: ₩290,000</p>
+            <div class="flex items-baseline gap-1 mb-4">
+              <span class="text-blue-300/60 text-xl font-black">₩</span>
+              <span class="text-white font-black tracking-tighter leading-none" style="font-size:3rem;">150,000</span>
+              <span class="text-blue-300/40 text-lg font-bold">/년</span>
+            </div>
+
+            <p class="text-neutral-500 text-sm leading-snug mb-6">제작부터 운영까지, 학원 홈페이지 올인원 구독</p>
+
+            <div style="border-top:1px solid rgba(255,255,255,0.12);margin-bottom:1.5rem;"></div>
+
+            <ul class="space-y-5 flex-1">
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 flex-none mt-0.5" fill="none" stroke="#a3e635" stroke-width="2.5" viewBox="0 0 24 24" style="filter:drop-shadow(0 0 5px rgba(163,230,53,0.8));"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <div>
+                  <p class="text-white font-semibold leading-snug text-sm">원장님 학원만의 맞춤 제작</p>
+                  <p class="text-neutral-500 text-xs leading-snug mt-0.5">분위기·커리큘럼 100% 반영, 모바일 최적화</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 flex-none mt-0.5" fill="none" stroke="#a3e635" stroke-width="2.5" viewBox="0 0 24 24" style="filter:drop-shadow(0 0 5px rgba(163,230,53,0.8));"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <div>
+                  <p class="text-white font-semibold leading-snug text-sm">도메인부터 서버 배포까지 100% 대행</p>
+                  <p class="text-neutral-500 text-xs leading-snug mt-0.5">학원 이름 그대로 주소 연결, 세팅 걱정 Zero</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 flex-none mt-0.5" fill="none" stroke="#a3e635" stroke-width="2.5" viewBox="0 0 24 24" style="filter:drop-shadow(0 0 5px rgba(163,230,53,0.8));"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <div>
+                  <p class="text-white font-semibold leading-snug text-sm">월 1회 무료 업데이트 포함</p>
+                  <p class="text-neutral-500 text-xs leading-snug mt-0.5">시간표·공지·이벤트, 카톡으로 전달만 하면 끝</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 flex-none mt-0.5" fill="none" stroke="#a3e635" stroke-width="2.5" viewBox="0 0 24 24" style="filter:drop-shadow(0 0 5px rgba(163,230,53,0.8));"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <div>
+                  <p class="text-white font-semibold leading-snug text-sm">카톡 하나로 무제한 수정 요청</p>
+                  <p class="text-neutral-500 text-xs leading-snug mt-0.5">언제든 메시지 하나로, 절차 없이 바로 처리</p>
+                </div>
+              </li>
+            </ul>
+
+            <a href="#consulting" onclick="document.getElementById('consulting').scrollIntoView({behavior:'smooth'});return false;"
+               class="btn-glass flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl font-bold text-white text-sm mt-7">
+              무료 상담 신청하기
+            </a>
+          </div>
+        </div>
+        </div>
+
+        <!-- 카드 3: EVENT 2 — 추천인 이벤트 (조금 작게) -->
+        <div class="pricing-card--right lg:mb-6">
+        <div class="glass-dark rounded-3xl relative flex flex-col pricing-card-inner pricing-card-inner--side">
+          <div class="flex flex-col flex-1 px-6 py-7 rounded-[22px] overflow-hidden">
+            <p class="text-white text-lg font-bold tracking-tight mb-4 text-center">🎁 추천인 캐시백 EVENT</p>
+
+            <div class="flex items-baseline gap-1">
+              <span class="text-blue-300/60 text-base font-black">₩</span>
+              <span class="text-white font-black tracking-tighter leading-none" style="font-size:2.5rem;">30,000</span>
+            </div>
+            <p class="text-sm font-bold mb-4" style="color:#93C5FD;">신규 할인 · 추천인 캐쉬백 (각각)</p>
+
+            <p class="text-neutral-500 text-sm leading-snug mb-5">문의 시 추천 학원명 기재</p>
+
+            <div style="border-top:1px solid rgba(255,255,255,0.1);margin-bottom:1.25rem;"></div>
+
+            <ul class="space-y-3.5 flex-1">
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 flex-none mt-0.5" fill="none" stroke="#a3e635" stroke-width="2.5" viewBox="0 0 24 24" style="filter:drop-shadow(0 0 5px rgba(163,230,53,0.8));"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <p class="text-white text-sm leading-snug"><span class="font-semibold">신규 고객 즉시 ₩30,000 할인</span></p>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 flex-none mt-0.5" fill="none" stroke="#a3e635" stroke-width="2.5" viewBox="0 0 24 24" style="filter:drop-shadow(0 0 5px rgba(163,230,53,0.8));"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <p class="text-white text-sm leading-snug"><span class="font-semibold">추천인(기존 고객) ₩30,000 캐쉬백</span></p>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 flex-none mt-0.5" fill="none" stroke="#a3e635" stroke-width="2.5" viewBox="0 0 24 24" style="filter:drop-shadow(0 0 5px rgba(163,230,53,0.8));"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <p class="text-neutral-300 text-sm leading-snug">기본 PASS 혜택 전체 포함</p>
+              </li>
+            </ul>
+
+            <p class="text-neutral-500 text-xs leading-snug mt-6 text-center">문의 시 추천 학원명을 기재해주세요</p>
+          </div>
+        </div>
+        </div>
+
       </div>
 
 

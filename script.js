@@ -282,6 +282,23 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
 });
 
 /* ====================================================
+   8. Pricing cards — side cards slide in, center rises
+==================================================== */
+(function () {
+  const grid = document.getElementById("pricing-cards");
+  const left = document.querySelector(".pricing-card--left");
+  const center = document.querySelector(".pricing-card--center");
+  const right = document.querySelector(".pricing-card--right");
+  if (!grid || !left || !center || !right) return;
+
+  const trigger = { trigger: grid, start: "top 82%", toggleActions: "play none none none" };
+
+  gsap.fromTo(left,   { opacity: 0, x: -60 }, { scrollTrigger: trigger, opacity: 1, x: 0, duration: 0.9, ease: "power3.out" });
+  gsap.fromTo(right,  { opacity: 0, x: 60 },  { scrollTrigger: trigger, opacity: 1, x: 0, duration: 0.9, ease: "power3.out" });
+  gsap.fromTo(center, { opacity: 0, y: 60 },  { scrollTrigger: trigger, opacity: 1, y: 0, duration: 0.9, delay: 0.15, ease: "power3.out" });
+}());
+
+/* ====================================================
    9. Bottom Navigation Bar
 ==================================================== */
 (function () {
@@ -691,19 +708,4 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
   tl.to(tablet, { rotationX: 0, scale: 1, y: -40, ease: 'none', duration: 1 }, 0);
   if (header) tl.to(header, { y: -50, ease: 'none', duration: 1 }, 0);
   tl.to({}, { duration: 0.5 }); // hold — tablet stays flat while user scrolls
-}());
-
-// Border spotlight — card-relative coords via background-position
-(function () {
-  const card = document.getElementById('pricing-spotlight-card');
-  if (!card) return;
-  document.addEventListener('pointermove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    card.style.setProperty('--x', x.toFixed(1));
-    card.style.setProperty('--y', y.toFixed(1));
-    card.style.setProperty('--xp', (x / rect.width).toFixed(3));
-    card.style.setProperty('--yp', (y / rect.height).toFixed(3));
-  });
 }());
