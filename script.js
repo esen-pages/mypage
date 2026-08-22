@@ -377,12 +377,12 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
     },
     {
       q: '홈페이지 내용을 수정하고 싶으면 어떻게 하나요?',
-      a: '카카오톡으로 수정 내용을 보내주시면 빠르게 반영해 드립니다. 구독 기간 내 <strong style="color:#fff;">월 1회 무료 업데이트</strong>가 포함되어 있으며, 시간표 변경, 공지사항, 이벤트 배너 등 콘텐츠 수정·추가가 가능합니다. 단, <strong style="color:#fff;">디자인을 새롭게 변경하는 작업은 포함되지 않습니다.</strong>',
+      a: '카카오톡으로 수정 내용을 보내주시면 빠르게 반영해 드립니다. 구독 기간 내 <strong style="color:#fff;">월 1회 무료 업데이트</strong>가 포함되어 있으며, 공지사항, 메뉴·상품 정보, 이벤트 배너 등 콘텐츠 수정·추가가 가능합니다. 단, <strong style="color:#fff;">디자인을 새롭게 변경하는 작업은 포함되지 않습니다.</strong>',
       short: '내용 수정'
     },
     {
       q: '진행 중인 이벤트가 있나요?',
-      a: '현재 두 가지 이벤트를 진행 중입니다.<br><br><strong style="color:#93C5FD;">⚡ EVENT 1 · 선착순 5명 한정</strong><br>홈페이지 제작비가 무료로, 첫해부터<strong style="color:#fff;">연 15만원</strong>만으로 제작부터 운영까지 이용하실 수 있습니다. 선착순 마감 후에는 정상가(첫해 29만원)로 전환됩니다.<br><br><strong style="color:#93C5FD;">🎁 EVENT 2 · 추천인 이벤트</strong><br>상담 신청 시 문의 내용에 <strong style="color:#fff;">추천 학원명</strong>을 기재해 주세요. 추천인께 <strong style="color:#fff;">₩30,000 캐쉬백</strong>, 신규 고객께 <strong style="color:#fff;">₩30,000 즉시 할인</strong>이 적용됩니다.',
+      a: '현재 두 가지 이벤트를 진행 중입니다.<br><br><strong style="color:#93C5FD;">⚡ EVENT 1 · 선착순 5명 한정</strong><br>홈페이지 제작비가 무료로, 첫해부터<strong style="color:#fff;">연 15만원</strong>만으로 제작부터 운영까지 이용하실 수 있습니다. 선착순 마감 후에는 정상가(첫해 29만원)로 전환됩니다.<br><br><strong style="color:#93C5FD;">🎁 EVENT 2 · 추천인 이벤트</strong><br>상담 신청 시 문의 내용에 <strong style="color:#fff;">추천인 상호명</strong>을 기재해 주세요. 추천인께 <strong style="color:#fff;">₩30,000 캐쉬백</strong>, 신규 고객께 <strong style="color:#fff;">₩30,000 즉시 할인</strong>이 적용됩니다.',
       short: '진행 중 이벤트'
     },
     {
@@ -572,7 +572,7 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
 ==================================================== */
 (function () {
   const words = [
-    "학원을 소개하세요.",
+    "브랜드를 소개하세요.",
     "전문성을 보여주세요.",
     "소식을 알리세요.",
   ];
