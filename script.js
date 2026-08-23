@@ -372,7 +372,7 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
     },
     {
       q: '갱신 비용은 얼마인가요?',
-      a: '첫해는 제작비 포함 <strong style="color:#fff;">29만원</strong>이며, 2년차부터는 운영 유지 비용 <strong style="color:#fff;">연 15만원</strong>으로 계속 이용하실 수 있습니다. 홈페이지를 새로 만드는 것이 아니라 운영만 유지하는 비용이기 때문에 부담이 훨씬 줄어듭니다.',
+      a: '첫해는 제작비 포함 <strong style="color:#fff;">19만원</strong>이며, 2년차부터는 운영 유지 비용 <strong style="color:#fff;">연 9만원</strong>으로 계속 이용하실 수 있습니다. 홈페이지를 새로 만드는 것이 아니라 운영만 유지하는 비용이기 때문에 부담이 훨씬 줄어듭니다.',
       short: '갱신 비용'
     },
     {
@@ -382,7 +382,7 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
     },
     {
       q: '진행 중인 이벤트가 있나요?',
-      a: '현재 두 가지 이벤트를 진행 중입니다.<br><br><strong style="color:#93C5FD;">⚡ EVENT 1 · 선착순 5명 한정</strong><br>홈페이지 제작비가 무료로, 첫해부터<strong style="color:#fff;">연 15만원</strong>만으로 제작부터 운영까지 이용하실 수 있습니다. 선착순 마감 후에는 정상가(첫해 29만원)로 전환됩니다.<br><br><strong style="color:#93C5FD;">🎁 EVENT 2 · 추천인 이벤트</strong><br>상담 신청 시 문의 내용에 <strong style="color:#fff;">추천인 상호명</strong>을 기재해 주세요. 추천인께 <strong style="color:#fff;">₩30,000 캐쉬백</strong>, 신규 고객께 <strong style="color:#fff;">₩30,000 즉시 할인</strong>이 적용됩니다.',
+      a: '현재 두 가지 이벤트를 진행 중입니다.<br><br><strong style="color:#93C5FD;">⚡ EVENT 1 · 선착순 5명 한정</strong><br>홈페이지 제작비가 무료로, 첫해부터<strong style="color:#fff;">연 9만원</strong>만으로 제작부터 운영까지 이용하실 수 있습니다. 선착순 마감 후에는 정상가(첫해 19만원)로 전환됩니다.<br><br><strong style="color:#93C5FD;">🎁 EVENT 2 · 추천인 이벤트</strong><br>상담 신청 시 문의 내용에 <strong style="color:#fff;">추천인 상호명</strong>을 기재해 주세요. 추천인께 <strong style="color:#fff;">₩30,000 캐쉬백</strong>, 신규 고객께 <strong style="color:#fff;">₩30,000 즉시 할인</strong>이 적용됩니다.',
       short: '진행 중 이벤트'
     },
     {
@@ -709,3 +709,18 @@ gsap.utils.toArray(".step-row").forEach((row, i) => {
   if (header) tl.to(header, { y: -50, ease: 'none', duration: 1 }, 0);
   tl.to({}, { duration: 0.5 }); // hold — tablet stays flat while user scrolls
 }());
+
+function togglePriceUnit() {
+  const toggleEl = document.getElementById('price-unit-toggle');
+  const amountEl = document.getElementById('pricing-amount');
+  const unitEl = document.getElementById('pricing-unit');
+  const noteEl = document.getElementById('pricing-note');
+  if (!toggleEl || !amountEl || !unitEl) return;
+
+  const isWeek = !toggleEl.classList.contains('is-week');
+  toggleEl.classList.toggle('is-week', isWeek);
+  toggleEl.classList.toggle('is-year', !isWeek);
+  amountEl.textContent = isWeek ? '1,731' : '90,000';
+  unitEl.textContent = isWeek ? '/주' : '/년';
+  if (noteEl) noteEl.style.visibility = isWeek ? 'hidden' : 'visible';
+}

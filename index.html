@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SubWeb - 홈페이지 올인원 구독 서비스</title>
-  <meta name="description" content="제작·배포·운영까지 한 번에. 사업자 대표님을 위한 맞춤 홈페이지 구독 서비스. 연 15만원으로 시작하세요." />
+  <meta name="description" content="제작·배포·운영까지 한 번에. 사업자 대표님을 위한 맞춤 홈페이지 구독 서비스. 연 9만원으로 시작하세요." />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="subweb.svg" />
@@ -12,7 +12,7 @@
   <!-- Open Graph (카카오톡·SNS 공유 미리보기) -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="SubWeb - 홈페이지 올인원 구독 서비스" />
-  <meta property="og:description" content="제작·배포·운영까지 한 번에. 사업자 대표님을 위한 맞춤 홈페이지 구독 서비스. 연 15만원으로 시작하세요." />
+  <meta property="og:description" content="제작·배포·운영까지 한 번에. 사업자 대표님을 위한 맞춤 홈페이지 구독 서비스. 연 9만원으로 시작하세요." />
   <meta property="og:image" content="og-image.svg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -353,7 +353,7 @@
             </svg>
           </div>
           <h3 class="text-lg font-bold text-white mb-3 leading-snug">부담 없는 초기 비용</h3>
-          <p class="text-neutral-400 text-sm leading-relaxed">제작비 포함 첫해 29만원, 이후 연 15만원으로 운영할 수 있습니다. 신규 고객 한 명이면 원금 회수가 가능한, 소상공인 운영에 딱 맞는 가격입니다.</p>
+          <p class="text-neutral-400 text-sm leading-relaxed">제작비 포함 첫해 19만원, 이후 연 9만원으로 운영할 수 있습니다. 신규 고객 한 명이면 원금 회수가 가능한, 소상공인 운영에 딱 맞는 가격입니다.</p>
         </div>
 
         <!-- Feature Card 6 -->
@@ -454,7 +454,7 @@
           하나로 끝내는<br><span class="text-white">Sub</span><span style="color:#93C5FD">Web</span> 연간 PASS
         </h2>
         <p class="text-neutral-400 text-base md:text-lg max-w-lg mx-auto leading-relaxed">
-          첫해 29만원으로 제작부터 운영까지, 이후 연 15만원으로 계속 운영.<br>기본 요금제와 지금 진행 중인 이벤트를 한눈에 비교해보세요.
+          일주일 커피 한 잔 값이면 1년 내내 운영 끝, 연 9만원.<br>첫해는 제작비 포함 19만원으로 시작하세요.
         </p>
       </div>
 
@@ -470,11 +470,11 @@
 
             <div class="flex items-baseline gap-1">
               <span class="text-blue-300/60 text-base font-black">₩</span>
-              <span class="text-white font-black tracking-tighter leading-none" style="font-size:2.5rem;">140,000</span>
+              <span class="text-white font-black tracking-tighter leading-none" style="font-size:2.5rem;">100,000</span>
             </div>
-            <p class="text-sm font-bold mb-4" style="color:#93C5FD;">제작비 14만원 전액 무료</p>
+            <p class="text-sm font-bold mb-4" style="color:#93C5FD;">제작비 10만원 전액 무료</p>
 
-            <p class="text-neutral-500 text-sm leading-snug mb-5">선착순 5명, 제작비 면제로 첫해부터 연 15만원</p>
+            <p class="text-neutral-500 text-sm leading-snug mb-5">선착순 5명, 제작비 면제로 첫해부터 연 9만원</p>
 
             <div style="border-top:1px solid rgba(255,255,255,0.1);margin-bottom:1.25rem;"></div>
 
@@ -509,11 +509,19 @@
           <div class="flex flex-col flex-1 px-8 pt-9 pb-8 rounded-[22px] overflow-hidden">
             <p class="text-white text-2xl font-bold uppercase tracking-widest mb-4 text-center">연간 PASS</p>
 
-            <p class="text-neutral-400 text-sm mb-2">제작비 포함 첫해 한정: ₩290,000</p>
+            <div class="flex justify-center mb-4">
+              <button type="button" id="price-unit-toggle" class="price-toggle is-year" onclick="togglePriceUnit()" aria-label="연간/주간 가격 전환">
+                <span class="price-toggle-indicator"></span>
+                <span class="price-toggle-option" data-unit="year">연간</span>
+                <span class="price-toggle-option" data-unit="week">주간</span>
+              </button>
+            </div>
+
+            <p id="pricing-note" class="text-neutral-400 text-sm mb-2" style="visibility:visible;">제작비 포함 첫해 한정: ₩190,000</p>
             <div class="flex items-baseline gap-1 mb-4">
               <span class="text-blue-300/60 text-xl font-black">₩</span>
-              <span class="text-white font-black tracking-tighter leading-none" style="font-size:3rem;">150,000</span>
-              <span class="text-blue-300/40 text-lg font-bold">/년</span>
+              <span id="pricing-amount" class="text-white font-black tracking-tighter leading-none" style="font-size:3rem;">90,000</span>
+              <span id="pricing-unit" class="text-blue-300/40 text-lg font-bold">/년</span>
             </div>
 
             <p class="text-neutral-500 text-sm leading-snug mb-6">제작부터 운영까지, 홈페이지 올인원 구독</p>
